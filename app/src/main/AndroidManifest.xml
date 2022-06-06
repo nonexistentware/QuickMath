@@ -17,6 +17,9 @@
         android:theme="@style/Theme.QuickMath"
         tools:targetApi="31">
         <activity
+            android:name=".AboutActivity"
+            android:exported="false" />
+        <activity
             android:name=".ClassiGameMode"
             android:exported="false" />
         <activity
