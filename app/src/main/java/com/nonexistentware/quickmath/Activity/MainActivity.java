@@ -80,6 +80,11 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser fUser = auth.getCurrentUser();
                             reference.child(auth.getCurrentUser().getUid()).child("google").setValue(idToken);
+                            reference.child(auth.getCurrentUser().getUid()).child("google").setValue(fUser.getEmail());
+                            reference.child(auth.getCurrentUser().getUid()).child("google").setValue(fUser.getDisplayName());
+                            reference.child(auth.getCurrentUser().getUid()).child("player_score").setValue("0");
+                            reference.child(auth.getCurrentUser().getUid()).child("duel_win").setValue("0");
+                            reference.child(auth.getCurrentUser().getUid()).child("player_level").setValue("0");
                             Toast.makeText(MainActivity.this, "Successfully sigin", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(MainActivity.this, SelectGameActivity.class));
                             finish();

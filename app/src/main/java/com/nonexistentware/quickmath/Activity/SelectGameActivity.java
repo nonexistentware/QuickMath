@@ -1,5 +1,6 @@
 package com.nonexistentware.quickmath.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,7 +12,12 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.nonexistentware.quickmath.Model.PlayerModel;
 import com.nonexistentware.quickmath.R;
 import com.squareup.picasso.Picasso;
 
@@ -23,6 +29,7 @@ public class SelectGameActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseUser firebaseUser;
     private DatabaseReference reference;
+    private FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +55,7 @@ public class SelectGameActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         firebaseUser = auth.getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference().child("Players").child(auth.getCurrentUser().getUid());
 
         classicModeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,10 +78,10 @@ public class SelectGameActivity extends AppCompatActivity {
             }
         });
 
-//        if (auth.getCurrentUser() != null) {
-//            reference = FirebaseDatabase.getInstance().getReference()
-//                    .child("Players").child(auth.getCurrentUser().getUid());
-//        }
+        if (auth.getCurrentUser() != null) {
+            reference = FirebaseDatabase.getInstance().getReference()
+                    .child("Players").child(auth.getCurrentUser().getUid());
+        }
 
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,12 +97,26 @@ public class SelectGameActivity extends AppCompatActivity {
     }
 
     private void loadPlayerData() {
-        if (auth.getCurrentUser() != null) {
-            playerGoogleName.setText(firebaseUser.getDisplayName());
-            Picasso.get()
-                    .load(firebaseUser.getPhotoUrl())
-                    .into(playerIconImg);
+        if (auth.getCurrentUser() != null)
+            reference = FirebaseDatabase.getInstance().getReference("Players").child(firebaseUser.getUid());
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    PlayerModel playerModel = snapshot.getValue(PlayerModel.class);
+                    playerGoogleName.setText(firebaseUser.getDisplayName());
+                    scoreCounterTxt.setText(playerModel.getPlayer_score());
+                    duelWinCounterTxt.setText(playerModel.getDuel_win());
+                    levelCounterTxt.setText(playerModel.getPlayer_level());
+                    Picasso.get()
+                            .load(firebaseUser.getPhotoUrl())
+                            .into(playerIconImg);
+                }
 
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
+
 }
