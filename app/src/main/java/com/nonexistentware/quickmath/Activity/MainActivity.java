@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                             reference.child(auth.getCurrentUser().getUid()).child("google").setValue(fUser.getDisplayName());
                             reference.child(auth.getCurrentUser().getUid()).child("player_score").setValue("0");
                             reference.child(auth.getCurrentUser().getUid()).child("duel_win").setValue("0");
-                            reference.child(auth.getCurrentUser().getUid()).child("player_level").setValue("0");
+                            reference.child(auth.getCurrentUser().getUid()).child("player_zlevel").setValue("0");
                             Toast.makeText(MainActivity.this, "Successfully sigin", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(MainActivity.this, SelectGameActivity.class));
                             finish();

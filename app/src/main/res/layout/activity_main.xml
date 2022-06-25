@@ -44,7 +44,24 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"/>
 
-    </LinearLayout>
+
+            <TextView
+                android:id="@+id/main_activity_play_no_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text="Play without login"/>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Playing without login to account make share with other your score impossible. Also duel mode is also locked. Yup can always change your decision and login into the game."/>
+
+
+        </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
