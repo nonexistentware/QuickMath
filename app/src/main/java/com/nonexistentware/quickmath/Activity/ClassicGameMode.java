@@ -16,10 +16,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class ClassicGameMode extends AppCompatActivity {
-    Button startBtn;
     TextView timerTxt, correctTxt, wrongTxt;
-    TextView scoreTxt;
-    TextView AlertTextView;
+    TextView totalQuestionTxt;
     TextView QuestionTextView;
     Button button0;
     Button button1;
@@ -35,6 +33,7 @@ public class ClassicGameMode extends AppCompatActivity {
     int correctPoints = 0;
     int wrongPoints = 0;
     int totalQuestions = 0;
+    int totalQuestionToLow = 100; //total questions counter
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -42,11 +41,8 @@ public class ClassicGameMode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classic_game_mode);
 
-        startBtn = (Button) findViewById(R.id.btnStart);
-
         timerTxt = findViewById(R.id.TimeTextView);
-        scoreTxt = findViewById(R.id.ScoreTextView);
-        AlertTextView = findViewById(R.id.AlertTextView);
+        totalQuestionTxt = findViewById(R.id.total_question);
         QuestionTextView = findViewById(R.id.QuestionTextView);
         correctTxt = findViewById(R.id.correct_answer);
         wrongTxt = findViewById(R.id.wrong_answer);
@@ -55,6 +51,10 @@ public class ClassicGameMode extends AppCompatActivity {
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
+
+        totalQuestionTxt.setText(Integer.toString(totalQuestionToLow));
+        correctTxt.setText(Integer.toString(0) + "Correct");
+        wrongTxt.setText(Integer.toString(0) + "Wrong");
 
         countDownTimer();
     }
@@ -92,16 +92,22 @@ public class ClassicGameMode extends AppCompatActivity {
         totalQuestions++;
         if (Integer.toString(indexOfCorrectAnswer).equals(view.getTag().toString())) {
             correctPoints++;
+            totalQuestionToLow--;
+            totalQuestionTxt.setText(Integer.toString(totalQuestionToLow));
             correctTxt.setText(Integer.toString(correctPoints)+"Correct");
+            allQuestionDone();
         } else {
             wrongPoints++;
+            totalQuestionToLow--;
+            totalQuestionTxt.setText(Integer.toString(totalQuestionToLow));
             wrongTxt.setText(Integer.toString(wrongPoints)+"Wrong");
-
+            allQuestionDone();
         }
 
         NextQuestion();
     }
 
+    //after count down timer stop, buttons and score should locked
     private void countDownTimer() {
         NextQuestion();
         countDownTimer = new CountDownTimer(30000, 1000) {
@@ -117,6 +123,15 @@ public class ClassicGameMode extends AppCompatActivity {
                 finish();
             }
         }.start();
+    }
+
+    private void allQuestionDone() {
+        if (totalQuestionToLow == 0) {
+            startActivity(new Intent(ClassicGameMode.this, EndGameActivity.class));
+            finish();
+        } else {
+
+        }
     }
 
 }
