@@ -1,11 +1,15 @@
 package com.nonexistentware.quickmath.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +21,7 @@ import java.util.Random;
 
 public class ClassicGameMode extends AppCompatActivity {
     TextView timerTxt, correctTxt, wrongTxt;
+    TextView attemptsTxt; //custom alert dialog
     TextView totalQuestionTxt;
     TextView QuestionTextView;
     Button button0;
@@ -33,7 +38,9 @@ public class ClassicGameMode extends AppCompatActivity {
     int correctPoints = 0;
     int wrongPoints = 0;
     int totalQuestions = 0;
-    int totalQuestionToLow = 100; //total questions counter
+    int totalQuestionToLow = 5; //total questions counter
+    int attempts = 3; //attempts per day. Drop after specific hour.
+    int clickAttemptsCounter = 0;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -95,13 +102,14 @@ public class ClassicGameMode extends AppCompatActivity {
             totalQuestionToLow--;
             totalQuestionTxt.setText(Integer.toString(totalQuestionToLow));
             correctTxt.setText(Integer.toString(correctPoints)+"Correct");
-            allQuestionDone();
+            allQuestionDone(); // if player answer all questions redirect to activity end
+
         } else {
             wrongPoints++;
             totalQuestionToLow--;
             totalQuestionTxt.setText(Integer.toString(totalQuestionToLow));
-            wrongTxt.setText(Integer.toString(wrongPoints)+"Wrong");
-            allQuestionDone();
+            wrongTxt.setText(Integer.toString(wrongPoints) + "Wrong");
+            allQuestionDone(); //  if player answer all questions redirect to activity end
         }
 
         NextQuestion();
@@ -110,7 +118,7 @@ public class ClassicGameMode extends AppCompatActivity {
     //after count down timer stop, buttons and score should locked
     private void countDownTimer() {
         NextQuestion();
-        countDownTimer = new CountDownTimer(30000, 1000) {
+        countDownTimer = new CountDownTimer(11000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 timerTxt.setText(String.valueOf(millisUntilFinished/1000)+"s");
@@ -119,19 +127,63 @@ public class ClassicGameMode extends AppCompatActivity {
             @Override
             public void onFinish() {
                 timerTxt.setText("Time up!");
-                startActivity(new Intent(ClassicGameMode.this, EndGameActivity.class));
-                finish();
-            }
+                button0.setEnabled(false);
+                button1.setEnabled(false);
+                button2.setEnabled(false);
+                button3.setEnabled(false);
+                    startActivity(new Intent(ClassicGameMode.this, EndGameActivity.class));
+                    finish();
+                }
         }.start();
     }
 
     private void allQuestionDone() {
         if (totalQuestionToLow == 0) {
+            countDownTimer.cancel();
             startActivity(new Intent(ClassicGameMode.this, EndGameActivity.class));
             finish();
-        } else {
-
         }
     }
 
+    private void askToReplayDialog() {
+       final AlertDialog.Builder builder = new AlertDialog.Builder(ClassicGameMode.this);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.alert_dialog_classicgame, null);
+        attemptsTxt = view.findViewById(R.id.attempts_counter);
+        builder.setTitle("Your score is too low. Do you wont to reply?");
+        builder.setMessage(attempts-- + " attempts left" ) //set attempts counter
+                .setPositiveButton("Replay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // reload activity
+                        attempts--;
+                        attemptsTxt.setText(Integer.toString(attempts));
+                        finish();
+                        startActivity(getIntent());
+                    }
+                })
+                .setNegativeButton("Finish the game", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        startActivity(new Intent(ClassicGameMode.this, EndGameActivity.class));
+                        finish();
+                    }
+                });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.setCancelable(false);
+            alertDialog.show();
+            alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
+
+
+    }
+
+    private void askToEndDialog() { //in case player wish to press back or end of the game. Alert window.
+
+    }
+
+    private void endOfTheGame() {
+        startActivity(new Intent(ClassicGameMode.this, EndGameActivity.class));
+        finish();
+    }
 }
