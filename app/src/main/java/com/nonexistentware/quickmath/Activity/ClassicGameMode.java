@@ -147,9 +147,6 @@ public class ClassicGameMode extends AppCompatActivity {
 
     private void askToReplayDialog() {
        final AlertDialog.Builder builder = new AlertDialog.Builder(ClassicGameMode.this);
-        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.alert_dialog_classicgame, null);
-        attemptsTxt = view.findViewById(R.id.attempts_counter);
         builder.setTitle("Your score is too low. Do you wont to reply?");
         builder.setMessage(attempts-- + " attempts left" ) //set attempts counter
                 .setPositiveButton("Replay", new DialogInterface.OnClickListener() {
@@ -174,16 +171,36 @@ public class ClassicGameMode extends AppCompatActivity {
             alertDialog.show();
             alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
             alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
-
-
     }
 
     private void askToEndDialog() { //in case player wish to press back or end of the game. Alert window.
-
+        final AlertDialog.Builder builder = new AlertDialog.Builder(ClassicGameMode.this);
+        builder.setTitle("Do you want to cancel the game?");
+        builder.setMessage("If you want to quite the game, you will lose all your score.")
+                .setNegativeButton("Continue", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                })
+                .setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        startActivity(new Intent(ClassicGameMode.this, SelectGameActivity.class));
+                        countDownTimer.cancel();
+                        finish();
+                    }
+                });
     }
 
     private void endOfTheGame() {
         startActivity(new Intent(ClassicGameMode.this, EndGameActivity.class));
         finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        askToEndDialog();
     }
 }

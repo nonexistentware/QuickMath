@@ -138,7 +138,6 @@
     </LinearLayout>
 
 
-
         <Button
             android:id="@+id/button0"
             style="@style/Widget.AppCompat.Button.Borderless"
@@ -222,6 +221,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button1" />
 
+
+
+
         <TextView
             android:id="@+id/QuestionTextView"
             android:layout_width="wrap_content"
@@ -235,5 +237,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.207" />
+    
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
