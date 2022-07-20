@@ -5,15 +5,17 @@ public class AppNewsModel {
     private String newsImage;
     private String newsTitle;
     private String newsBody;
+    private String newsDateTime;
 
     public AppNewsModel() {
 
     }
 
-    public AppNewsModel(String newsImage, String newsTitle, String newsBody) {
+    public AppNewsModel(String newsImage, String newsTitle, String newsBody, String newsDateTime) {
         this.newsImage = newsImage;
         this.newsTitle = newsTitle;
         this.newsBody = newsBody;
+        this.newsDateTime = newsDateTime;
     }
 
     public String getNewsImage() {
@@ -38,5 +40,13 @@ public class AppNewsModel {
 
     public void setNewsBody(String newsBody) {
         this.newsBody = newsBody;
+    }
+
+    public String getNewsDateTime() {
+        return newsDateTime;
+    }
+
+    public void setNewsDateTime(String newsDateTime) {
+        this.newsDateTime = newsDateTime;
     }
 }

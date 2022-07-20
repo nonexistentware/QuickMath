@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.ClassicGameMode">
+    tools:context=".Activity.ClassicGameMode"
+    android:background="@color/generalBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:text="Classic game mode"
-                    android:textColor="@color/black"
+                    android:textColor="@color/generalText"
                     android:textSize="21sp"/>
             </LinearLayout>
 
@@ -58,7 +59,7 @@
                             android:layout_height="wrap_content"
                             android:text="Time"
                             android:textSize="20sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/generalText"/>
 
                         <TextView
                             android:id="@+id/TimeTextView"
@@ -66,7 +67,7 @@
                             android:layout_height="wrap_content"
                             android:paddingTop="10dp"
                             android:text="30s"
-                            android:textColor="@color/black"
+                            android:textColor="@color/generalText"
                             android:textSize="20sp"/>
 
                     </LinearLayout>
@@ -83,7 +84,7 @@
                             android:layout_height="wrap_content"
                             android:text="Questions"
                             android:textSize="20sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/generalText"/>
 
                         <TextView
                             android:id="@+id/total_question"
@@ -91,7 +92,7 @@
                             android:layout_height="wrap_content"
                             android:paddingTop="10dp"
                             android:text="000"
-                            android:textColor="@color/black"
+                            android:textColor="@color/generalText"
                             android:textSize="20sp" />
 
                     </LinearLayout>
@@ -109,7 +110,7 @@
                             android:layout_height="wrap_content"
                             android:text="Correct/Total"
                             android:textSize="20sp"
-                            android:textColor="@color/black"
+                            android:textColor="@color/generalText"
                             android:layout_weight="1"/>
 
                         <TextView
@@ -117,7 +118,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="correct"
-                            android:textColor="@color/black"
+                            android:textColor="@color/generalText"
                             android:layout_weight="1"/>
 
                         <TextView
@@ -125,7 +126,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="wrong"
-                            android:textColor="@color/black"
+                            android:textColor="@color/generalText"
                             android:layout_weight="1"/>
 
 
@@ -150,7 +151,7 @@
             android:onClick="optionSelect"
             android:tag="0"
             android:text="Button"
-            android:textColor="@color/black"
+            android:textColor="@color/generalText"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/button2"
             app:layout_constraintStart_toStartOf="parent"
@@ -170,7 +171,7 @@
             android:onClick="optionSelect"
             android:tag="1"
             android:text="Button"
-            android:textColor="@color/black"
+            android:textColor="@color/generalText"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/button3"
             app:layout_constraintEnd_toEndOf="parent"
@@ -191,7 +192,7 @@
             android:onClick="optionSelect"
             android:tag="2"
             android:text="Button"
-            android:textColor="@color/black"
+            android:textColor="@color/generalText"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button3"
@@ -213,7 +214,7 @@
             android:onClick="optionSelect"
             android:tag="3"
             android:text="Button"
-            android:textColor="@color/black"
+            android:textColor="@color/generalText"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -229,7 +230,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="29*12"
-            android:textColor="@color/black"
+            android:textColor="@color/generalText"
             android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

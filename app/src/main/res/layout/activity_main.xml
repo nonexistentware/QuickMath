@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.MainActivity">
+    tools:context=".Activity.MainActivity"
+    android:background="@color/generalBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +20,8 @@
             android:layout_height="wrap_content"
             android:text="Welcome to the game! You will be played online."
             android:gravity="center"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:textColor="@color/generalText"/>
 
 
     </LinearLayout>
@@ -49,7 +51,7 @@
                 android:id="@+id/main_activity_play_no_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/generalText"
                 android:gravity="center"
                 android:text="Play without login"/>
 
@@ -57,7 +59,7 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/generalText"
             android:text="Playing without login to account make share with other your score impossible. Also duel mode is also locked. Yup can always change your decision and login into the game."/>
 
 
@@ -69,9 +71,6 @@
         android:layout_alignParentBottom="true"
         android:gravity="bottom"
         android:orientation="vertical">
-
-
-
 
     </LinearLayout>
 

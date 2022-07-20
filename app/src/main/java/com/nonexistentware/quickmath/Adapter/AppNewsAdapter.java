@@ -1,6 +1,7 @@
 package com.nonexistentware.quickmath.Adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.nonexistentware.quickmath.Model.AppNewsModel;
 import com.nonexistentware.quickmath.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -35,8 +37,11 @@ public class AppNewsAdapter extends RecyclerView.Adapter<AppNewsAdapter.NewsView
 
     @Override
     public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
-       holder.newsTitle.setText("sgsdgdsg"+appNewsModelList.get(position).getNewsTitle());
+       holder.newsTitle.setText(appNewsModelList.get(position).getNewsTitle());
        holder.newsBody.setText(appNewsModelList.get(position).getNewsBody());
+       holder.newsDateTime.setText(appNewsModelList.get(position).getNewsDateTime());
+       holder.newsImageTitle.setText(appNewsModelList.get(position).getNewsImage());
+
     }
 
     @Override
@@ -46,15 +51,14 @@ public class AppNewsAdapter extends RecyclerView.Adapter<AppNewsAdapter.NewsView
 
     public class NewsViewHolder extends RecyclerView.ViewHolder {
 
-        TextView newsTitle, newsBody;
-        ImageView newsImageTitle;
-
+        TextView newsTitle, newsBody, newsDateTime, newsImageTitle;
         public NewsViewHolder(@NonNull View itemView) {
             super(itemView);
 
             newsTitle = itemView.findViewById(R.id.news_item_title);
             newsBody = itemView.findViewById(R.id.news_item_body);
             newsImageTitle = itemView.findViewById(R.id.news_item_list_img);
+            newsDateTime = itemView.findViewById(R.id.news_item_date_time);
         }
     }
 
