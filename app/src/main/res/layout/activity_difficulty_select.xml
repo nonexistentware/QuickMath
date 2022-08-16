@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.DifficultySelectActivity"
+    android:background="@color/generalBackground">
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select your difficult level"
+            android:textColor="@color/generalText"
+            android:textSize="18sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/dif_level_easy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/generalText"
+            android:textSize="18sp"
+            android:text="Easy"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/dif_level_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/generalText"
+            android:textSize="18sp"
+            android:text="Medium"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/dif_level_hard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/generalText"
+            android:textSize="18sp"
+            android:text="Hard"
+            android:gravity="center"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

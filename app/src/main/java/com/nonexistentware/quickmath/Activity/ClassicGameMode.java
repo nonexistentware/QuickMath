@@ -60,8 +60,8 @@ public class ClassicGameMode extends AppCompatActivity {
         button3 = findViewById(R.id.button3);
 
         totalQuestionTxt.setText(Integer.toString(totalQuestionToLow));
-        correctTxt.setText(Integer.toString(0) + "Correct");
-        wrongTxt.setText(Integer.toString(0) + "Wrong");
+        correctTxt.setText(Integer.toString(0));
+        wrongTxt.setText(Integer.toString(0));
 
         countDownTimer();
     }
@@ -101,14 +101,14 @@ public class ClassicGameMode extends AppCompatActivity {
             correctPoints++;
             totalQuestionToLow--;
             totalQuestionTxt.setText(Integer.toString(totalQuestionToLow));
-            correctTxt.setText(Integer.toString(correctPoints)+"Correct");
+            correctTxt.setText(Integer.toString(correctPoints));
             allQuestionDone(); // if player answer all questions redirect to activity end
 
         } else {
             wrongPoints++;
             totalQuestionToLow--;
             totalQuestionTxt.setText(Integer.toString(totalQuestionToLow));
-            wrongTxt.setText(Integer.toString(wrongPoints) + "Wrong");
+            wrongTxt.setText(Integer.toString(wrongPoints));
             allQuestionDone(); //  if player answer all questions redirect to activity end
         }
 
@@ -177,13 +177,13 @@ public class ClassicGameMode extends AppCompatActivity {
         final AlertDialog.Builder builder = new AlertDialog.Builder(ClassicGameMode.this);
         builder.setTitle("Do you want to cancel the game?");
         builder.setMessage("If you want to quite the game, you will lose all your score.")
-                .setNegativeButton("Continue", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
                     }
                 })
-                .setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         startActivity(new Intent(ClassicGameMode.this, SelectGameActivity.class));

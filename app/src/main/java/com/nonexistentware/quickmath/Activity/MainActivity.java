@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -27,18 +28,18 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.nonexistentware.quickmath.Common.Common;
 import com.nonexistentware.quickmath.R;
 
 public class MainActivity extends AppCompatActivity {
 
     SignInButton mGoogleLogin;
+    TextView noLoginPlay;
 
     private FirebaseAuth auth;
     private DatabaseReference reference;
     private static final int RC_SIGN_IN = 100;
     GoogleSignInClient mGoogleSignInClient;
-
-    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +47,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mGoogleLogin = findViewById(R.id.googleSignBtn);
-        progressBar = findViewById(R.id.login_progress);
+        noLoginPlay = findViewById(R.id.main_activity_play_no_login);
 
         reference = FirebaseDatabase.getInstance().getReference("Players");
-
-        progressBar.setVisibility(View.INVISIBLE);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(com.firebase.ui.auth.R.string.default_web_client_id))
@@ -69,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        noLoginPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), SelectGameActivity.class));
+                finish();
+            }
+        });
+
     }
 
     private void firebaseAuthWithGoogle(final String idToken) {
@@ -80,11 +87,18 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser fUser = auth.getCurrentUser();
                             reference.child(auth.getCurrentUser().getUid()).child("google").setValue(idToken);
-                            reference.child(auth.getCurrentUser().getUid()).child("google").setValue(fUser.getEmail());
-                            reference.child(auth.getCurrentUser().getUid()).child("google").setValue(fUser.getDisplayName());
-                            reference.child(auth.getCurrentUser().getUid()).child("player_score").setValue("0");
-                            reference.child(auth.getCurrentUser().getUid()).child("duel_win").setValue("0");
-                            reference.child(auth.getCurrentUser().getUid()).child("player_zlevel").setValue("0");
+                            reference.child(auth.getCurrentUser().getUid()).child("playerEmail").setValue(fUser.getEmail());
+                            reference.child(auth.getCurrentUser().getUid()).child("playerName").setValue(fUser.getDisplayName());
+                            reference.child(auth.getCurrentUser().getUid()).child("playerLevel").setValue(Common.STR_Default_Leve);
+                            reference.child(auth.getCurrentUser().getUid()).child("playerScore").setValue("0");
+                            reference.child(auth.getCurrentUser().getUid()).child("duelWin").setValue("0");
+                            reference.child(auth.getCurrentUser().getUid()).child("playerDefeated").setValue("0");
+                            reference.child(auth.getCurrentUser().getUid()).child("playerEmojiAchieve").setValue("0");
+                            reference.child(auth.getCurrentUser().getUid()).child("totalTimePlay").setValue("0");
+                            reference.child(auth.getCurrentUser().getUid()).child("classicTimePlay").setValue("0");
+                            reference.child(auth.getCurrentUser().getUid()).child("timeAttackTimePlay").setValue("0");
+                            reference.child(auth.getCurrentUser().getUid()).child("hardLevelSelect").setValue("0");
+
                             Toast.makeText(MainActivity.this, "Successfully sigin", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(MainActivity.this, SelectGameActivity.class));
                             finish();
@@ -102,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUI() {
         startActivity(new Intent(getApplicationContext(), SelectGameActivity.class));
+        finish();
     }
 
     @Override

@@ -31,25 +31,28 @@
                     android:layout_marginTop="10dp"
                     android:text="Classic game mode"
                     android:textColor="@color/generalText"
-                    android:textSize="21sp"/>
+                    android:textSize="21sp"
+                    android:fontFamily="@font/pixelstyle"/>
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp">
+                android:layout_marginTop="50dp"
+                android:orientation="vertical"
+                android:weightSum="2">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:weightSum="2"
+                    android:layout_weight="1">
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
@@ -58,8 +61,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Time"
-                            android:textSize="20sp"
-                            android:textColor="@color/generalText"/>
+                            android:textSize="30sp"
+                            android:textColor="@color/generalText"
+                            android:fontFamily="@font/pixelstyle"/>
 
                         <TextView
                             android:id="@+id/TimeTextView"
@@ -68,7 +72,8 @@
                             android:paddingTop="10dp"
                             android:text="30s"
                             android:textColor="@color/generalText"
-                            android:textSize="20sp"/>
+                            android:textSize="20sp"
+                            android:fontFamily="@font/pixelstyle"/>
 
                     </LinearLayout>
 
@@ -77,14 +82,16 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:fontFamily="@font/pixelstyle">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Questions"
-                            android:textSize="20sp"
-                            android:textColor="@color/generalText"/>
+                            android:textSize="30sp"
+                            android:textColor="@color/generalText"
+                            android:fontFamily="@font/pixelstyle"/>
 
                         <TextView
                             android:id="@+id/total_question"
@@ -93,9 +100,19 @@
                             android:paddingTop="10dp"
                             android:text="000"
                             android:textColor="@color/generalText"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:fontFamily="@font/pixelstyle"/>
 
                     </LinearLayout>
+
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -108,26 +125,45 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Correct/Total"
-                            android:textSize="20sp"
+                            android:text="Correct/Wrong"
+                            android:textSize="30sp"
                             android:textColor="@color/generalText"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:fontFamily="@font/pixelstyle"/>
 
-                        <TextView
-                            android:id="@+id/correct_answer"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="correct"
-                            android:textColor="@color/generalText"
-                            android:layout_weight="1"/>
+                            android:orientation="horizontal"
+                            android:weightSum="2">
 
-                        <TextView
-                            android:id="@+id/wrong_answer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="wrong"
-                            android:textColor="@color/generalText"
-                            android:layout_weight="1"/>
+                            <TextView
+                                android:id="@+id/correct_answer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="@color/generalText"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/pixelstyle"
+                                android:textFontWeight="1"
+                                android:gravity="center"
+                                android:textSize="20sp"/>
+
+                            <TextView
+                                android:id="@+id/wrong_answer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="@color/generalText"
+                                android:fontFamily="@font/pixelstyle"
+                                android:layout_weight="1"
+                                android:textFontWeight="1"
+                                android:gravity="center"
+                                android:textSize="20sp"/>
+
+                        </LinearLayout>
+
+
 
 
                     </LinearLayout>
@@ -152,10 +188,11 @@
             android:tag="0"
             android:text="Button"
             android:textColor="@color/generalText"
-            android:textSize="24sp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/button2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/QuestionTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/QuestionTextView"
+            android:fontFamily="@font/pixelstyle"/>
 
         <Button
             android:id="@+id/button1"
@@ -172,11 +209,12 @@
             android:tag="1"
             android:text="Button"
             android:textColor="@color/generalText"
-            android:textSize="24sp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/button3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/QuestionTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/QuestionTextView"
+            android:fontFamily="@font/pixelstyle"/>
 
         <Button
             android:id="@+id/button2"
@@ -193,12 +231,13 @@
             android:tag="2"
             android:text="Button"
             android:textColor="@color/generalText"
-            android:textSize="24sp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button3"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button0" />
+            app:layout_constraintTop_toBottomOf="@+id/button0"
+            android:fontFamily="@font/pixelstyle"/>
 
         <Button
             android:id="@+id/button3"
@@ -215,29 +254,30 @@
             android:tag="3"
             android:text="Button"
             android:textColor="@color/generalText"
-            android:textSize="24sp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button1" />
-
-
+            app:layout_constraintTop_toBottomOf="@+id/button1"
+            android:fontFamily="@font/pixelstyle"/>
 
 
         <TextView
+            android:layout_marginTop="20dp"
             android:id="@+id/QuestionTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="29*12"
             android:textColor="@color/generalText"
-            android:textSize="36sp"
+            android:textSize="50sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.486"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.207" />
+            app:layout_constraintVertical_bias="0.207"
+            android:fontFamily="@font/pixelstyle"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

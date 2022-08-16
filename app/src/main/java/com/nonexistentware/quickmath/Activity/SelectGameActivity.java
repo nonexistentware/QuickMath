@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,7 +23,7 @@ import com.squareup.picasso.Picasso;
 
 public class SelectGameActivity extends AppCompatActivity {
 
-    TextView aboutAppBtn, classicModeBtn, timeAttackModeBtn, scoreCounterTxt, duelWinCounterTxt, levelCounterTxt, playerGoogleName, signOut;
+    TextView aboutAppBtn, classicModeBtn, timeAttackModeBtn, topPlayersBtn, scoreCounterTxt, duelWinCounterTxt, levelCounterTxt, playerGoogleName, signOut;
     ImageView playerIconImg;
 
     private FirebaseAuth auth;
@@ -51,6 +50,7 @@ public class SelectGameActivity extends AppCompatActivity {
         //to activity
         classicModeBtn = findViewById(R.id.dashboard_to_classic_game_mode);
         timeAttackModeBtn = findViewById(R.id.dashboard_to_time_attack_mode);
+        topPlayersBtn = findViewById(R.id.dashboard_leadership_table);
         aboutAppBtn = findViewById(R.id.dashboard_about_app);
 
         //btn
@@ -75,17 +75,26 @@ public class SelectGameActivity extends AppCompatActivity {
             }
         });
 
+        topPlayersBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), LeadershipDashboardActivity.class));
+                finish();
+            }
+        });
+
         aboutAppBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), AboutActivity.class));
+                finish();
             }
         });
 
-        if (auth.getCurrentUser() != null) {
-            reference = FirebaseDatabase.getInstance().getReference()
-                    .child("Players").child(auth.getCurrentUser().getUid());
-        }
+//        if (auth.getCurrentUser() != null) {
+//            reference = FirebaseDatabase.getInstance().getReference()
+//                    .child("Players").child(auth.getCurrentUser().getUid());
+//        }
 
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,9 +117,9 @@ public class SelectGameActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                     PlayerModel playerModel = snapshot.getValue(PlayerModel.class);
                     playerGoogleName.setText(firebaseUser.getDisplayName());
-                    scoreCounterTxt.setText(playerModel.getPlayer_score());
-                    duelWinCounterTxt.setText(playerModel.getDuel_win());
-                    levelCounterTxt.setText(playerModel.getPlayer_level());
+                    scoreCounterTxt.setText(playerModel.getPlayerScore());
+                    duelWinCounterTxt.setText(playerModel.getDuelWin());
+                    levelCounterTxt.setText(playerModel.getPlayerLevel());
                     Picasso.get()
                             .load(firebaseUser.getPhotoUrl())
                             .into(playerIconImg);

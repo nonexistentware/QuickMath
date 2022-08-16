@@ -24,7 +24,7 @@
                 android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="45dp"
-                android:src="@drawable/common_google_signin_btn_icon_dark" />
+                android:src="@drawable/pixel_google" />
 
             <TextView
                 android:id="@+id/end_player_google_name"
@@ -34,7 +34,8 @@
                 android:layout_marginTop="10dp"
                 android:text="User Name"
                 android:textColor="@color/generalText"
-                android:textSize="21sp"/>
+                android:textSize="21sp"
+                android:fontFamily="@font/pixelstyle"/>
 
             <TextView
                 android:id="@+id/end_win_defeat"
@@ -43,7 +44,8 @@
                 android:text="Wrong/Correct"
                 android:layout_gravity="center"
                 android:textColor="@color/generalText"
-                android:textSize="21sp"/>
+                android:textSize="21sp"
+                android:fontFamily="@font/pixelstyle"/>
 
         </LinearLayout>
 
@@ -71,7 +73,8 @@
                         android:layout_height="wrap_content"
                         android:text="Score"
                         android:textSize="20sp"
-                        android:textColor="@color/generalText"/>
+                        android:textColor="@color/generalText"
+                        android:fontFamily="@font/pixelstyle"/>
 
                     <TextView
                         android:id="@+id/dashboard_score_counter"
@@ -80,7 +83,8 @@
                         android:paddingTop="10dp"
                         android:text="125"
                         android:textColor="@color/generalText"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp"
+                        android:fontFamily="@font/pixelstyle"/>
 
                 </LinearLayout>
 
@@ -96,7 +100,8 @@
                         android:layout_height="wrap_content"
                         android:text="Level"
                         android:textColor="@color/generalText"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:fontFamily="@font/pixelstyle"/>
 
                     <TextView
                         android:id="@+id/dashboard_level_counter"
@@ -105,7 +110,8 @@
                         android:paddingTop="10dp"
                         android:text="360"
                         android:textColor="@color/generalText"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp"
+                        android:fontFamily="@font/pixelstyle"/>
 
                 </LinearLayout>
 
@@ -121,7 +127,8 @@
                         android:layout_height="wrap_content"
                         android:text="Time"
                         android:textSize="20sp"
-                        android:textColor="@color/generalText"/>
+                        android:textColor="@color/generalText"
+                        android:fontFamily="@font/pixelstyle"/>
 
                     <TextView
                         android:id="@+id/end_time_counter"
@@ -130,7 +137,8 @@
                         android:paddingTop="10dp"
                         android:text="0:00"
                         android:textColor="@color/generalText"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:fontFamily="@font/pixelstyle"/>
 
                 </LinearLayout>
 
@@ -159,7 +167,8 @@
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
                 android:text="Play again?"
-                android:textColor="@color/generalText" />
+                android:textColor="@color/generalText"
+                android:fontFamily="@font/pixelstyle"/>
         </LinearLayout>
         <LinearLayout
             android:layout_marginTop="25dp"
@@ -174,7 +183,8 @@
                 android:layout_height="wrap_content"
                 android:text="Share your result"
                 android:textColor="@color/generalText"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:fontFamily="@font/pixelstyle"/>
         </LinearLayout>
         <LinearLayout
             android:layout_marginTop="25dp"
@@ -187,7 +197,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Add to group"
-                android:textColor="@color/generalBackground"/>
+                android:textColor="@color/generalBackground"
+                android:fontFamily="@font/pixelstyle"/>
         </LinearLayout>
         <LinearLayout
             android:layout_marginTop="25dp"
@@ -200,7 +211,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Show all comments"
-                android:textColor="@color/generalBackground"/>
+                android:textColor="@color/generalBackground"
+                android:fontFamily="@font/pixelstyle"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -212,6 +224,7 @@
         android:layout_height="wrap_content"
         android:text="Back to dashboard"
         android:gravity="center"
-        android:textColor="@color/generalText"/>
+        android:textColor="@color/generalText"
+        android:fontFamily="@font/pixelstyle"/>
 
 </LinearLayout>

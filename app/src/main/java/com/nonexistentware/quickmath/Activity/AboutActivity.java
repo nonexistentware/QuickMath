@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,6 +22,8 @@ import com.nonexistentware.quickmath.R;
 import java.util.ArrayList;
 
 public class AboutActivity extends AppCompatActivity {
+
+    TextView backBtn;
 
     DatabaseReference databaseReference;
     RecyclerView recyclerView;
@@ -38,6 +43,16 @@ public class AboutActivity extends AppCompatActivity {
         list = new ArrayList<>();
         adapter = new AppNewsAdapter(list, this);
         recyclerView.setAdapter(adapter);
+
+        backBtn = findViewById(R.id.activity_about_back_btn);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), SelectGameActivity.class));
+                finish();
+            }
+        });
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

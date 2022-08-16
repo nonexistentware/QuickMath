@@ -24,7 +24,7 @@
                 android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="45dp"
-                android:src="@drawable/common_google_signin_btn_icon_dark" />
+                android:src="@drawable/pixel_google" />
 
             <TextView
                 android:id="@+id/dashboard_player_google_name"
@@ -34,7 +34,8 @@
                 android:layout_marginTop="10dp"
                 android:text="User Name"
                 android:textColor="@color/generalText"
-                android:textSize="21sp"/>
+                android:textSize="21sp"
+                android:fontFamily="@font/pixelstyle"/>
         </LinearLayout>
 
         <LinearLayout
@@ -61,7 +62,8 @@
                         android:layout_height="wrap_content"
                         android:text="Score"
                         android:textSize="20sp"
-                        android:textColor="@color/generalText"/>
+                        android:textColor="@color/generalText"
+                        android:fontFamily="@font/pixelstyle"/>
 
                     <TextView
                         android:id="@+id/dashboard_score_counter"
@@ -70,7 +72,8 @@
                         android:paddingTop="10dp"
                         android:text="125"
                         android:textColor="@color/generalText"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp"
+                        android:fontFamily="@font/pixelstyle"/>
 
                 </LinearLayout>
 
@@ -86,7 +89,8 @@
                         android:layout_height="wrap_content"
                         android:text="Duel win"
                         android:textSize="20sp"
-                        android:textColor="@color/generalText"/>
+                        android:textColor="@color/generalText"
+                        android:fontFamily="@font/pixelstyle"/>
 
                     <TextView
                         android:id="@+id/dashboard_duel_win_counter"
@@ -95,7 +99,8 @@
                         android:paddingTop="10dp"
                         android:text="1205"
                         android:textColor="@color/generalText"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:fontFamily="@font/pixelstyle"/>
 
                 </LinearLayout>
 
@@ -111,7 +116,8 @@
                         android:layout_height="wrap_content"
                         android:text="Level"
                         android:textColor="@color/generalText"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:fontFamily="@font/pixelstyle"/>
 
                     <TextView
                         android:id="@+id/dashboard_level_counter"
@@ -120,7 +126,8 @@
                         android:paddingTop="10dp"
                         android:text="360"
                         android:textColor="@color/generalText"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp"
+                        android:fontFamily="@font/pixelstyle"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -135,7 +142,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="45dp">
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -147,13 +154,8 @@
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
                 android:text="Classic game mode"
-                android:textColor="@color/generalText" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="25dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                android:textColor="@color/generalText"
+                android:fontFamily="@font/pixelstyle"/>
 
             <TextView
                 android:id="@+id/dashboard_to_time_attack_mode"
@@ -162,8 +164,20 @@
                 android:layout_height="wrap_content"
                 android:text="Time attack"
                 android:textColor="@color/generalText"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:fontFamily="@font/pixelstyle"/>
+
+            <TextView
+                android:id="@+id/dashboard_leadership_table"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Top players"
+                android:textColor="@color/generalText"
+                android:gravity="center"
+                android:fontFamily="@font/pixelstyle"/>
         </LinearLayout>
+
         <LinearLayout
             android:layout_marginTop="25dp"
             android:orientation="horizontal"
@@ -175,7 +189,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Add to group"
-                android:textColor="@color/generalBackground"/>
+                android:textColor="@color/generalBackground"
+                android:fontFamily="@font/pixelstyle"/>
         </LinearLayout>
         <LinearLayout
             android:layout_marginTop="25dp"
@@ -188,7 +203,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Show all comments"
-                android:textColor="@color/generalBackground"/>
+                android:textColor="@color/generalBackground"
+                android:fontFamily="@font/pixelstyle"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -198,14 +214,17 @@
         android:layout_height="wrap_content"
         android:text="About application"
         android:gravity="center"
-        android:textColor="@color/generalText"/>
+        android:textColor="@color/generalText"
+        android:fontFamily="@font/pixelstyle"/>
 
     <TextView
+        android:layout_marginTop="40dp"
         android:id="@+id/dashboard_sign_ot_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign out"
         android:gravity="center"
-        android:textColor="@color/generalText"/>
+        android:textColor="@color/generalText"
+        android:fontFamily="@font/pixelstyle"/>
 
 </LinearLayout>

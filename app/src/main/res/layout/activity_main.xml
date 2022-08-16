@@ -12,19 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/welcome_txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Welcome to the game! You will be played online."
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/generalText"/>
-
-
-    </LinearLayout>
+        android:gravity="center"/>
 
     <LinearLayout
         android:id="@+id/lay"
@@ -39,29 +27,25 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"/>
 
-        <ProgressBar
-            android:layout_margin="10px"
-            android:id="@+id/login_progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
-
-
-            <TextView
+        <TextView
+            android:layout_marginTop="10dp"
                 android:id="@+id/main_activity_play_no_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/generalText"
                 android:gravity="center"
-                android:text="Play without login"/>
+                android:fontFamily="@font/pixelstyle"
+                android:text="Play without login"
+                android:textSize="20sp"/>
 
         <TextView
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="?"
             android:textColor="@color/generalText"
-            android:text="Playing without login to account make share with other your score impossible. Also duel mode is also locked. Yup can always change your decision and login into the game."/>
-
+            android:gravity="center"
+            android:textSize="20sp"
+            android:fontFamily="@font/kongtext"/>
 
         </LinearLayout>
 

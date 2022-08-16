@@ -1,40 +1,46 @@
 package com.nonexistentware.quickmath.Model;
 
 public class PlayerModel {
-    String duel_win;
-    String player_level;
-    String player_score;
+    String duelWin;
+    String playerLevel;
+    String playerScore;
+    String Defeated;
+    String playerEmojiAchieve;
+    String timeAttackTimePlay;
+    String totalTimePlay;
+    String classicTimePlay;
+    String hardLevelSelect;
 
     public PlayerModel() {
     }
 
     public PlayerModel(String duel_win, String player_level, String player_score) {
-        this.duel_win = duel_win;
-        this.player_level = player_level;
-        this.player_score = player_score;
+        this.duelWin = duel_win;
+        this.playerLevel = player_level;
+        this.playerScore = player_score;
     }
 
-    public String getDuel_win() {
-        return duel_win;
+    public String getDuelWin() {
+        return duelWin;
     }
 
-    public void setDuel_win(String duel_win) {
-        this.duel_win = duel_win;
+    public void setDuelWin(String duelWin) {
+        this.duelWin = duelWin;
     }
 
-    public String getPlayer_level() {
-        return player_level;
+    public String getPlayerLevel() {
+        return playerLevel;
     }
 
-    public void setPlayer_level(String player_level) {
-        this.player_level = player_level;
+    public void setPlayerLevel(String playerLevel) {
+        this.playerLevel = playerLevel;
     }
 
-    public String getPlayer_score() {
-        return player_score;
+    public String getPlayerScore() {
+        return playerScore;
     }
 
-    public void setPlayer_score(String player_score) {
-        this.player_score = player_score;
+    public void setPlayerScore(String playerScore) {
+        this.playerScore = playerScore;
     }
 }
