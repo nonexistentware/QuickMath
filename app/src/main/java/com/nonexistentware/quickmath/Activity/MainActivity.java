@@ -2,11 +2,16 @@ package com.nonexistentware.quickmath.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +39,7 @@ import com.nonexistentware.quickmath.R;
 public class MainActivity extends AppCompatActivity {
 
     SignInButton mGoogleLogin;
-    TextView noLoginPlay;
+    TextView noLoginPlay, tooltipBtn;
 
     private FirebaseAuth auth;
     private DatabaseReference reference;
@@ -47,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mGoogleLogin = findViewById(R.id.googleSignBtn);
+        tooltipBtn = findViewById(R.id.main_tooltip);
         noLoginPlay = findViewById(R.id.main_activity_play_no_login);
 
         reference = FirebaseDatabase.getInstance().getReference("Players");
@@ -73,6 +79,35 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), SelectGameActivity.class));
                 finish();
+            }
+        });
+
+        tooltipBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog dialog = new Dialog(MainActivity.this);
+                dialog.setContentView(R.layout.alert_dialog_window_main_activity);
+                dialog.setCancelable(false);
+
+                TextView pstvBtn = dialog.findViewById(R.id.alert_dialog_positive_btn);
+                TextView ngtvBtn = dialog.findViewById(R.id.alert_dialog_negative_btn);
+
+                pstvBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(getApplicationContext(), SelectGameActivity.class));
+                        finish();
+                    }
+                });
+
+                ngtvBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
             }
         });
 

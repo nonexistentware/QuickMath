@@ -30,6 +30,9 @@ public class ClassicGameMode extends AppCompatActivity {
     Button button3;
     CountDownTimer countDownTimer;
 
+    //data to transfer
+    public static final String EXTRA_NUMBER = "com.nonexistentware.quickmath.Activity.EXTRA_NUMBER";
+
     Random random = new Random();
     int a;
     int b;
@@ -140,7 +143,15 @@ public class ClassicGameMode extends AppCompatActivity {
     private void allQuestionDone() {
         if (totalQuestionToLow == 0) {
             countDownTimer.cancel();
-            startActivity(new Intent(ClassicGameMode.this, EndGameActivity.class));
+            button0.setEnabled(false);
+            button1.setEnabled(false);
+            button2.setEnabled(false);
+            button3.setEnabled(false);
+            Intent transferIntent = new Intent(getBaseContext(), EndGameActivity.class);
+            int number = Integer.parseInt(wrongTxt.getText().toString());
+            transferIntent.putExtra(EXTRA_NUMBER, number);
+            startActivity(transferIntent);
+//            startActivity(new Intent(ClassicGameMode.this, EndGameActivity.class));
             finish();
         }
     }
@@ -186,8 +197,12 @@ public class ClassicGameMode extends AppCompatActivity {
                 .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        startActivity(new Intent(ClassicGameMode.this, SelectGameActivity.class));
+//                        startActivity(new Intent(ClassicGameMode.this, SelectGameActivity.class));
                         countDownTimer.cancel();
+                        Intent transferIntent = new Intent(getBaseContext(), EndGameActivity.class);
+                        int number = Integer.parseInt(wrongTxt.getText().toString());
+                        transferIntent.putExtra(EXTRA_NUMBER, number);
+                        startActivity(transferIntent);
                         finish();
                     }
                 });

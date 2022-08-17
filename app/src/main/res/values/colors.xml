@@ -6,11 +6,11 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#fff</color>
 
     //custom colors
-    <color name="generalBackground">#212121</color>
-    <color name="recyclerItem">#242424</color>
+    <color name="generalBackground">#FF000000</color>
+    <color name="recyclerItem">#FF000000</color>
     <color name="recyclerItem2">#191919</color>
     <color name="generalText">#f2f2f2</color>
 </resources>

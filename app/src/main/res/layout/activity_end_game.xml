@@ -38,14 +38,46 @@
                 android:fontFamily="@font/pixelstyle"/>
 
             <TextView
+                android:layout_marginTop="10dp"
                 android:id="@+id/end_win_defeat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wrong/Correct"
+                android:text="Correct/Wrong"
                 android:layout_gravity="center"
                 android:textColor="@color/generalText"
                 android:textSize="21sp"
                 android:fontFamily="@font/pixelstyle"/>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+              <TextView
+                  android:id="@+id/end_game_correct_counter"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:fontFamily="@font/pixelstyle"
+                  android:text="0"
+                  android:gravity="center"
+                  android:textColor="@color/generalText"
+                  android:textSize="21sp"
+                  android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/end_game_wrong_counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pixelstyle"
+                    android:text="0"
+                    android:gravity="center"
+                    android:textColor="@color/generalText"
+                    android:textSize="21sp"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
