@@ -9,18 +9,23 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.nonexistentware.quickmath.Model.PlayerModel;
 import com.nonexistentware.quickmath.R;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Random;
 
 public class ClassicGameMode extends AppCompatActivity {
-    TextView timerTxt, correctTxt, wrongTxt;
+    TextView timerTxt, correctTxt, wrongTxt, levelCounter;
     TextView attemptsTxt; //custom alert dialog
     TextView totalQuestionTxt;
     TextView QuestionTextView;
@@ -31,7 +36,10 @@ public class ClassicGameMode extends AppCompatActivity {
     CountDownTimer countDownTimer;
 
     //data to transfer
-    public static final String EXTRA_NUMBER = "com.nonexistentware.quickmath.Activity.EXTRA_NUMBER";
+    public static final String EXTRA_NUMBER_NGTV = "com.nonexistentware.quickmath.Activity.EXTRA_NUMBER_NGTV";
+    public static final String EXTRA_NUMBER_PSTV = "com.nonexistentware.quickmath.Activity.EXTRA_NUMBER_PSTV";
+    public static final String EXTRA_TIME_LEFT = "com.nonexistentware.quickmath.Activity.EXTRA_TIME_LEFT";
+    public static final String EXTRA_LEVEL_INCREASE_COUNTER = "com.nonexistentware.quickmath.Activity.EXTRA_INCREASE_COUNTER";
 
     Random random = new Random();
     int a;
@@ -42,8 +50,15 @@ public class ClassicGameMode extends AppCompatActivity {
     int wrongPoints = 0;
     int totalQuestions = 0;
     int totalQuestionToLow = 5; //total questions counter
-    int attempts = 3; //attempts per day. Drop after specific hour.
-    int clickAttemptsCounter = 0;
+    int attempts = 3; //attempts per day. Drop after specific hour
+    int levelIncrease = 0; // in case correct points == totalQuestionsToLow level will be increased
+
+
+    private FirebaseAuth auth;
+    private FirebaseUser firebaseUser;
+    private DatabaseReference databaseReference;
+    private FirebaseDatabase firebaseDatabase;
+
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -56,6 +71,7 @@ public class ClassicGameMode extends AppCompatActivity {
         QuestionTextView = findViewById(R.id.QuestionTextView);
         correctTxt = findViewById(R.id.correct_answer);
         wrongTxt = findViewById(R.id.wrong_answer);
+        levelCounter = findViewById(R.id.classic_player_level_score_counter);
 
         button0 = findViewById(R.id.button0);
         button1 = findViewById(R.id.button1);
@@ -65,6 +81,12 @@ public class ClassicGameMode extends AppCompatActivity {
         totalQuestionTxt.setText(Integer.toString(totalQuestionToLow));
         correctTxt.setText(Integer.toString(0));
         wrongTxt.setText(Integer.toString(0));
+        levelCounter.setText(Integer.toString(0));
+
+        auth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseUser = auth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Players");
 
         countDownTimer();
     }
@@ -134,8 +156,15 @@ public class ClassicGameMode extends AppCompatActivity {
                 button1.setEnabled(false);
                 button2.setEnabled(false);
                 button3.setEnabled(false);
-                    startActivity(new Intent(ClassicGameMode.this, EndGameActivity.class));
-                    finish();
+                Intent transferIntent = new Intent(getBaseContext(), EndGameActivity.class);
+                int number = Integer.parseInt(wrongTxt.getText().toString());
+                transferIntent.putExtra(EXTRA_NUMBER_NGTV, number);
+                int numberPSTV = Integer.parseInt(correctTxt.getText().toString());
+                transferIntent.putExtra(EXTRA_NUMBER_PSTV, numberPSTV);
+                uploadRemainingTime();
+                startActivity(transferIntent);
+                cancel();
+                finish();
                 }
         }.start();
     }
@@ -147,11 +176,14 @@ public class ClassicGameMode extends AppCompatActivity {
             button1.setEnabled(false);
             button2.setEnabled(false);
             button3.setEnabled(false);
+            levelIncreaseCounter();
             Intent transferIntent = new Intent(getBaseContext(), EndGameActivity.class);
-            int number = Integer.parseInt(wrongTxt.getText().toString());
-            transferIntent.putExtra(EXTRA_NUMBER, number);
+            int numberNGTV = Integer.parseInt(wrongTxt.getText().toString());
+            transferIntent.putExtra(EXTRA_NUMBER_NGTV, numberNGTV);
+            int numberPSTV = Integer.parseInt(correctTxt.getText().toString());
+            transferIntent.putExtra(EXTRA_NUMBER_PSTV, numberPSTV);
+            uploadRemainingTime();                                                                                                //upload time to data base
             startActivity(transferIntent);
-//            startActivity(new Intent(ClassicGameMode.this, EndGameActivity.class));
             finish();
         }
     }
@@ -201,17 +233,35 @@ public class ClassicGameMode extends AppCompatActivity {
                         countDownTimer.cancel();
                         Intent transferIntent = new Intent(getBaseContext(), EndGameActivity.class);
                         int number = Integer.parseInt(wrongTxt.getText().toString());
-                        transferIntent.putExtra(EXTRA_NUMBER, number);
+                        transferIntent.putExtra(EXTRA_NUMBER_NGTV, number);
                         startActivity(transferIntent);
                         finish();
                     }
                 });
     }
 
+    private void uploadRemainingTime() { //upload temp data
+            PlayerModel playerModel = new PlayerModel();
+        databaseReference.child(auth.getCurrentUser().getUid()).child("remainCounterTimeTemp").setValue(timerTxt.getText().toString().trim());
+    }
+
+    private void levelIncreaseCounter() {
+        int a = 0;
+        int b = 1;
+        if (correctPoints == 5) {
+            levelIncrease++;
+            levelCounter.setText(Integer.toString(levelIncrease));
+            databaseReference.child(auth.getCurrentUser().getUid()).child("playerLevel").setValue(levelCounter.getText().toString().trim());
+            finish();
+        }
+    }
+
     private void endOfTheGame() {
         startActivity(new Intent(ClassicGameMode.this, EndGameActivity.class));
         finish();
     }
+
+
 
     @Override
     public void onBackPressed() {

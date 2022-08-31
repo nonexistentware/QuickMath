@@ -32,10 +32,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/pixelstyle"
                 android:text="User Name"
                 android:textColor="@color/generalText"
-                android:textSize="21sp"
-                android:fontFamily="@font/pixelstyle"/>
+                android:textSize="21sp" />
         </LinearLayout>
 
         <LinearLayout

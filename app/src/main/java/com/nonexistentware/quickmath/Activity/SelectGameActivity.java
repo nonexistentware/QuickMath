@@ -115,16 +115,21 @@ public class SelectGameActivity extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    PlayerModel playerModel = snapshot.getValue(PlayerModel.class);
-                    playerGoogleName.setText(firebaseUser.getDisplayName());
+                PlayerModel playerModel = snapshot.getValue(PlayerModel.class);
+                playerGoogleName.setText(firebaseUser.getDisplayName());
+                if (snapshot.child("Players").exists()) { //simple check if fields are missed.
                     scoreCounterTxt.setText(playerModel.getPlayerScore());
                     duelWinCounterTxt.setText(playerModel.getDuelWin());
                     levelCounterTxt.setText(playerModel.getPlayerLevel());
                     Picasso.get()
                             .load(firebaseUser.getPhotoUrl())
                             .into(playerIconImg);
+                } else {
+                    scoreCounterTxt.setText("0");
+                    duelWinCounterTxt.setText("0");
+                    levelCounterTxt.setText("0");
                 }
-
+            }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
