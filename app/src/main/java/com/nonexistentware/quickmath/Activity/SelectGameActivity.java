@@ -58,6 +58,7 @@ public class SelectGameActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         firebaseUser = auth.getCurrentUser();
+        database = FirebaseDatabase.getInstance();
         reference = FirebaseDatabase.getInstance().getReference().child("Players").child(auth.getCurrentUser().getUid());
 
         classicModeBtn.setOnClickListener(new View.OnClickListener() {
@@ -112,23 +113,35 @@ public class SelectGameActivity extends AppCompatActivity {
     private void loadPlayerData() {
         if (auth.getCurrentUser() != null)
             reference = FirebaseDatabase.getInstance().getReference("Players").child(firebaseUser.getUid());
-        reference.addValueEventListener(new ValueEventListener() {
+            reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                PlayerModel playerModel = snapshot.getValue(PlayerModel.class);
-                playerGoogleName.setText(firebaseUser.getDisplayName());
-                if (snapshot.child("Players").exists()) { //simple check if fields are missed.
-                    scoreCounterTxt.setText(playerModel.getPlayerScore());
-                    duelWinCounterTxt.setText(playerModel.getDuelWin());
-                    levelCounterTxt.setText(playerModel.getPlayerLevel());
-                    Picasso.get()
-                            .load(firebaseUser.getPhotoUrl())
-                            .into(playerIconImg);
+                    PlayerModel playerModel = snapshot.getValue(PlayerModel.class);
+                    playerGoogleName.setText(firebaseUser.getDisplayName());
+                Picasso.get()
+                        .load(firebaseUser.getPhotoUrl())
+                        .into(playerIconImg);
+                 //exception if fields exist
+                if (snapshot.child("playerScore").exists()) {
+                    String scoreStr = snapshot.child("playerScore").getValue().toString().trim();
+                    scoreCounterTxt.setText(scoreStr);
                 } else {
-                    scoreCounterTxt.setText("0");
-                    duelWinCounterTxt.setText("0");
-                    levelCounterTxt.setText("0");
+                    String scoreStrCheck = "0";
+                    scoreCounterTxt.setText(scoreStrCheck);
+                } if (snapshot.child("playerLevel").exists()) {
+                    String levelStr = snapshot.child("playerLevel").getValue().toString().trim();
+                    levelCounterTxt.setText(levelStr);
+                } else {
+                    String scoreStrCheck = "0";
+                    levelCounterTxt.setText(scoreStrCheck);
+                } if (snapshot.child("playerDuelWin").exists()) {
+                    String duelCounterCheck = "0";
+                    duelWinCounterTxt.setText(duelCounterCheck);
+                } else {
+                    String duelWinCheck = "0";
+                    duelWinCounterTxt.setText(duelWinCheck);
                 }
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

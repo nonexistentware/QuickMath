@@ -44,8 +44,6 @@ public class DifficultySelectActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     private void easyLevelAlert() {

@@ -1,5 +1,7 @@
 package com.nonexistentware.quickmath.Activity;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,19 +11,26 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.ServerValue;
+import com.google.firebase.database.Transaction;
+import com.google.firebase.database.ValueEventListener;
 import com.nonexistentware.quickmath.Model.PlayerModel;
 import com.nonexistentware.quickmath.R;
 
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.Random;
 
 public class ClassicGameMode extends AppCompatActivity {
@@ -51,12 +60,12 @@ public class ClassicGameMode extends AppCompatActivity {
     int totalQuestions = 0;
     int totalQuestionToLow = 5; //total questions counter
     int attempts = 3; //attempts per day. Drop after specific hour
-    int levelIncrease = 0; // in case correct points == totalQuestionsToLow level will be increased
+    long levelIncrease = 0; // in case correct points == totalQuestionsToLow level will be increased
 
 
     private FirebaseAuth auth;
     private FirebaseUser firebaseUser;
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference, levelCounterRef;
     private FirebaseDatabase firebaseDatabase;
 
 
@@ -87,6 +96,7 @@ public class ClassicGameMode extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseUser = auth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Players");
+        levelCounterRef = FirebaseDatabase.getInstance().getReference("Players").child("playerLevel");
 
         countDownTimer();
     }
@@ -146,7 +156,7 @@ public class ClassicGameMode extends AppCompatActivity {
         countDownTimer = new CountDownTimer(11000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                timerTxt.setText(String.valueOf(millisUntilFinished/1000)+"s");
+                timerTxt.setText(String.valueOf(millisUntilFinished / 1000) + "s");
             }
 
             @Override
@@ -165,7 +175,7 @@ public class ClassicGameMode extends AppCompatActivity {
                 startActivity(transferIntent);
                 cancel();
                 finish();
-                }
+            }
         }.start();
     }
 
@@ -176,7 +186,7 @@ public class ClassicGameMode extends AppCompatActivity {
             button1.setEnabled(false);
             button2.setEnabled(false);
             button3.setEnabled(false);
-            levelIncreaseCounter();
+            playerLevelCounterOnline();
             Intent transferIntent = new Intent(getBaseContext(), EndGameActivity.class);
             int numberNGTV = Integer.parseInt(wrongTxt.getText().toString());
             transferIntent.putExtra(EXTRA_NUMBER_NGTV, numberNGTV);
@@ -188,84 +198,16 @@ public class ClassicGameMode extends AppCompatActivity {
         }
     }
 
-    private void askToReplayDialog() {
-       final AlertDialog.Builder builder = new AlertDialog.Builder(ClassicGameMode.this);
-        builder.setTitle("Your score is too low. Do you wont to reply?");
-        builder.setMessage(attempts-- + " attempts left" ) //set attempts counter
-                .setPositiveButton("Replay", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // reload activity
-                        attempts--;
-                        attemptsTxt.setText(Integer.toString(attempts));
-                        finish();
-                        startActivity(getIntent());
-                    }
-                })
-                .setNegativeButton("Finish the game", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        startActivity(new Intent(ClassicGameMode.this, EndGameActivity.class));
-                        finish();
-                    }
-                });
-            AlertDialog alertDialog = builder.create();
-            alertDialog.setCancelable(false);
-            alertDialog.show();
-            alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
-            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
-    }
-
-    private void askToEndDialog() { //in case player wish to press back or end of the game. Alert window.
-        final AlertDialog.Builder builder = new AlertDialog.Builder(ClassicGameMode.this);
-        builder.setTitle("Do you want to cancel the game?");
-        builder.setMessage("If you want to quite the game, you will lose all your score.")
-                .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                })
-                .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        startActivity(new Intent(ClassicGameMode.this, SelectGameActivity.class));
-                        countDownTimer.cancel();
-                        Intent transferIntent = new Intent(getBaseContext(), EndGameActivity.class);
-                        int number = Integer.parseInt(wrongTxt.getText().toString());
-                        transferIntent.putExtra(EXTRA_NUMBER_NGTV, number);
-                        startActivity(transferIntent);
-                        finish();
-                    }
-                });
-    }
 
     private void uploadRemainingTime() { //upload temp data
-            PlayerModel playerModel = new PlayerModel();
         databaseReference.child(auth.getCurrentUser().getUid()).child("remainCounterTimeTemp").setValue(timerTxt.getText().toString().trim());
+//        finish();
     }
 
-    private void levelIncreaseCounter() {
-        int a = 0;
-        int b = 1;
-        if (correctPoints == 5) {
-            levelIncrease++;
-            levelCounter.setText(Integer.toString(levelIncrease));
-            databaseReference.child(auth.getCurrentUser().getUid()).child("playerLevel").setValue(levelCounter.getText().toString().trim());
-            finish();
+    private void playerLevelCounterOnline() { // increment of player level
+        if (wrongPoints == 0) {
+//            databaseReference.child("playerLevel").setValue(ServerValue.increment(1).toString().trim());
+            databaseReference.child(auth.getCurrentUser().getUid()).child("playerLevel").setValue(ServerValue.increment(1));
         }
-    }
-
-    private void endOfTheGame() {
-        startActivity(new Intent(ClassicGameMode.this, EndGameActivity.class));
-        finish();
-    }
-
-
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        askToEndDialog();
     }
 }

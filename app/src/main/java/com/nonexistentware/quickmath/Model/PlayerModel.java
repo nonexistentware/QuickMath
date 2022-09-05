@@ -2,8 +2,8 @@ package com.nonexistentware.quickmath.Model;
 
 public class PlayerModel {
     String duelWin;
-    String playerLevel;
-    String playerScore;
+    Long playerLevel;
+    Long playerScore;
     String Defeated;
     String playerEmojiAchieve;
     String timeAttackTimePlay;
@@ -11,11 +11,12 @@ public class PlayerModel {
     String classicTimePlay;
     String hardLevelSelect;
     String remainCounterTime;
+    String remainCounterTimeTemp;
 
     public PlayerModel() {
     }
 
-    public PlayerModel(String duelWin, String playerLevel, String playerScore, String defeated, String playerEmojiAchieve, String timeAttackTimePlay, String totalTimePlay, String classicTimePlay, String hardLevelSelect, String remainCounterTime) {
+    public PlayerModel(String duelWin, long playerLevel, long playerScore, String defeated, String playerEmojiAchieve, String timeAttackTimePlay, String totalTimePlay, String classicTimePlay, String hardLevelSelect, String remainCounterTime, String remainCounterTimeTemp) {
         this.duelWin = duelWin;
         this.playerLevel = playerLevel;
         this.playerScore = playerScore;
@@ -26,6 +27,7 @@ public class PlayerModel {
         this.classicTimePlay = classicTimePlay;
         this.hardLevelSelect = hardLevelSelect;
         this.remainCounterTime = remainCounterTime;
+        this.remainCounterTimeTemp = remainCounterTimeTemp;
     }
 
     public String getDuelWin() {
@@ -36,19 +38,19 @@ public class PlayerModel {
         this.duelWin = duelWin;
     }
 
-    public String getPlayerLevel() {
+    public long getPlayerLevel() {
         return playerLevel;
     }
 
-    public void setPlayerLevel(String playerLevel) {
+    public void setPlayerLevel(long playerLevel) {
         this.playerLevel = playerLevel;
     }
 
-    public String getPlayerScore() {
+    public long getPlayerScore() {
         return playerScore;
     }
 
-    public void setPlayerScore(String playerScore) {
+    public void setPlayerScore(long playerScore) {
         this.playerScore = playerScore;
     }
 
@@ -106,5 +108,13 @@ public class PlayerModel {
 
     public void setRemainCounterTime(String remainCounterTime) {
         this.remainCounterTime = remainCounterTime;
+    }
+
+    public String getRemainCounterTimeTemp() {
+        return remainCounterTimeTemp;
+    }
+
+    public void setRemainCounterTimeTemp(String remainCounterTimeTemp) {
+        this.remainCounterTimeTemp = remainCounterTimeTemp;
     }
 }

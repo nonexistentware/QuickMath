@@ -119,13 +119,12 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
+                        if (task.isSuccessful())  {
                             FirebaseUser fUser = auth.getCurrentUser();
                             reference.child(auth.getCurrentUser().getUid()).child("google").setValue(idToken);
                             reference.child(auth.getCurrentUser().getUid()).child("playerEmail").setValue(fUser.getEmail());
                             reference.child(auth.getCurrentUser().getUid()).child("playerName").setValue(fUser.getDisplayName());
-                            reference.child(auth.getCurrentUser().getUid()).child("levelToSum").setValue("1");
-//                            reference.child(auth.getCurrentUser().getUid()).child("playerLevel").setValue(Common.STR_Default_Leve);
+//                            reference.child(auth.getCurrentUser().getUid()).child("playerLevel").setValue("0");
 //                            reference.child(auth.getCurrentUser().getUid()).child("playerScore").setValue("0");
 //                            reference.child(auth.getCurrentUser().getUid()).child("duelWin").setValue("0");
 //                            reference.child(auth.getCurrentUser().getUid()).child("playerDefeated").setValue("0");
@@ -135,8 +134,6 @@ public class MainActivity extends AppCompatActivity {
 //                            reference.child(auth.getCurrentUser().getUid()).child("timeAttackTimePlay").setValue("0");
 //                            reference.child(auth.getCurrentUser().getUid()).child("hardLevelSelect").setValue("0");
 //                            reference.child(auth.getCurrentUser().getUid()).child("remainCounterTime").setValue("0");
-
-
                             Toast.makeText(MainActivity.this, "Successfully sigin", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(MainActivity.this, SelectGameActivity.class));
                             finish();
