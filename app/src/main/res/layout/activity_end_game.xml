@@ -38,6 +38,17 @@
                 android:fontFamily="@font/pixelstyle"/>
 
             <TextView
+                android:id="@+id/end_game_difficult_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="Difficult"
+                android:textColor="@color/generalText"
+                android:textSize="21sp"
+                android:fontFamily="@font/pixelstyle"/>
+
+            <TextView
                 android:layout_marginTop="10dp"
                 android:id="@+id/end_win_defeat"
                 android:layout_width="wrap_content"
@@ -199,6 +210,7 @@
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
                 android:text="Play again?"
+                android:textSize="20sp"
                 android:textColor="@color/generalText"
                 android:fontFamily="@font/pixelstyle"/>
         </LinearLayout>
@@ -216,6 +228,7 @@
                 android:text="Share your result"
                 android:textColor="@color/generalText"
                 android:gravity="center"
+                android:textSize="20sp"
                 android:fontFamily="@font/pixelstyle"/>
         </LinearLayout>
         <LinearLayout

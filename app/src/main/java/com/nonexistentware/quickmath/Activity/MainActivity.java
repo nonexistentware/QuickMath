@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final Dialog dialog = new Dialog(MainActivity.this);
                 dialog.setContentView(R.layout.alert_dialog_window_main_activity);
-                dialog.setCancelable(false);
+                dialog.setCancelable(true);
 
                 TextView pstvBtn = dialog.findViewById(R.id.alert_dialog_positive_btn);
                 TextView ngtvBtn = dialog.findViewById(R.id.alert_dialog_negative_btn);

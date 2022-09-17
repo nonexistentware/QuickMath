@@ -64,7 +64,7 @@ public class SelectGameActivity extends AppCompatActivity {
         classicModeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ClassicGameMode.class));
+                startActivity(new Intent(getApplicationContext(), DifficultySelectActivity.class));
                 finish();
             }
         });

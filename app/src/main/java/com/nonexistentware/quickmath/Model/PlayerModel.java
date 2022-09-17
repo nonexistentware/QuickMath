@@ -1,7 +1,7 @@
 package com.nonexistentware.quickmath.Model;
 
 public class PlayerModel {
-    String duelWin;
+    Long duelWin;
     Long playerLevel;
     Long playerScore;
     String Defeated;
@@ -9,14 +9,14 @@ public class PlayerModel {
     String timeAttackTimePlay;
     String totalTimePlay;
     String classicTimePlay;
-    String hardLevelSelect;
+    String difficultLevel;
     String remainCounterTime;
     String remainCounterTimeTemp;
 
     public PlayerModel() {
     }
 
-    public PlayerModel(String duelWin, long playerLevel, long playerScore, String defeated, String playerEmojiAchieve, String timeAttackTimePlay, String totalTimePlay, String classicTimePlay, String hardLevelSelect, String remainCounterTime, String remainCounterTimeTemp) {
+    public PlayerModel(Long duelWin, long playerLevel, long playerScore, String defeated, String playerEmojiAchieve, String timeAttackTimePlay, String totalTimePlay, String classicTimePlay, String difficultLevel, String remainCounterTime, String remainCounterTimeTemp) {
         this.duelWin = duelWin;
         this.playerLevel = playerLevel;
         this.playerScore = playerScore;
@@ -25,16 +25,16 @@ public class PlayerModel {
         this.timeAttackTimePlay = timeAttackTimePlay;
         this.totalTimePlay = totalTimePlay;
         this.classicTimePlay = classicTimePlay;
-        this.hardLevelSelect = hardLevelSelect;
+        this.difficultLevel = difficultLevel;
         this.remainCounterTime = remainCounterTime;
         this.remainCounterTimeTemp = remainCounterTimeTemp;
     }
 
-    public String getDuelWin() {
+    public long getDuelWin() {
         return duelWin;
     }
 
-    public void setDuelWin(String duelWin) {
+    public void setDuelWin(long duelWin) {
         this.duelWin = duelWin;
     }
 
@@ -94,12 +94,12 @@ public class PlayerModel {
         this.classicTimePlay = classicTimePlay;
     }
 
-    public String getHardLevelSelect() {
-        return hardLevelSelect;
+    public String getDifficultLevel() {
+        return difficultLevel;
     }
 
-    public void setHardLevelSelect(String hardLevelSelect) {
-        this.hardLevelSelect = hardLevelSelect;
+    public void setDifficultLevel(String difficultLevel) {
+        this.difficultLevel = difficultLevel;
     }
 
     public String getRemainCounterTime() {

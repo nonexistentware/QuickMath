@@ -27,7 +27,8 @@ public class DifficultySelectActivity extends AppCompatActivity {
         lEasy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                easyLevelAlert();
+                startActivity(new Intent(getApplicationContext(), ClassicGameMode.class));
+                finish();
             }
         });
 

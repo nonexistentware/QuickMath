@@ -3,6 +3,7 @@ package com.nonexistentware.quickmath.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,8 @@ import com.nonexistentware.quickmath.Model.PlayerModel;
 import com.nonexistentware.quickmath.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class EndGameActivity extends AppCompatActivity {
@@ -29,7 +32,7 @@ public class EndGameActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private FirebaseUser firebaseUser;
 
-    TextView backBtn, correctCounter, wrongCounter, timeRemain, levelCounter, playerName, scoreCounter;
+    TextView backBtn, correctCounter, wrongCounter, timeRemain, levelCounter, playerName, scoreCounter, difficultyLevel, shareResultBtn;
     ImageView playerImg;
 
     @Override
@@ -43,6 +46,8 @@ public class EndGameActivity extends AppCompatActivity {
         levelCounter = findViewById(R.id.dashboard_level_counter);
         playerName = findViewById(R.id.end_player_google_name);
         scoreCounter = findViewById(R.id.end_game_score_counter);
+        difficultyLevel = findViewById(R.id.end_game_difficult_level);
+        shareResultBtn = findViewById(R.id.end_share_result);
 
         playerImg = findViewById(R.id.end_user_profile_img);
 
@@ -58,11 +63,15 @@ public class EndGameActivity extends AppCompatActivity {
         int numberNGTV = intent.getIntExtra(ClassicGameMode.EXTRA_NUMBER_NGTV, 0);
         int numberPSTV = intent.getIntExtra(ClassicGameMode.EXTRA_NUMBER_PSTV, 0);
         int counterTimeRemain = intent.getIntExtra(ClassicGameMode.EXTRA_TIME_LEFT, 0);
+        String difLevel = getIntent().getExtras().getString(ClassicGameMode.EXTRA_DIFFICULT_LEVEL);
+        String timer = intent.getStringExtra(ClassicGameMode.EXTRA_TIME_REMAIN);
 
 
         wrongCounter.setText("" + numberNGTV);
         correctCounter.setText("" + numberPSTV);
         timeRemain.setText("" + counterTimeRemain + "s");
+        difficultyLevel.setText(difLevel);
+        timeRemain.setText(timer);
 
         loadPlayerData();
 
@@ -73,6 +82,36 @@ public class EndGameActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        shareResultBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog uploadDialog = new Dialog(EndGameActivity.this);
+                uploadDialog.setContentView(R.layout.alert_dialog_end_game_upload_data);
+                uploadDialog.setCancelable(false);
+
+                TextView pstvBtn = uploadDialog.findViewById(R.id.alert_dialog_end_game_positive_btn);
+                TextView ngtvBtn = uploadDialog.findViewById(R.id.alert_dialog_end_game_negative_btn);
+
+                pstvBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                    shareDataToCloud();
+                    uploadDialog.dismiss();
+                    }
+                });
+
+                ngtvBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        uploadDialog.dismiss();
+                    }
+                });
+
+                uploadDialog.show();
+            }
+        });
+
     }
 
     private void loadPlayerData() {
@@ -81,7 +120,7 @@ public class EndGameActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 PlayerModel playerModel = snapshot.getValue(PlayerModel.class);
-                timeRemain.setText(playerModel.getRemainCounterTimeTemp());
+//                timeRemain.setText(playerModel.getRemainCounterTimeTemp());
                 playerName.setText(firebaseUser.getDisplayName());
                 Picasso.get()
                         .load(firebaseUser.getPhotoUrl())
@@ -107,6 +146,17 @@ public class EndGameActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void shareDataToCloud() {
+        PlayerModel playerModel = new PlayerModel();
+        final Map uploadData = new HashMap();
+
+//        uploadData.put("playerLevel", playerModel.getPlayerLevel()).toString().trim();
+//        uploadData.put("remainCounterTime", playerModel.getRemainCounterTime()).toString().trim();
+//        uploadData.put("difficultLevel", playerModel.getDifficultLevel()).toString().trim();
+        finish();
+
     }
 
 }
