@@ -17,13 +17,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.nonexistentware.quickmath.Difficult.ClassicGameMode;
 import com.nonexistentware.quickmath.Model.PlayerModel;
 import com.nonexistentware.quickmath.R;
 import com.squareup.picasso.Picasso;
-
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 public class EndGameActivity extends AppCompatActivity {
 
@@ -32,7 +29,7 @@ public class EndGameActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private FirebaseUser firebaseUser;
 
-    TextView backBtn, correctCounter, wrongCounter, timeRemain, levelCounter, playerName, scoreCounter, difficultyLevel, shareResultBtn;
+    TextView backBtn, correctCounter, wrongCounter, timeRemain, levelCounter, playerName, scoreCounter, difficultyLevel, shareResultBtn, playAgain;
     ImageView playerImg;
 
     @Override
@@ -48,7 +45,7 @@ public class EndGameActivity extends AppCompatActivity {
         scoreCounter = findViewById(R.id.end_game_score_counter);
         difficultyLevel = findViewById(R.id.end_game_difficult_level);
         shareResultBtn = findViewById(R.id.end_share_result);
-
+        playAgain = findViewById(R.id.end_game_play_again);
         playerImg = findViewById(R.id.end_user_profile_img);
 
 
@@ -79,6 +76,14 @@ public class EndGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), SelectGameActivity.class));
+                finish();
+            }
+        });
+
+        playAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), DifficultySelectActivity.class));
                 finish();
             }
         });
@@ -149,13 +154,12 @@ public class EndGameActivity extends AppCompatActivity {
     }
 
     private void shareDataToCloud() {
-        PlayerModel playerModel = new PlayerModel();
-        final Map uploadData = new HashMap();
-
-//        uploadData.put("playerLevel", playerModel.getPlayerLevel()).toString().trim();
-//        uploadData.put("remainCounterTime", playerModel.getRemainCounterTime()).toString().trim();
-//        uploadData.put("difficultLevel", playerModel.getDifficultLevel()).toString().trim();
-        finish();
+        reference.child("correctAnswersCounter").setValue(correctCounter.getText().toString().trim());
+        reference.child("wrongAnswersCounter").setValue(wrongCounter.getText().toString().trim());
+        reference.child("difficultLevel").setValue(difficultyLevel.getText().toString().trim());
+        reference.child("remainCounterTime").setValue(timeRemain.getText().toString().trim());
+        shareResultBtn.setText("Successfully upload!");
+        shareResultBtn.setEnabled(false);
 
     }
 

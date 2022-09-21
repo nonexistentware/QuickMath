@@ -204,7 +204,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/end_play_again"
+                android:id="@+id/end_game_play_again"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -214,6 +214,7 @@
                 android:textColor="@color/generalText"
                 android:fontFamily="@font/pixelstyle"/>
         </LinearLayout>
+
         <LinearLayout
             android:layout_marginTop="25dp"
             android:orientation="horizontal"

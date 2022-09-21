@@ -20,6 +20,16 @@
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/pixelstyle"
             android:gravity="center"
+            android:text="Classic game"
+            android:textColor="@color/generalText"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/pixelstyle"
+            android:gravity="center"
             android:text="Select your difficult level"
             android:textColor="@color/generalText"
             android:textSize="25sp" />
@@ -43,6 +53,7 @@
                 android:layout_weight="1"/>
 
             <ImageView
+                android:id="@+id/difficult_select_easy_mark_img"
                 android:layout_width="wrap_content"
                 android:layout_height="50px"
                 android:src="@drawable/question_mark"
@@ -70,6 +81,7 @@
             android:layout_weight="1" />
 
         <ImageView
+            android:id="@+id/difficult_select_medium_mark_img"
             android:layout_width="wrap_content"
             android:layout_height="50px"
             android:src="@drawable/question_mark"
@@ -96,6 +108,7 @@
             android:layout_weight="1"/>
 
         <ImageView
+            android:id="@+id/difficult_select_hard_mark_img"
             android:layout_width="wrap_content"
             android:layout_height="50px"
             android:src="@drawable/question_mark"
@@ -103,8 +116,59 @@
 
     </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
 
+            <TextView
+                android:id="@+id/dif_select_activity_about_changeable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="About game mode"
+                android:textSize="20dp"
+                android:textColor="@color/generalText"
+                android:fontFamily="@font/pixelstyle"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/dif_select_hide_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="hide"
+                android:gravity="center"
+                android:textColor="@color/generalText"
+                android:fontFamily="@font/pixelstyle"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/dif_select_back_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Back to dashboard"
+                android:gravity="center"
+                android:textColor="@color/generalText"
+                android:fontFamily="@font/pixelstyle"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
+
+
 
 </RelativeLayout>

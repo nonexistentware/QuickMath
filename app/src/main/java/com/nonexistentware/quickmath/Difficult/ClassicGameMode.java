@@ -1,4 +1,4 @@
-package com.nonexistentware.quickmath.Activity;
+package com.nonexistentware.quickmath.Difficult;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +27,7 @@ import com.google.firebase.database.MutableData;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
+import com.nonexistentware.quickmath.Activity.EndGameActivity;
 import com.nonexistentware.quickmath.Model.PlayerModel;
 import com.nonexistentware.quickmath.R;
 
@@ -46,12 +47,12 @@ public class ClassicGameMode extends AppCompatActivity {
     CountDownTimer countDownTimer;
 
     //data to transfer
-    public static final String EXTRA_NUMBER_NGTV = "com.nonexistentware.quickmath.Activity.EXTRA_NUMBER_NGTV";
-    public static final String EXTRA_NUMBER_PSTV = "com.nonexistentware.quickmath.Activity.EXTRA_NUMBER_PSTV";
-    public static final String EXTRA_TIME_LEFT = "com.nonexistentware.quickmath.Activity.EXTRA_TIME_LEFT";
-    public static final String EXTRA_DIFFICULT_LEVEL = "com.nonexistentware.quickmath.Activity.EXTRA_DIFFICULT_LEVEL";
-    public static final String EXTRA_TIME_REMAIN = "com.nonexistentware.quickmath.Activity.EXTRA_TIME_REMAIN";
-    public static final String EXTRA_LEVEL_INCREASE_COUNTER = "com.nonexistentware.quickmath.Activity.EXTRA_INCREASE_COUNTER";
+    public static final String EXTRA_NUMBER_NGTV = "com.nonexistentware.quickmath.Difficult.EXTRA_NUMBER_NGTV";
+    public static final String EXTRA_NUMBER_PSTV = "com.nonexistentware.quickmath.Difficult.EXTRA_NUMBER_PSTV";
+    public static final String EXTRA_TIME_LEFT = "com.nonexistentware.quickmath.Difficult.EXTRA_TIME_LEFT";
+    public static final String EXTRA_DIFFICULT_LEVEL = "com.nonexistentware.quickmath.Difficult.EXTRA_DIFFICULT_LEVEL";
+    public static final String EXTRA_TIME_REMAIN = "com.nonexistentware.quickmath.Difficult.EXTRA_TIME_REMAIN";
+    public static final String EXTRA_LEVEL_INCREASE_COUNTER = "com.nonexistentware.quickmath.Difficult.EXTRA_INCREASE_COUNTER";
 
     Random random = new Random();
     int a;

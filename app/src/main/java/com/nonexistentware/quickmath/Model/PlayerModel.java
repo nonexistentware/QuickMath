@@ -12,11 +12,13 @@ public class PlayerModel {
     String difficultLevel;
     String remainCounterTime;
     String remainCounterTimeTemp;
+    String wrongAnswersCounter;
+    String correctAnswersCounter;
 
     public PlayerModel() {
     }
 
-    public PlayerModel(Long duelWin, long playerLevel, long playerScore, String defeated, String playerEmojiAchieve, String timeAttackTimePlay, String totalTimePlay, String classicTimePlay, String difficultLevel, String remainCounterTime, String remainCounterTimeTemp) {
+    public PlayerModel(long duelWin, long playerLevel, long playerScore, String defeated, String playerEmojiAchieve, String timeAttackTimePlay, String totalTimePlay, String classicTimePlay, String difficultLevel, String remainCounterTime, String remainCounterTimeTemp, String correctAnswersCounter, String wrongAnswersCounter) {
         this.duelWin = duelWin;
         this.playerLevel = playerLevel;
         this.playerScore = playerScore;
@@ -28,6 +30,8 @@ public class PlayerModel {
         this.difficultLevel = difficultLevel;
         this.remainCounterTime = remainCounterTime;
         this.remainCounterTimeTemp = remainCounterTimeTemp;
+        this.correctAnswersCounter = correctAnswersCounter;
+        this.wrongAnswersCounter = wrongAnswersCounter;
     }
 
     public long getDuelWin() {
@@ -117,4 +121,21 @@ public class PlayerModel {
     public void setRemainCounterTimeTemp(String remainCounterTimeTemp) {
         this.remainCounterTimeTemp = remainCounterTimeTemp;
     }
+
+    public String getWrongAnswersCounter() {
+        return wrongAnswersCounter;
+    }
+
+    public void setWrongAnswersCounter(String wrongAnswersCounter) {
+        this.wrongAnswersCounter = wrongAnswersCounter;
+    }
+
+    public String getCorrectAnswersCounter() {
+        return correctAnswersCounter;
+    }
+
+    public void setCorrectAnswersCounter(String correctAnswersCounter) {
+        this.correctAnswersCounter = correctAnswersCounter;
+    }
+
 }
