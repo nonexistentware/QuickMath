@@ -11,13 +11,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nonexistentware.quickmath.Difficult.ClassicGameMode;
+import com.nonexistentware.quickmath.Difficult.HardClassicMode;
+import com.nonexistentware.quickmath.Difficult.MediumClassicMode;
 import com.nonexistentware.quickmath.R;
 
 public class DifficultySelectActivity extends AppCompatActivity {
 
     TextView lEasy, lMedium, lHard, aboutChangeable, hideBtn, backBtn;
     ImageView easyMArk, mediumMark, hardMark;
-    int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,7 +143,8 @@ public class DifficultySelectActivity extends AppCompatActivity {
         proceedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Medium", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), MediumClassicMode.class));
+                finish();
             }
         });
 
@@ -167,7 +169,8 @@ public class DifficultySelectActivity extends AppCompatActivity {
         proceedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Hard", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), HardClassicMode.class));
+                finish();
             }
         });
 

@@ -1,38 +1,24 @@
 package com.nonexistentware.quickmath.Difficult;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
 import com.google.firebase.database.ServerValue;
-import com.google.firebase.database.Transaction;
-import com.google.firebase.database.ValueEventListener;
 import com.nonexistentware.quickmath.Activity.EndGameActivity;
-import com.nonexistentware.quickmath.Model.PlayerModel;
 import com.nonexistentware.quickmath.R;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Random;
 
 public class ClassicGameMode extends AppCompatActivity {
@@ -62,7 +48,7 @@ public class ClassicGameMode extends AppCompatActivity {
     int correctPoints = 0;
     int wrongPoints = 0;
     int totalQuestions = 0;
-    int totalQuestionToLow = 5; //total questions counter
+    int totalQuestionToLow = 30; //total questions counter
     int attempts = 3; //attempts per day. Drop after specific hour
     long levelIncrease = 0; // in case correct points == totalQuestionsToLow level will be increased
 
@@ -157,7 +143,7 @@ public class ClassicGameMode extends AppCompatActivity {
     //after count down timer stop, buttons and score should locked
     private void countDownTimer() {
         NextQuestion();
-        countDownTimer = new CountDownTimer(11000, 1000) {
+        countDownTimer = new CountDownTimer(61000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 timerTxt.setText(String.valueOf(millisUntilFinished / 1000) + "s");
@@ -193,7 +179,7 @@ public class ClassicGameMode extends AppCompatActivity {
             button1.setEnabled(false);
             button2.setEnabled(false);
             button3.setEnabled(false);
-            playerLevelCounterOnline();
+//            playerLevelCounterOnline();
 //            uploadTypeOfGameMode();
             Intent transferIntent = new Intent(getBaseContext(), EndGameActivity.class);
             int numberNGTV = Integer.parseInt(wrongTxt.getText().toString());
