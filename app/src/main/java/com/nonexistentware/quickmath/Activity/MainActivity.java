@@ -178,4 +178,30 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        final Dialog dialog = new Dialog(MainActivity.this);
+        dialog.setContentView(R.layout.alert_dialog_exit_application);
+        dialog.setCancelable(true);
+
+        TextView yesBtn = dialog.findViewById(R.id.alert_dialog_exit_application_yes);
+        TextView noBtn = dialog.findViewById(R.id.alert_dialog_exit_application_no);
+
+        yesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.this.finish();
+                System.exit(0);
+            }
+        });
+
+        noBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
 }

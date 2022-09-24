@@ -1,9 +1,9 @@
 package com.nonexistentware.quickmath.Model;
 
 public class PlayerModel {
-    Long duelWin;
-    Long playerLevel;
-    Long playerScore;
+    long duelWin;
+    long playerLevel;
+    long playerScore;
     String Defeated;
     String playerEmojiAchieve;
     String timeAttackTimePlay;
@@ -14,11 +14,13 @@ public class PlayerModel {
     String remainCounterTimeTemp;
     String wrongAnswersCounter;
     String correctAnswersCounter;
+    Long totalPlayedGamesCounter;
+    long attemptsToStartTheGame;
 
     public PlayerModel() {
     }
 
-    public PlayerModel(long duelWin, long playerLevel, long playerScore, String defeated, String playerEmojiAchieve, String timeAttackTimePlay, String totalTimePlay, String classicTimePlay, String difficultLevel, String remainCounterTime, String remainCounterTimeTemp, String correctAnswersCounter, String wrongAnswersCounter) {
+    public PlayerModel(long duelWin, long playerLevel, long playerScore, String defeated, String playerEmojiAchieve, String timeAttackTimePlay, String totalTimePlay, String classicTimePlay, String difficultLevel, String remainCounterTime, String remainCounterTimeTemp, String correctAnswersCounter, String wrongAnswersCounter, long totalPlayedGamesCounter, long attemptsToStartTheGame) {
         this.duelWin = duelWin;
         this.playerLevel = playerLevel;
         this.playerScore = playerScore;
@@ -32,6 +34,8 @@ public class PlayerModel {
         this.remainCounterTimeTemp = remainCounterTimeTemp;
         this.correctAnswersCounter = correctAnswersCounter;
         this.wrongAnswersCounter = wrongAnswersCounter;
+        this.totalPlayedGamesCounter = totalPlayedGamesCounter;
+        this.attemptsToStartTheGame = attemptsToStartTheGame;
     }
 
     public long getDuelWin() {
@@ -138,4 +142,19 @@ public class PlayerModel {
         this.correctAnswersCounter = correctAnswersCounter;
     }
 
+    public Long getTotalPlayedGamesCounter() {
+        return totalPlayedGamesCounter;
+    }
+
+    public void setTotalPlayedGamesCounter(Long totalPlayedGamesCounter) {
+        this.totalPlayedGamesCounter = totalPlayedGamesCounter;
+    }
+
+    public long getAttemptsToStartTheGame() {
+        return attemptsToStartTheGame;
+    }
+
+    public void setAttemptsToStartTheGame(long attemptsToStartTheGame) {
+        this.attemptsToStartTheGame = attemptsToStartTheGame;
+    }
 }

@@ -183,4 +183,9 @@ public class DifficultySelectActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(), SelectGameActivity.class));
+        finish();
+    }
 }

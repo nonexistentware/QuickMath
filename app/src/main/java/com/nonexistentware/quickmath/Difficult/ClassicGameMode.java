@@ -3,6 +3,7 @@ package com.nonexistentware.quickmath.Difficult;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -16,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.nonexistentware.quickmath.Activity.EndGameActivity;
+import com.nonexistentware.quickmath.Activity.SelectGameActivity;
 import com.nonexistentware.quickmath.R;
 
 import java.util.ArrayList;
@@ -121,7 +123,7 @@ public class ClassicGameMode extends AppCompatActivity {
     }
 
     public void optionSelect(View view) {
-        totalQuestions++;
+        totalQuestions++; //correct answers validator
         if (Integer.toString(indexOfCorrectAnswer).equals(view.getTag().toString())) {
             correctPoints++;
             totalQuestionToLow--;
@@ -130,7 +132,7 @@ public class ClassicGameMode extends AppCompatActivity {
             allQuestionDone(); // if player answer all questions redirect to activity end
 
         } else {
-            wrongPoints++;
+            wrongPoints++; //wrong answers validator
             totalQuestionToLow--;
             totalQuestionTxt.setText(Integer.toString(totalQuestionToLow));
             wrongTxt.setText(Integer.toString(wrongPoints));
@@ -163,6 +165,7 @@ public class ClassicGameMode extends AppCompatActivity {
                 transferIntent.putExtra(EXTRA_NUMBER_PSTV, numberPSTV);
                 transferIntent.putExtra(EXTRA_TIME_REMAIN, timerTxt.getText().toString());
                 transferIntent.putExtra(EXTRA_DIFFICULT_LEVEL, difficultyLevelTxt.getText().toString());
+                playedGamesCounter();
 //                uploadRemainingTime();
 //                uploadTypeOfGameMode();
                 startActivity(transferIntent);
@@ -188,16 +191,24 @@ public class ClassicGameMode extends AppCompatActivity {
             transferIntent.putExtra(EXTRA_NUMBER_PSTV, numberPSTV);
             transferIntent.putExtra(EXTRA_TIME_REMAIN, timerTxt.getText().toString());
             transferIntent.putExtra(EXTRA_DIFFICULT_LEVEL, difficultyLevelTxt.getText().toString());
+            playedGamesCounter();
 //            uploadRemainingTime();                                                                                                //upload time to data base
             startActivity(transferIntent);
             finish();
         }
     }
 
+    private void playedGamesCounter() {
+        databaseReference.child(auth.getCurrentUser().getUid()).child("totalPlayedGamesCounter").setValue(ServerValue.increment(1));
+    }
 
     private void uploadRemainingTime() { //upload temp data
         databaseReference.child(auth.getCurrentUser().getUid()).child("remainCounterTimeTemp").setValue(timerTxt.getText().toString().trim());
 //        finish();
+    }
+
+    private void attemptsToStartTheGame() {
+        databaseReference.child(auth.getCurrentUser().getUid()).child("attemptsToStartTheGame").setValue(ServerValue.increment(1));
     }
 
     private void playerLevelCounterOnline() { // increment of player level
@@ -212,4 +223,31 @@ public class ClassicGameMode extends AppCompatActivity {
 //        databaseReference.child(auth.getCurrentUser().getUid()).child("difficultLevel").setValue(difficultyLevelTxt.getText().toString().trim());
     }
 
+    @Override
+    public void onBackPressed() {
+        final Dialog dialog = new Dialog(ClassicGameMode.this);
+        dialog.setContentView(R.layout.alert_dialog_exit);
+        dialog.setCancelable(true);
+
+        TextView yesBtn = dialog.findViewById(R.id.alert_dialog_exit_positive_btn);
+        TextView noBtn = dialog.findViewById(R.id.alert_dialog_exit_negative_btn);
+
+        yesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                attemptsToStartTheGame();
+                countDownTimer.cancel();
+                startActivity(new Intent(getApplicationContext(), SelectGameActivity.class));
+                finish();
+            }
+        });
+
+        noBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
 }

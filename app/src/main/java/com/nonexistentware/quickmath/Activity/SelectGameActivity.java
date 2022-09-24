@@ -3,12 +3,12 @@ package com.nonexistentware.quickmath.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -148,5 +148,41 @@ public class SelectGameActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        final Dialog dialog = new Dialog(SelectGameActivity.this);
+        dialog.setContentView(R.layout.alert_dialog_exit_signout_application);
+        dialog.setCancelable(true);
+
+        TextView exitApp = dialog.findViewById(R.id.alert_dialog_exit_application_positive_btn);
+        TextView signoutBtn = dialog.findViewById(R.id.alert_dialog_exit__signout_application_negative_btn);
+        TextView cancelBtn = dialog.findViewById(R.id.alert_dialog_exit_cancel_btn_application_negative_btn);
+
+        exitApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SelectGameActivity.this.finish();
+                System.exit(0);
+            }
+        });
+
+        signoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
+            }
+        });
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }
