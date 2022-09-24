@@ -2,17 +2,13 @@ package com.nonexistentware.quickmath.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +21,17 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.InstallState;
+import com.google.android.play.core.install.InstallStateUpdatedListener;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.InstallStatus;
+import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,13 +39,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.nonexistentware.quickmath.Common.Common;
 import com.nonexistentware.quickmath.R;
 
 public class MainActivity extends AppCompatActivity {
 
     SignInButton mGoogleLogin;
     TextView noLoginPlay, tooltipBtn;
+
+    private AppUpdateManager appUpdateManager;
+    private static final int RC_APP_UPDATE = 100;
 
     private FirebaseAuth auth;
     private DatabaseReference reference;
@@ -64,6 +72,23 @@ public class MainActivity extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         auth = FirebaseAuth.getInstance();
+
+        appUpdateManager = AppUpdateManagerFactory.create(this);
+        appUpdateManager.getAppUpdateInfo().addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
+            @Override
+            public void onSuccess(AppUpdateInfo result) {
+                if (result.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                    && result.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
+                    try {
+                        appUpdateManager.startUpdateFlowForResult(result, AppUpdateType.FLEXIBLE, MainActivity.this,
+                                RC_APP_UPDATE);
+                    } catch (IntentSender.SendIntentException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        appUpdateManager.registerListener(installStateUpdatedListener);
 
         mGoogleLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,6 +179,27 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    private void showCompletedUpdate() {
+        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "New version of the application is ready",
+                Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction("Download and install", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appUpdateManager.completeUpdate();
+            }
+        });
+        snackbar.show();
+    }
+
+    private InstallStateUpdatedListener installStateUpdatedListener = new InstallStateUpdatedListener() {
+        @Override
+        public void onStateUpdate(@NonNull InstallState state) {
+            if (state.installStatus() == InstallStatus.DOWNLOADED) {
+                showCompletedUpdate();
+            }
+        }
+    };
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -175,7 +221,10 @@ public class MainActivity extends AppCompatActivity {
             } catch (ApiException e) {
                 Toast.makeText(this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
+        }
 
+        if (requestCode == RC_APP_UPDATE && requestCode != RESULT_OK) {
+//            Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -203,5 +252,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+
+    @Override
+    protected void onStop() {
+        if (appUpdateManager != null) appUpdateManager.unregisterListener(installStateUpdatedListener);
+        super.onStop();
     }
 }
