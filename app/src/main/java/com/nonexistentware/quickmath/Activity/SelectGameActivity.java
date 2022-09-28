@@ -1,15 +1,27 @@
 package com.nonexistentware.quickmath.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.InstallState;
+import com.google.android.play.core.install.InstallStateUpdatedListener;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.InstallStatus;
+import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +44,9 @@ public class SelectGameActivity extends AppCompatActivity {
     private FirebaseDatabase database;
 
     private long backPressedTime;
+
+    private AppUpdateManager appUpdateManager;
+    private static final int RC_APP_UPDATE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +75,24 @@ public class SelectGameActivity extends AppCompatActivity {
         firebaseUser = auth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
         reference = FirebaseDatabase.getInstance().getReference().child("Players").child(auth.getCurrentUser().getUid());
+
+        appUpdateManager = AppUpdateManagerFactory.create(this);
+        appUpdateManager.getAppUpdateInfo().addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
+            @Override
+            public void onSuccess(AppUpdateInfo result) {
+                if (result.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                        && result.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
+                    try {
+                        appUpdateManager.startUpdateFlowForResult(result, AppUpdateType.FLEXIBLE, SelectGameActivity.this,
+                                RC_APP_UPDATE);
+                    } catch (IntentSender.SendIntentException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        appUpdateManager.registerListener(installStateUpdatedListener);
 
         classicModeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,6 +183,26 @@ public class SelectGameActivity extends AppCompatActivity {
         });
     }
 
+    private void showCompletedUpdate() {
+        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "New version of the application is ready",
+                Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction("Download and install", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appUpdateManager.completeUpdate();
+            }
+        });
+    }
+
+    private InstallStateUpdatedListener installStateUpdatedListener = new InstallStateUpdatedListener() {
+        @Override
+        public void onStateUpdate(@NonNull InstallState state) {
+            if (state.installStatus() == InstallStatus.DOWNLOADED) {
+                showCompletedUpdate();
+            }
+        }
+    };
+
     @Override
     public void onBackPressed() {
         final Dialog dialog = new Dialog(SelectGameActivity.this);
@@ -184,5 +237,26 @@ public class SelectGameActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_APP_UPDATE && requestCode != RESULT_OK) {
+
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        if (appUpdateManager != null)
+            appUpdateManager.unregisterListener(installStateUpdatedListener);
+        super.onStop();
     }
 }

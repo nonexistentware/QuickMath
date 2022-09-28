@@ -17,6 +17,13 @@
         android:theme="@style/Theme.QuickMath"
         tools:targetApi="31">
         <activity
+            android:name=".EnduranceGameActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Difficult.HardClassicMode"
             android:exported="false" />
         <activity

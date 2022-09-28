@@ -46,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
     SignInButton mGoogleLogin;
     TextView noLoginPlay, tooltipBtn;
 
-    private AppUpdateManager appUpdateManager;
-    private static final int RC_APP_UPDATE = 100;
 
     private FirebaseAuth auth;
     private DatabaseReference reference;
@@ -72,23 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         auth = FirebaseAuth.getInstance();
-
-        appUpdateManager = AppUpdateManagerFactory.create(this);
-        appUpdateManager.getAppUpdateInfo().addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
-            @Override
-            public void onSuccess(AppUpdateInfo result) {
-                if (result.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-                    && result.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
-                    try {
-                        appUpdateManager.startUpdateFlowForResult(result, AppUpdateType.FLEXIBLE, MainActivity.this,
-                                RC_APP_UPDATE);
-                    } catch (IntentSender.SendIntentException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-        appUpdateManager.registerListener(installStateUpdatedListener);
 
         mGoogleLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,27 +160,6 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    private void showCompletedUpdate() {
-        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "New version of the application is ready",
-                Snackbar.LENGTH_INDEFINITE);
-        snackbar.setAction("Download and install", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                appUpdateManager.completeUpdate();
-            }
-        });
-        snackbar.show();
-    }
-
-    private InstallStateUpdatedListener installStateUpdatedListener = new InstallStateUpdatedListener() {
-        @Override
-        public void onStateUpdate(@NonNull InstallState state) {
-            if (state.installStatus() == InstallStatus.DOWNLOADED) {
-                showCompletedUpdate();
-            }
-        }
-    };
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -221,10 +181,6 @@ public class MainActivity extends AppCompatActivity {
             } catch (ApiException e) {
                 Toast.makeText(this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        }
-
-        if (requestCode == RC_APP_UPDATE && requestCode != RESULT_OK) {
-//            Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -252,11 +208,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         dialog.show();
-    }
-
-    @Override
-    protected void onStop() {
-        if (appUpdateManager != null) appUpdateManager.unregisterListener(installStateUpdatedListener);
-        super.onStop();
     }
 }
