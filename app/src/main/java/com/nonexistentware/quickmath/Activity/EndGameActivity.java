@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.nonexistentware.quickmath.Difficult.ClassicGameMode;
 import com.nonexistentware.quickmath.Model.PlayerModel;
@@ -68,7 +69,9 @@ public class EndGameActivity extends AppCompatActivity {
         correctCounter.setText("" + numberPSTV);
         timeRemain.setText("" + counterTimeRemain + "s");
         difficultyLevel.setText(difLevel);
-        timeRemain.setText(timer);
+        timeRemain.setText(timer + "s");
+
+
 
         loadPlayerData();
 
@@ -87,6 +90,7 @@ public class EndGameActivity extends AppCompatActivity {
                 finish();
             }
         });
+
 
         shareResultBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,4 +167,9 @@ public class EndGameActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+//        share();
+    }
 }

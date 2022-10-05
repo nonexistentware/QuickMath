@@ -4,19 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +25,7 @@ import com.nonexistentware.quickmath.Activity.EndGameActivity;
 import com.nonexistentware.quickmath.Activity.SelectGameActivity;
 import com.nonexistentware.quickmath.R;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -104,6 +100,7 @@ public class HardClassicMode extends AppCompatActivity {
 
         countDownTimer();
         loadPlayerData();
+//        textViewBlink();
     }
 
     @SuppressLint("SetTextI18n")
@@ -132,7 +129,6 @@ public class HardClassicMode extends AppCompatActivity {
         button1.setText(Integer.toString(answers.get(1)));
         button2.setText(Integer.toString(answers.get(2)));
         button3.setText(Integer.toString(answers.get(3)));
-
     }
 
     public void optionSelect(View view) {
@@ -161,7 +157,7 @@ public class HardClassicMode extends AppCompatActivity {
         countDownTimer = new CountDownTimer(26000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                timerTxt.setText(String.valueOf(millisUntilFinished / 1000) + "s");
+                timerTxt.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
             @Override
@@ -206,6 +202,7 @@ public class HardClassicMode extends AppCompatActivity {
             transferIntent.putExtra(EXTRA_NUMBER_PSTV, numberPSTV);
             transferIntent.putExtra(EXTRA_TIME_REMAIN, timerTxt.getText().toString());
             transferIntent.putExtra(EXTRA_DIFFICULT_LEVEL, difficultyLevelTxt.getText().toString());
+            timerToScore();
 //            uploadRemainingTime();                                                                                                //upload time to data base
             startActivity(transferIntent);
             finish();
@@ -269,22 +266,40 @@ public class HardClassicMode extends AppCompatActivity {
 //        databaseReference.child(auth.getCurrentUser().getUid()).child("difficultLevel").setValue(difficultyLevelTxt.getText().toString().trim());
     }
 
-    private void blink() {
+    private void timerToScore() {
+        String txtTimeCounter = timerTxt.getText().toString();
+        long longTimeRemain = 0;
+        longTimeRemain = Long.parseLong(txtTimeCounter);
+        databaseReference.child("playerScore").setValue(ServerValue.increment(longTimeRemain));
+
+    }
+
+    private void correctAnswersInRow() {
+
+    }
+
+    private void textViewBlink() {
         final Handler handler = new Handler();
         new Thread(new Runnable() {
             @Override
             public void run() {
-                int timeBlink = 1000;
+                int timeToBlink = 1000;
                 try {
-                    Thread.sleep(timeBlink);
+                    Thread.sleep(timeToBlink);
                 } catch (Exception e) {
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-//                            if ()
-                        }
-                    });
+
                 }
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (scoreTxt.getVisibility() == View.VISIBLE) {
+                            scoreTxt.setVisibility(View.INVISIBLE);
+                        } else {
+                            scoreTxt.setVisibility(View.VISIBLE);
+                        }
+                        textViewBlink();
+                    }
+                });
             }
         }).start();
     }
