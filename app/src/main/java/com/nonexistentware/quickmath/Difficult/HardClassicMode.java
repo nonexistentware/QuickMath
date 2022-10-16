@@ -57,7 +57,7 @@ public class HardClassicMode extends AppCompatActivity {
     int correctPoints = 0;
     int wrongPoints = 0;
     int totalQuestions = 0;
-    int totalQuestionToLow = 10; //total questions counter
+    int totalQuestionToLow = 60; //total questions counter
     int attempts = 3; //attempts per day. Drop after specific hour
     long levelIncrease = 0; // in case correct points == totalQuestionsToLow level will be increased
 
@@ -175,7 +175,7 @@ public class HardClassicMode extends AppCompatActivity {
                 transferIntent.putExtra(EXTRA_TIME_REMAIN, timerTxt.getText().toString());
                 transferIntent.putExtra(EXTRA_DIFFICULT_LEVEL, difficultyLevelTxt.getText().toString());
 //                uploadRemainingTime();
-//                uploadTypeOfGameMode();
+                uploadTypeOfGameMode();
                 playedGamesCounter();
                 startActivity(transferIntent);
                 cancel();
@@ -194,7 +194,7 @@ public class HardClassicMode extends AppCompatActivity {
             playerLevelCounterOnline();
             playerScoreCounterOnline();
             playedGamesCounter();
-//            uploadTypeOfGameMode();
+            uploadTypeOfGameMode();
             Intent transferIntent = new Intent(getBaseContext(), EndGameActivity.class);
             int numberNGTV = Integer.parseInt(wrongTxt.getText().toString());
             transferIntent.putExtra(EXTRA_NUMBER_NGTV, numberNGTV);
@@ -262,7 +262,7 @@ public class HardClassicMode extends AppCompatActivity {
     }
 
     private void uploadTypeOfGameMode() {
-        databaseReference.child(auth.getCurrentUser().getUid()).child("classicGameMode").setValue(classicGameMode.getText().toString().trim());
+        databaseReference.child(auth.getCurrentUser().getUid()).child("gameMode").setValue(classicGameMode.getText().toString().trim());
 //        databaseReference.child(auth.getCurrentUser().getUid()).child("difficultLevel").setValue(difficultyLevelTxt.getText().toString().trim());
     }
 

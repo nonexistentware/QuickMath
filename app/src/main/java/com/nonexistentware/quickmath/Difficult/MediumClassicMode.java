@@ -51,7 +51,7 @@ public class MediumClassicMode extends AppCompatActivity {
     int correctPoints = 0;
     int wrongPoints = 0;
     int totalQuestions = 0;
-    int totalQuestionToLow = 45; //total questions counter
+    int totalQuestionToLow = 60; //total questions counter
     int attempts = 3; //attempts per day. Drop after specific hour
     long levelIncrease = 0; // in case correct points == totalQuestionsToLow level will be increased
 
@@ -147,7 +147,7 @@ public class MediumClassicMode extends AppCompatActivity {
         countDownTimer = new CountDownTimer(31000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                timerTxt.setText(String.valueOf(millisUntilFinished / 1000) + "s");
+                timerTxt.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
             @Override
@@ -166,7 +166,7 @@ public class MediumClassicMode extends AppCompatActivity {
                 transferIntent.putExtra(EXTRA_DIFFICULT_LEVEL, difficultyLevelTxt.getText().toString());
                 playedGamesCounter();
 //                uploadRemainingTime();
-//                uploadTypeOfGameMode();
+                uploadTypeOfGameMode();
                 startActivity(transferIntent);
                 cancel();
                 finish();
@@ -182,7 +182,7 @@ public class MediumClassicMode extends AppCompatActivity {
             button2.setEnabled(false);
             button3.setEnabled(false);
 //            playerLevelCounterOnline();
-//            uploadTypeOfGameMode();
+            uploadTypeOfGameMode();
             Intent transferIntent = new Intent(getBaseContext(), EndGameActivity.class);
             int numberNGTV = Integer.parseInt(wrongTxt.getText().toString());
             transferIntent.putExtra(EXTRA_NUMBER_NGTV, numberNGTV);
@@ -218,7 +218,7 @@ public class MediumClassicMode extends AppCompatActivity {
     }
 
     private void uploadTypeOfGameMode() {
-        databaseReference.child(auth.getCurrentUser().getUid()).child("classicGameMode").setValue(classicGameMode.getText().toString().trim());
+        databaseReference.child(auth.getCurrentUser().getUid()).child("gameMode").setValue(classicGameMode.getText().toString().trim());
 //        databaseReference.child(auth.getCurrentUser().getUid()).child("difficultLevel").setValue(difficultyLevelTxt.getText().toString().trim());
     }
 

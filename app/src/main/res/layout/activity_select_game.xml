@@ -155,7 +155,8 @@
                 android:gravity="center"
                 android:text="Classic game mode"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"/>
+                android:fontFamily="@font/pixelstyle"
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/dashboard_to_time_attack_mode"
@@ -165,7 +166,8 @@
                 android:text="Time attack"
                 android:textColor="@color/generalText"
                 android:gravity="center"
-                android:fontFamily="@font/pixelstyle"/>
+                android:fontFamily="@font/pixelstyle"
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/dashboard_leadership_table"
@@ -175,7 +177,8 @@
                 android:text="Top players"
                 android:textColor="@color/generalText"
                 android:gravity="center"
-                android:fontFamily="@font/pixelstyle"/>
+                android:fontFamily="@font/pixelstyle"
+                android:textSize="20sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -215,7 +218,8 @@
         android:text="About application"
         android:gravity="center"
         android:textColor="@color/generalText"
-        android:fontFamily="@font/pixelstyle"/>
+        android:fontFamily="@font/pixelstyle"
+        android:textSize="20sp"/>
 
     <TextView
         android:layout_marginTop="40dp"
@@ -225,6 +229,7 @@
         android:text="Sign out"
         android:gravity="center"
         android:textColor="@color/generalText"
-        android:fontFamily="@font/pixelstyle"/>
+        android:fontFamily="@font/pixelstyle"
+        android:textSize="20sp"/>
 
 </LinearLayout>

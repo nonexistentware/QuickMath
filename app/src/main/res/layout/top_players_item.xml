@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/recyclerItem2"
+    android:layout_margin="10px">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/top_player_item_img"
+                android:layout_width="200px"
+                android:layout_height="200px"
+                android:src="@drawable/fui_ic_googleg_color_24dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/top_player_item_pname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/generalText"
+                android:text="Name"/>
+
+            <TextView
+                android:id="@+id/top_player_item_game_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/generalText"
+                android:text="Game mode"/>
+
+            <TextView
+                android:id="@+id/top_player_item_level_counter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/generalText"
+                android:text="Level"/>
+
+            <TextView
+                android:id="@+id/top_player_item_score_counter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Score"
+                android:textColor="@color/generalText"/>
+
+            <TextView
+                android:id="@+id/top_player_item_last_game_dif_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Game mode"
+                android:textColor="@color/generalText"/>
+
+            <TextView
+                android:id="@+id/top_player_item_last_best_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:textColor="@color/generalText"/>
+
+
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>

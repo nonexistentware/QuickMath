@@ -4,7 +4,8 @@ public class PlayerModel {
     long duelWin;
     long playerLevel;
     long playerScore;
-    String Defeated;
+    String playerName;
+    String defeated;
     String playerEmojiAchieve;
     String timeAttackTimePlay;
     String totalTimePlay;
@@ -14,17 +15,22 @@ public class PlayerModel {
     String remainCounterTimeTemp;
     String wrongAnswersCounter;
     String correctAnswersCounter;
-    Long totalPlayedGamesCounter;
+    String gameMode;
+    String playerFlag; //mark for be visible in top ranked player list
+    long totalPlayedGamesCounter;
     long attemptsToStartTheGame;
 
     public PlayerModel() {
     }
 
-    public PlayerModel(long duelWin, long playerLevel, long playerScore, String defeated, String playerEmojiAchieve, String timeAttackTimePlay, String totalTimePlay, String classicTimePlay, String difficultLevel, String remainCounterTime, String remainCounterTimeTemp, String correctAnswersCounter, String wrongAnswersCounter, long totalPlayedGamesCounter, long attemptsToStartTheGame) {
+    public PlayerModel(long duelWin, long playerLevel, long playerScore, String playerName, String defeated, String playerEmojiAchieve, String timeAttackTimePlay, String totalTimePlay, String classicTimePlay, String difficultLevel, String remainCounterTime,
+                       String remainCounterTimeTemp, String correctAnswersCounter, String wrongAnswersCounter, long totalPlayedGamesCounter, long attemptsToStartTheGame,
+                       String gameMode, String playerFlag) {
         this.duelWin = duelWin;
         this.playerLevel = playerLevel;
         this.playerScore = playerScore;
-        Defeated = defeated;
+        this.playerName = playerName;
+        this.defeated = defeated;
         this.playerEmojiAchieve = playerEmojiAchieve;
         this.timeAttackTimePlay = timeAttackTimePlay;
         this.totalTimePlay = totalTimePlay;
@@ -36,6 +42,8 @@ public class PlayerModel {
         this.wrongAnswersCounter = wrongAnswersCounter;
         this.totalPlayedGamesCounter = totalPlayedGamesCounter;
         this.attemptsToStartTheGame = attemptsToStartTheGame;
+        this.gameMode = gameMode;
+        this.playerFlag = playerFlag;
     }
 
     public long getDuelWin() {
@@ -62,12 +70,24 @@ public class PlayerModel {
         this.playerScore = playerScore;
     }
 
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
+    public void setTotalPlayedGamesCounter(long totalPlayedGamesCounter) {
+        this.totalPlayedGamesCounter = totalPlayedGamesCounter;
+    }
+
     public String getDefeated() {
-        return Defeated;
+        return defeated;
     }
 
     public void setDefeated(String defeated) {
-        Defeated = defeated;
+        defeated = defeated;
     }
 
     public String getPlayerEmojiAchieve() {
@@ -142,13 +162,15 @@ public class PlayerModel {
         this.correctAnswersCounter = correctAnswersCounter;
     }
 
-    public Long getTotalPlayedGamesCounter() {
+    public long getTotalPlayedGameAsCounter() {
         return totalPlayedGamesCounter;
     }
 
-    public void setTotalPlayedGamesCounter(Long totalPlayedGamesCounter) {
-        this.totalPlayedGamesCounter = totalPlayedGamesCounter;
+    public long getTotalPlayedGamesCounter() {
+        return totalPlayedGamesCounter;
     }
+
+
 
     public long getAttemptsToStartTheGame() {
         return attemptsToStartTheGame;
@@ -156,5 +178,21 @@ public class PlayerModel {
 
     public void setAttemptsToStartTheGame(long attemptsToStartTheGame) {
         this.attemptsToStartTheGame = attemptsToStartTheGame;
+    }
+
+    public String getGameMode() {
+        return gameMode;
+    }
+
+    public void setGameMode(String gameMode) {
+        this.gameMode = gameMode;
+    }
+
+    public String getPlayerFlag() {
+        return playerFlag;
+    }
+
+    public void setPlayerFlag(String playerFlag) {
+        this.playerFlag = playerFlag;
     }
 }

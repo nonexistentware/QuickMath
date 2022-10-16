@@ -163,6 +163,7 @@ public class EndGameActivity extends AppCompatActivity {
         reference.child("difficultLevel").setValue(difficultyLevel.getText().toString().trim());
         reference.child("remainCounterTime").setValue(timeRemain.getText().toString().trim());
         shareResultBtn.setText("Successfully upload!");
+        reference.child("playerFlag").setValue("x").toString().trim();
         shareResultBtn.setEnabled(false);
 
     }
