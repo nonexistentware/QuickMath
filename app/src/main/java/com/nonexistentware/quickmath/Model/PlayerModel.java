@@ -17,6 +17,7 @@ public class PlayerModel {
     String correctAnswersCounter;
     String gameMode;
     String playerFlag; //mark for be visible in top ranked player list
+    String playerImg;
     long totalPlayedGamesCounter;
     long attemptsToStartTheGame;
 
@@ -25,7 +26,7 @@ public class PlayerModel {
 
     public PlayerModel(long duelWin, long playerLevel, long playerScore, String playerName, String defeated, String playerEmojiAchieve, String timeAttackTimePlay, String totalTimePlay, String classicTimePlay, String difficultLevel, String remainCounterTime,
                        String remainCounterTimeTemp, String correctAnswersCounter, String wrongAnswersCounter, long totalPlayedGamesCounter, long attemptsToStartTheGame,
-                       String gameMode, String playerFlag) {
+                       String gameMode, String playerFlag, String playerImg) {
         this.duelWin = duelWin;
         this.playerLevel = playerLevel;
         this.playerScore = playerScore;
@@ -44,6 +45,7 @@ public class PlayerModel {
         this.attemptsToStartTheGame = attemptsToStartTheGame;
         this.gameMode = gameMode;
         this.playerFlag = playerFlag;
+        this.playerImg = playerImg;
     }
 
     public long getDuelWin() {
@@ -194,5 +196,13 @@ public class PlayerModel {
 
     public void setPlayerFlag(String playerFlag) {
         this.playerFlag = playerFlag;
+    }
+
+    public String getPlayerImg() {
+        return playerImg;
+    }
+
+    public void setPlayerImg(String playerImg) {
+        this.playerImg = playerImg;
     }
 }

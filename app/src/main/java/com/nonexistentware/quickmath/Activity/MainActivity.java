@@ -130,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                             reference.child(auth.getCurrentUser().getUid()).child("google").setValue(idToken);
                             reference.child(auth.getCurrentUser().getUid()).child("playerEmail").setValue(fUser.getEmail());
                             reference.child(auth.getCurrentUser().getUid()).child("playerName").setValue(fUser.getDisplayName());
+                            reference.child(auth.getCurrentUser().getUid()).child("playerImg").setValue(fUser.getPhotoUrl().toString().trim());
 //                            reference.child(auth.getCurrentUser().getUid()).child("playerLevel").setValue("0");
 //                            reference.child(auth.getCurrentUser().getUid()).child("playerScore").setValue("0");
 //                            reference.child(auth.getCurrentUser().getUid()).child("duelWin").setValue("0");

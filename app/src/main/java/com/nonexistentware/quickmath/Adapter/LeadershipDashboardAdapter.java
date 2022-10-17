@@ -40,6 +40,7 @@ public class LeadershipDashboardAdapter extends RecyclerView.Adapter<LeadershipD
         auth = FirebaseAuth.getInstance();
         firebaseUser = auth.getCurrentUser();
 
+
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         return new LeadershipViewHolder(itemView);
@@ -58,7 +59,7 @@ public class LeadershipDashboardAdapter extends RecyclerView.Adapter<LeadershipD
         holder.playerBestTime.setText(playerModelList.get(position).getRemainCounterTime());
 //        holder.playerBestTime.setText();
         Picasso.get()
-                .load(firebaseUser.getPhotoUrl())
+                .load(playerModelList.get(position).getPlayerImg())
                 .into(holder.playersImg);
 
     }
