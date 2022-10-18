@@ -3,15 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/recyclerItem2"
+    android:background="@color/generalBackground"
     android:layout_margin="10px">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="2">
-
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -39,6 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/generalText"
+                android:fontFamily="@font/pixelstyle"
                 android:text="Name"/>
 
             <TextView
@@ -46,6 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/generalText"
+                android:fontFamily="@font/pixelstyle"
                 android:text="Game mode"/>
 
             <TextView
@@ -53,12 +59,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/generalText"
+                android:fontFamily="@font/pixelstyle"
                 android:text="Level"/>
 
             <TextView
                 android:id="@+id/top_player_item_score_counter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/pixelstyle"
                 android:text="Score"
                 android:textColor="@color/generalText"/>
 
@@ -66,6 +74,7 @@
                 android:id="@+id/top_player_item_last_game_dif_level"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/pixelstyle"
                 android:text="Game mode"
                 android:textColor="@color/generalText"/>
 
@@ -73,14 +82,29 @@
                 android:id="@+id/top_player_item_last_best_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/pixelstyle"
                 android:text="Time"
                 android:textColor="@color/generalText"/>
 
 
-
         </LinearLayout>
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_marginTop="10px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <View
+                android:layout_width="600px"
+                android:layout_height="3px"
+                android:layout_margin="10px"
+                android:background="@color/white"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     </LinearLayout>

@@ -57,9 +57,9 @@ public class LeadershipDashboardAdapter extends RecyclerView.Adapter<LeadershipD
         holder.playerScore.setText(Long.toString(playerModelList.get(position).getPlayerScore()));
         holder.playersGameDifLevel.setText(playerModelList.get(position).getDifficultLevel());
         holder.playerBestTime.setText(playerModelList.get(position).getRemainCounterTime());
-//        holder.playerBestTime.setText();
         Picasso.get()
                 .load(playerModelList.get(position).getPlayerImg())
+
                 .into(holder.playersImg);
 
     }
@@ -84,6 +84,11 @@ public class LeadershipDashboardAdapter extends RecyclerView.Adapter<LeadershipD
             playersGameDifLevel = itemView.findViewById(R.id.top_player_item_last_game_dif_level);
             playerBestTime = itemView.findViewById(R.id.top_player_item_last_best_time);
             playerGameMode = itemView.findViewById(R.id.top_player_item_game_mode);
+
+            if (playerModelList.equals("playerFlag")) {
+
+            }
+
         }
     }
 }

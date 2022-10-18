@@ -10,16 +10,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.nonexistentware.quickmath.Adapter.LeadershipDashboardAdapter;
 import com.nonexistentware.quickmath.Model.PlayerModel;
 import com.nonexistentware.quickmath.R;
 
 import java.util.ArrayList;
+import java.util.Queue;
 
 public class LeadershipDashboardActivity extends AppCompatActivity {
 
@@ -44,6 +47,11 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
         adapter = new LeadershipDashboardAdapter(list, this);
         recyclerView.setAdapter(adapter);
 
+        Query query = FirebaseDatabase.getInstance().getReference("Players").orderByChild("playerFlag")
+                .equalTo("x");
+        query.addListenerForSingleValueEvent(valueEventListener);
+
+
         backBtn = findViewById(R.id.activity_top_players_back_btn);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -54,20 +62,38 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
             }
         });
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds: snapshot.getChildren()) {
-                    PlayerModel playerModel = ds.getValue(PlayerModel.class);
-                    list.add(playerModel);
-                }
-                adapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                for (DataSnapshot ds: snapshot.getChildren()) {
+//                    PlayerModel playerModel = ds.getValue(PlayerModel.class);
+//                    list.add(playerModel);
+//                }
+//                adapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
     }
+
+    ValueEventListener valueEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            for (DataSnapshot ds: snapshot.getChildren()) {
+                PlayerModel playerModel = ds.getValue(PlayerModel.class);
+                list.add(playerModel);
+            }
+            adapter.notifyDataSetChanged();
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+
+        }
+    };
 }
