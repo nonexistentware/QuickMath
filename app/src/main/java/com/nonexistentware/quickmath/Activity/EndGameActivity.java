@@ -158,11 +158,11 @@ public class EndGameActivity extends AppCompatActivity {
     }
 
     private void shareDataToCloud() {
-        reference.child("LeadershipDataTable").child("correctAnswersCounter").setValue(correctCounter.getText().toString().trim());
-        reference.child("LeadershipDataTable").child("wrongAnswersCounter").setValue(wrongCounter.getText().toString().trim());
-        reference.child("LeadershipDataTable").child("difficultLevel").setValue(difficultyLevel.getText().toString().trim());
-        reference.child("LeadershipDataTable").child("remainCounterTime").setValue(timeRemain.getText().toString().trim());
-        reference.child("LeadershipDataTable").child("remainCounterTime").setValue(timeRemain.getText().toString().trim());
+        reference.child("correctAnswersCounter").setValue(correctCounter.getText().toString().trim());
+        reference.child("wrongAnswersCounter").setValue(wrongCounter.getText().toString().trim());
+        reference.child("difficultLevel").setValue(difficultyLevel.getText().toString().trim());
+        reference.child("remainCounterTime").setValue(timeRemain.getText().toString().trim());
+        reference.child("remainCounterTime").setValue(timeRemain.getText().toString().trim());
         shareResultBtn.setText("Successfully upload!");
         reference.child("playerFlag").setValue("x").toString().trim();
         shareResultBtn.setEnabled(false);

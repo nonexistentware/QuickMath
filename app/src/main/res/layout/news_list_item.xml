@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/recyclerItem2"
+    android:background="@color/generalBackground"
     android:layout_margin="10px">
 
     <LinearLayout
@@ -46,6 +46,15 @@
             android:text="data$time"
             android:textColor="@color/browser_actions_bg_grey"
             android:fontFamily="@font/pixelstyle"/>
+
+
+
+            <View
+                android:layout_gravity="center"
+                android:layout_width="600px"
+                android:layout_height="3px"
+                android:layout_margin="10px"
+                android:background="@color/white"/>
 
     </LinearLayout>
 
