@@ -9,18 +9,139 @@
     android:background="@color/generalBackground"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your stats"
+        android:gravity="center"
+        android:fontFamily="@font/pixelstyle"
+        android:textColor="@color/generalText"
+        android:layout_marginBottom="20px"/>
+
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="2"
+    android:layout_marginBottom="20px">
+
+    <LinearLayout
+        android:layout_weight="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="center">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/activity_leadership_player_img"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:src="@drawable/fui_ic_googleg_color_24dp"/>
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/top_player_item_pname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/generalText"
+            android:fontFamily="@font/pixelstyle"
+            android:text="Name"/>
+
+        <TextView
+            android:id="@+id/top_player_item_game_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/generalText"
+            android:fontFamily="@font/pixelstyle"
+            android:text="Game mode"/>
+
+        <TextView
+            android:id="@+id/top_player_item_level_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/generalText"
+            android:fontFamily="@font/pixelstyle"
+            android:text="Level"/>
+
+        <TextView
+            android:id="@+id/top_player_item_score_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pixelstyle"
+            android:text="Score"
+            android:textColor="@color/generalText"/>
+
+        <TextView
+            android:id="@+id/top_player_item_last_game_dif_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pixelstyle"
+            android:text="Game mode"
+            android:textColor="@color/generalText"/>
+
+        <TextView
+            android:id="@+id/top_player_item_last_best_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pixelstyle"
+            android:text="Time"
+            android:textColor="@color/generalText"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:weightSum="2">
+
+          <TextView
+              android:id="@+id/activity_top_players_remove_data_from_recyclerview"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:fontFamily="@font/pixelstyle"
+              android:text="Remove from list"
+              android:textColor="@color/generalText"
+              android:gravity="center"
+              android:layout_weight="1"/>
+
+          <TextView
+              android:id="@+id/activity_top_players_delete_player_data"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:fontFamily="@font/pixelstyle"
+              android:text="Delete your account"
+              android:textColor="@color/red"
+              android:gravity="center"
+              android:layout_weight="1"/>
+
+      </LinearLayout>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_top_players_activity"
@@ -39,4 +160,7 @@
         android:gravity="center"
         android:layout_weight="0.2"/>
 
-</LinearLayout>
+    </LinearLayout>
+
+    </LinearLayout>
+
