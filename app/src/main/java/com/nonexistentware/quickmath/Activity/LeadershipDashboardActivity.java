@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,24 +22,29 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.nonexistentware.quickmath.Adapter.LeadershipDashboardAdapter;
 import com.nonexistentware.quickmath.Model.PlayerModel;
 import com.nonexistentware.quickmath.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class LeadershipDashboardActivity extends AppCompatActivity {
 
-    TextView backBtn, removeFromList, deletePlayer;
+    TextView backBtn, removeFromList, deletePlayer, playerName, playerScore, playerLevel;
+    ImageView playerImg;
 
     DatabaseReference databaseReference;
+    DatabaseReference pathToPlayerFlag;
     FirebaseDatabase database;
     FirebaseAuth auth;
     FirebaseUser fUser;
     RecyclerView recyclerView;
     LeadershipDashboardAdapter adapter;
     ArrayList<PlayerModel> list;
+    String removeBtnCheck = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +52,10 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_leadership_dashboard);
 
         recyclerView = findViewById(R.id.recyclerview_top_players_activity);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Players");
         auth = FirebaseAuth.getInstance();
         fUser = auth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Players");
+        pathToPlayerFlag = FirebaseDatabase.getInstance().getReference("Players").child("playerFlag");
         database = FirebaseDatabase.getInstance();
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -56,15 +65,21 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         dataQuery();
+        loadCurrentPlayerData();
         backBtn = findViewById(R.id.activity_top_players_back_btn);
 
         removeFromList = findViewById(R.id.activity_top_players_remove_data_from_recyclerview);
         deletePlayer = findViewById(R.id.activity_top_players_delete_player_data);
 
+        playerImg = findViewById(R.id.activity_leadership_player_img);
+        playerName = findViewById(R.id.top_player_item_player_name);
+        playerLevel = findViewById(R.id.top_player_item_level_counter);
+        playerScore = findViewById(R.id.top_player_item_score_counter);
+
         removeFromList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                removeDataFromList();
+                alertDialogWindow();
             }
         });
 
@@ -83,12 +98,19 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
             }
         });
 
-        databaseReference.child(auth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        pathToPlayerFlag.child(auth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.child("playerFlag").equals("0")) {
-                    removeFromList.setVisibility(View.INVISIBLE);
+                for (DataSnapshot ds: snapshot.getChildren()) {
+                    PlayerModel playerModel = ds.getValue(PlayerModel.class);
+//                    if (snapshot.exists()) {
+//                        removeFromList.setVisibility(View.VISIBLE);
+//                    } else {
+//                        removeFromList.setVisibility(View.INVISIBLE);
+//                    }
+                    list.add(playerModel);
                 }
+
             }
 
             @Override
@@ -115,7 +137,8 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
     }
 
     private void removeDataFromList() {
-        databaseReference.child(auth.getCurrentUser().getUid()).child("playerFlag").setValue("0").toString().trim();
+        databaseReference.child(auth.getCurrentUser().getUid()).child("playerFlag").removeValue();
+
         Intent refresh = new Intent(this, LeadershipDashboardActivity.class);
         startActivity(refresh);
         finish();
@@ -129,14 +152,10 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
     ValueEventListener valueEventListener = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot snapshot) {
-            for (DataSnapshot ds: snapshot.getChildren()) {
+            for (DataSnapshot ds : snapshot.getChildren()) {
                 PlayerModel playerModel = ds.getValue(PlayerModel.class);
                 list.add(playerModel);
-                if (ds.child("Players").child("playerFlag").getValue() == "x") {
-                    removeFromList.setVisibility(View.VISIBLE);
-                } else {
-                    removeFromList.setVisibility(View.INVISIBLE);
-                }
+
             }
             adapter.notifyDataSetChanged();
         }
@@ -149,7 +168,77 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
 
     private void dataQuery() {
         Query query = FirebaseDatabase.getInstance().getReference("Players").orderByChild("playerFlag")
-                .equalTo("x");
+                .equalTo("1");
         query.addListenerForSingleValueEvent(valueEventListener);
+    }
+
+    private void loadCurrentPlayerData() {
+        if (auth.getCurrentUser() != null) {
+            databaseReference.child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    playerName.setText(fUser.getDisplayName());
+                    Picasso.get()
+                            .load(fUser.getPhotoUrl())
+                            .into(playerImg);
+                    if (snapshot.child("playerScore").exists()) {
+                        String scoreStr = snapshot.child("playerScore").getValue().toString().trim();
+                        playerScore.setText(scoreStr);
+                    } else {
+                        String scoreStrCheck = "0";
+                        playerScore.setText(scoreStrCheck);
+                    } if (snapshot.child("playerLevel").exists()) {
+                        String levelStr = snapshot.child("playerLevel").getValue().toString().trim();
+                        playerLevel.setText(levelStr);
+                    } else {
+                        String scoreStrCheck = "0";
+                        playerLevel.setText(scoreStrCheck);
+                    } if (snapshot.child("playerDuelWin").exists()) {
+//                        String duelCounterCheck = "0";
+//                        duelWinCounterTxt.setText(duelCounterCheck);
+//                    } else {
+//                        String duelWinCheck = "0";
+//                        duelWinCounterTxt.setText(duelWinCheck);
+                    }
+                    if (snapshot.child("playerFlag").exists()) {
+                        removeFromList.setVisibility(View.VISIBLE);
+                    } else {
+                        removeFromList.setVisibility(View.INVISIBLE);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+        }
+    }
+
+    private void alertDialogWindow() {
+        final Dialog dialog = new Dialog(LeadershipDashboardActivity.this);
+        dialog.setContentView(R.layout.alert_dialog_leadership_dashboard_remove_from_list);
+        dialog.setCancelable(false);
+
+        TextView yesBtn = dialog.findViewById(R.id.alert_dialog_leadership_dashboard_positive_btn);
+        TextView noBTn = dialog.findViewById(R.id.alert_dialog_leadership_dashboard_negative_btn);
+
+        yesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeDataFromList();
+                databaseReference.child(auth.getCurrentUser().getUid()).child("playerScore").setValue(ServerValue.increment(-1000));
+                dialog.dismiss();
+            }
+        });
+
+        noBTn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }

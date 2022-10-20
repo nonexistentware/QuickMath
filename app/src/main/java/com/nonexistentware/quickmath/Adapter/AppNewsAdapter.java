@@ -7,10 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.nonexistentware.quickmath.Model.AppNewsModel;
 import com.nonexistentware.quickmath.R;
 import com.squareup.picasso.Picasso;
@@ -41,7 +46,6 @@ public class AppNewsAdapter extends RecyclerView.Adapter<AppNewsAdapter.NewsView
        holder.newsBody.setText(appNewsModelList.get(position).getNewsBody());
        holder.newsDateTime.setText(appNewsModelList.get(position).getNewsDateTime());
        holder.newsImageTitle.setText(appNewsModelList.get(position).getNewsImage());
-
     }
 
     @Override

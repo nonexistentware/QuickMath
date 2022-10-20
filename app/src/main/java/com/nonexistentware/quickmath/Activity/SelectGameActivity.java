@@ -149,7 +149,6 @@ public class SelectGameActivity extends AppCompatActivity {
             reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    PlayerModel playerModel = snapshot.getValue(PlayerModel.class);
                     playerGoogleName.setText(firebaseUser.getDisplayName());
                 Picasso.get()
                         .load(firebaseUser.getPhotoUrl())

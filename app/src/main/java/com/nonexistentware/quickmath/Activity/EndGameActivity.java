@@ -128,7 +128,6 @@ public class EndGameActivity extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                PlayerModel playerModel = snapshot.getValue(PlayerModel.class);
 //                timeRemain.setText(playerModel.getRemainCounterTimeTemp());
                 playerName.setText(firebaseUser.getDisplayName());
                 Picasso.get()
@@ -164,7 +163,7 @@ public class EndGameActivity extends AppCompatActivity {
         reference.child("remainCounterTime").setValue(timeRemain.getText().toString().trim());
         reference.child("remainCounterTime").setValue(timeRemain.getText().toString().trim());
         shareResultBtn.setText("Successfully upload!");
-        reference.child("playerFlag").setValue("x").toString().trim();
+        reference.child("playerFlag").setValue("1").toString().trim();
         shareResultBtn.setEnabled(false);
 
     }
