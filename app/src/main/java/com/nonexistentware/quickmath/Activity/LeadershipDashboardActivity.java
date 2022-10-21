@@ -197,10 +197,19 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
     }
 
     private void deletePlayerData() {
+        fUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+
+                    auth.signOut();
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
+                    Toast.makeText(LeadershipDashboardActivity.this, "User has been deleted", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         databaseReference.child(auth.getCurrentUser().getUid()).removeValue();
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        finish();
     }
 
     private void alertDialogWindow() {
@@ -240,6 +249,7 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
         yesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialog.dismiss();
                 deletePlayerData();
             }
         });
