@@ -16,10 +16,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.nonexistentware.quickmath.Difficult.ClassicGameMode;
-import com.nonexistentware.quickmath.Model.PlayerModel;
 import com.nonexistentware.quickmath.R;
 import com.squareup.picasso.Picasso;
 
@@ -30,7 +28,7 @@ public class EndGameActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private FirebaseUser firebaseUser;
 
-    TextView backBtn, correctCounter, wrongCounter, timeRemain, levelCounter, playerName, scoreCounter, difficultyLevel, shareResultBtn, playAgain;
+    TextView backBtn, correctCounter, wrongCounter, timeRemain, levelCounter, playerName, scoreCounter, difficultyLevel, shareResultBtn, playAgain, gameMode;
     ImageView playerImg;
 
     @Override
@@ -48,6 +46,7 @@ public class EndGameActivity extends AppCompatActivity {
         shareResultBtn = findViewById(R.id.end_share_result);
         playAgain = findViewById(R.id.end_game_play_again);
         playerImg = findViewById(R.id.end_user_profile_img);
+        gameMode = findViewById(R.id.end_game_game_mode);
 
 //        shareResultBtn.setVisibility(View.INVISIBLE);
 
@@ -65,6 +64,7 @@ public class EndGameActivity extends AppCompatActivity {
         int counterTimeRemain = intent.getIntExtra(ClassicGameMode.EXTRA_TIME_LEFT, 0);
         String difLevel = getIntent().getExtras().getString(ClassicGameMode.EXTRA_DIFFICULT_LEVEL);
         String timer = intent.getStringExtra(ClassicGameMode.EXTRA_TIME_REMAIN);
+        String gameModeType = intent.getStringExtra(ClassicGameMode.EXTRA_GAME_MODE);
 
 
         wrongCounter.setText("" + numberNGTV);
@@ -72,6 +72,7 @@ public class EndGameActivity extends AppCompatActivity {
         timeRemain.setText("" + counterTimeRemain + "s");
         difficultyLevel.setText(difLevel);
         timeRemain.setText(timer + "s");
+        gameMode.setText(gameModeType);
 
 
 
@@ -163,7 +164,7 @@ public class EndGameActivity extends AppCompatActivity {
         reference.child("wrongAnswersCounter").setValue(wrongCounter.getText().toString().trim());
         reference.child("difficultLevel").setValue(difficultyLevel.getText().toString().trim());
         reference.child("remainCounterTime").setValue(timeRemain.getText().toString().trim());
-        reference.child("remainCounterTime").setValue(timeRemain.getText().toString().trim());
+        reference.child("gameMode").setValue(gameMode.getText().toString().trim());
         shareResultBtn.setText("Uploaded! Check leadership dashboard.");
         reference.child("playerFlag").setValue("1").toString().trim();
         shareResultBtn.setEnabled(false);

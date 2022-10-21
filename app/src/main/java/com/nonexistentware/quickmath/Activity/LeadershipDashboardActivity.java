@@ -183,7 +183,7 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
                     if (snapshot.child("playerFlag").exists()) {
                         removeFromList.setVisibility(View.VISIBLE);
                     } else {
-                        removeFromList.setVisibility(View.INVISIBLE);
+                        removeFromList.setVisibility(View.GONE);
                     }
                 }
 

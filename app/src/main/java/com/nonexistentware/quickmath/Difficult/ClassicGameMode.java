@@ -41,6 +41,7 @@ public class ClassicGameMode extends AppCompatActivity {
     public static final String EXTRA_DIFFICULT_LEVEL = "com.nonexistentware.quickmath.Difficult.EXTRA_DIFFICULT_LEVEL";
     public static final String EXTRA_TIME_REMAIN = "com.nonexistentware.quickmath.Difficult.EXTRA_TIME_REMAIN";
     public static final String EXTRA_LEVEL_INCREASE_COUNTER = "com.nonexistentware.quickmath.Difficult.EXTRA_INCREASE_COUNTER";
+    public static final String EXTRA_GAME_MODE = "com.nonexistentware.quickmath.Difficult.EXTRA_GAME_TYPE";
 
     Random random = new Random();
     int a;
@@ -165,9 +166,10 @@ public class ClassicGameMode extends AppCompatActivity {
                 transferIntent.putExtra(EXTRA_NUMBER_PSTV, numberPSTV);
                 transferIntent.putExtra(EXTRA_TIME_REMAIN, timerTxt.getText().toString());
                 transferIntent.putExtra(EXTRA_DIFFICULT_LEVEL, difficultyLevelTxt.getText().toString());
+                transferIntent.putExtra(EXTRA_GAME_MODE, classicGameMode.getText().toString());
                 playedGamesCounter();
 //                uploadRemainingTime();
-                uploadTypeOfGameMode();
+//                uploadTypeOfGameMode();
                 startActivity(transferIntent);
                 cancel();
                 finish();
@@ -183,12 +185,13 @@ public class ClassicGameMode extends AppCompatActivity {
             button2.setEnabled(false);
             button3.setEnabled(false);
 //            playerLevelCounterOnline();
-            uploadTypeOfGameMode();
+//            uploadTypeOfGameMode();
             Intent transferIntent = new Intent(getBaseContext(), EndGameActivity.class);
             int numberNGTV = Integer.parseInt(wrongTxt.getText().toString());
             transferIntent.putExtra(EXTRA_NUMBER_NGTV, numberNGTV);
             int numberPSTV = Integer.parseInt(correctTxt.getText().toString());
             transferIntent.putExtra(EXTRA_NUMBER_PSTV, numberPSTV);
+            transferIntent.putExtra(EXTRA_GAME_MODE, classicGameMode.getText().toString());
             transferIntent.putExtra(EXTRA_TIME_REMAIN, timerTxt.getText().toString());
             transferIntent.putExtra(EXTRA_DIFFICULT_LEVEL, difficultyLevelTxt.getText().toString());
             playedGamesCounter();

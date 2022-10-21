@@ -50,6 +50,17 @@
 
             <TextView
                 android:layout_marginTop="10dp"
+                android:id="@+id/end_game_game_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Game mode"
+                android:layout_gravity="center"
+                android:textColor="@color/generalText"
+                android:textSize="20sp"
+                android:fontFamily="@font/pixelstyle"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
                 android:id="@+id/end_win_defeat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,6 +69,7 @@
                 android:textColor="@color/generalText"
                 android:textSize="21sp"
                 android:fontFamily="@font/pixelstyle"/>
+
 
             <LinearLayout
                 android:layout_marginTop="10dp"
