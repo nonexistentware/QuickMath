@@ -49,6 +49,8 @@ public class EndGameActivity extends AppCompatActivity {
         playAgain = findViewById(R.id.end_game_play_again);
         playerImg = findViewById(R.id.end_user_profile_img);
 
+//        shareResultBtn.setVisibility(View.INVISIBLE);
+
 
 
         backBtn = findViewById(R.id.end_back_to_dashboard);
@@ -162,7 +164,7 @@ public class EndGameActivity extends AppCompatActivity {
         reference.child("difficultLevel").setValue(difficultyLevel.getText().toString().trim());
         reference.child("remainCounterTime").setValue(timeRemain.getText().toString().trim());
         reference.child("remainCounterTime").setValue(timeRemain.getText().toString().trim());
-        shareResultBtn.setText("Successfully upload!");
+        shareResultBtn.setText("Uploaded! Check leadership dashboard.");
         reference.child("playerFlag").setValue("1").toString().trim();
         shareResultBtn.setEnabled(false);
 
@@ -171,6 +173,5 @@ public class EndGameActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-//        share();
     }
 }

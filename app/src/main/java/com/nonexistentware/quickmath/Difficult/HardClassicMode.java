@@ -261,6 +261,15 @@ public class HardClassicMode extends AppCompatActivity {
         databaseReference.child("attemptsToStartTheGame").setValue(ServerValue.increment(1));
     }
 
+    //future updates
+    private void lastPlayedGameMode() {
+
+    }
+
+    private void classicGameDifficult() {
+        //hard
+    }
+
     private void uploadTypeOfGameMode() {
         databaseReference.child("gameMode").setValue(classicGameMode.getText().toString());
 //        databaseReference.child(auth.getCurrentUser().getUid()).child("difficultLevel").setValue(difficultyLevelTxt.getText().toString().trim());

@@ -3,8 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/generalBackground"
-    android:layout_margin="10px">
+    android:background="@color/generalBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,14 +15,13 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/alert_dialog_end_game_upload_msg_title"
+                android:id="@+id/alert_dialog_end_of_the_game_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/generalText"
                 android:textSize="30sp"
                 android:fontFamily="@font/pixelstyle"
-                android:text="Do you want to upload your result to cloud? All players will see it.
-                            \n In case no game result won't be saved."/>
+                android:text=""/>
 
         </LinearLayout>
 
@@ -35,7 +33,7 @@
             android:weightSum="2">
 
             <TextView
-                android:id="@+id/alert_dialog_end_game_positive_btn"
+                android:id="@+id/alert_dialog_positive_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Proceed"
@@ -46,7 +44,7 @@
                 android:layout_weight="1"/>
 
             <TextView
-                android:id="@+id/alert_dialog_end_game_negative_btn"
+                android:id="@+id/alert_dialog_negative_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cancel"

@@ -218,8 +218,16 @@ public class ClassicGameMode extends AppCompatActivity {
         }
     }
 
+    private void lastPlayedGameMode() {
+        databaseReference.child(auth.getCurrentUser().getUid()).child("lasPlayedGameMode").setValue(classicGameMode.getText().toString().trim());
+    }
+
     private void uploadTypeOfGameMode() {
         databaseReference.child(auth.getCurrentUser().getUid()).child("gameMode").setValue(classicGameMode.getText().toString().trim());
+    }
+
+    private void endOfGameAlertDialog() {
+
     }
 
     @Override

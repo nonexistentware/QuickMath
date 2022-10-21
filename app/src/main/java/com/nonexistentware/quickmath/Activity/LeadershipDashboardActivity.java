@@ -9,13 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -86,7 +91,7 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
         deletePlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deletePlayerData();
+                alertDialogPlayerDelete();
             }
         });
 
@@ -103,11 +108,6 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds: snapshot.getChildren()) {
                     PlayerModel playerModel = ds.getValue(PlayerModel.class);
-//                    if (snapshot.exists()) {
-//                        removeFromList.setVisibility(View.VISIBLE);
-//                    } else {
-//                        removeFromList.setVisibility(View.INVISIBLE);
-//                    }
                     list.add(playerModel);
                 }
 
@@ -118,36 +118,16 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
 
             }
         });
-
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot ds: snapshot.getChildren()) {
-//                    PlayerModel playerModel = ds.getValue(PlayerModel.class);
-//                    list.add(playerModel);
-//                }
-//                adapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
     }
 
     private void removeDataFromList() {
         databaseReference.child(auth.getCurrentUser().getUid()).child("playerFlag").removeValue();
-
         Intent refresh = new Intent(this, LeadershipDashboardActivity.class);
         startActivity(refresh);
         finish();
         overridePendingTransition(0, 1);
     }
 
-    private void deletePlayerData() {
-
-    }
 
     ValueEventListener valueEventListener = new ValueEventListener() {
         @Override
@@ -216,6 +196,13 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
         }
     }
 
+    private void deletePlayerData() {
+        databaseReference.child(auth.getCurrentUser().getUid()).removeValue();
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        finish();
+    }
+
     private void alertDialogWindow() {
         final Dialog dialog = new Dialog(LeadershipDashboardActivity.this);
         dialog.setContentView(R.layout.alert_dialog_leadership_dashboard_remove_from_list);
@@ -240,5 +227,33 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+
+    private void alertDialogPlayerDelete() {
+        final Dialog dialog = new Dialog(LeadershipDashboardActivity.this);
+        dialog.setContentView(R.layout.alert_dialog_leadership_dashboard_player_delete);
+        dialog.setCancelable(false);
+
+        TextView yesBtn = dialog.findViewById(R.id.alert_dialog_leadership_dashboard_player_delete_positive_btn);
+        TextView noBTn = dialog.findViewById(R.id.alert_dialog_leadership_dashboard_player_delete_negative_btn);
+
+        yesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deletePlayerData();
+            }
+        });
+
+        noBTn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    private void googleSignOut() {
+
     }
 }
