@@ -58,6 +58,38 @@
                 android:textColor="@color/generalText"
                 android:textSize="20sp"
                 android:fontFamily="@font/pixelstyle"/>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Questions left: "
+                    android:textColor="@color/generalText"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/pixelstyle"
+                    android:gravity="right"/>
+
+                <TextView
+                    android:id="@+id/end_game_questionsq_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="000"
+                    android:textColor="@color/generalText"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/pixelstyle"
+                    android:layout_weight="1"
+                    android:gravity="left"/>
+
+            </LinearLayout>
+
+
 
             <TextView
                 android:layout_marginTop="10dp"
@@ -108,7 +140,7 @@
             android:layout_width="400dp"
             android:layout_height="120dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="275dp">
+            android:layout_marginTop="300dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -148,7 +180,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginBottom="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -282,6 +315,7 @@
         android:layout_height="wrap_content"
         android:text="Back to dashboard"
         android:gravity="center"
+        android:textSize="20sp"
         android:textColor="@color/generalText"
         android:fontFamily="@font/pixelstyle"/>
 

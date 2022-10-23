@@ -125,6 +125,7 @@
               android:fontFamily="@font/pixelstyle"
               android:text="Remove from list"
               android:textColor="@color/generalText"
+              android:textSize="20dp"
               android:gravity="center"
               android:layout_weight="1"/>
 
@@ -135,6 +136,7 @@
               android:fontFamily="@font/pixelstyle"
               android:text="Delete your account"
               android:textColor="@color/red"
+              android:textSize="20sp"
               android:gravity="center"
               android:layout_weight="1"/>
 

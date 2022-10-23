@@ -28,7 +28,7 @@ public class EndGameActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private FirebaseUser firebaseUser;
 
-    TextView backBtn, correctCounter, wrongCounter, timeRemain, levelCounter, playerName, scoreCounter, difficultyLevel, shareResultBtn, playAgain, gameMode;
+    TextView backBtn, correctCounter, wrongCounter, timeRemain, levelCounter, playerName, scoreCounter, difficultyLevel, shareResultBtn, playAgain, gameMode, questionsLeft;
     ImageView playerImg;
 
     @Override
@@ -47,7 +47,7 @@ public class EndGameActivity extends AppCompatActivity {
         playAgain = findViewById(R.id.end_game_play_again);
         playerImg = findViewById(R.id.end_user_profile_img);
         gameMode = findViewById(R.id.end_game_game_mode);
-
+        questionsLeft = findViewById(R.id.end_game_questionsq_left);
 //        shareResultBtn.setVisibility(View.INVISIBLE);
 
 
@@ -65,6 +65,7 @@ public class EndGameActivity extends AppCompatActivity {
         String difLevel = getIntent().getExtras().getString(ClassicGameMode.EXTRA_DIFFICULT_LEVEL);
         String timer = intent.getStringExtra(ClassicGameMode.EXTRA_TIME_REMAIN);
         String gameModeType = intent.getStringExtra(ClassicGameMode.EXTRA_GAME_MODE);
+        String questionsLeftDisplayed = intent.getStringExtra(ClassicGameMode.EXTRA_QUESTIONS_LEFT);
 
 
         wrongCounter.setText("" + numberNGTV);
@@ -73,6 +74,7 @@ public class EndGameActivity extends AppCompatActivity {
         difficultyLevel.setText(difLevel);
         timeRemain.setText(timer + "s");
         gameMode.setText(gameModeType);
+        questionsLeft.setText(questionsLeftDisplayed);
 
 
 

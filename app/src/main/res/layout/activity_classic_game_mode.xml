@@ -110,11 +110,11 @@
                             android:id="@+id/total_question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/pixelstyle"
                             android:paddingTop="10dp"
                             android:text="000"
                             android:textColor="@color/generalText"
-                            android:textSize="20sp"
-                            android:fontFamily="@font/pixelstyle"/>
+                            android:textSize="20sp" />
 
                     </LinearLayout>
 

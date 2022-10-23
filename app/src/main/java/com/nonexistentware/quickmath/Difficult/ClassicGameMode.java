@@ -42,6 +42,7 @@ public class ClassicGameMode extends AppCompatActivity {
     public static final String EXTRA_TIME_REMAIN = "com.nonexistentware.quickmath.Difficult.EXTRA_TIME_REMAIN";
     public static final String EXTRA_LEVEL_INCREASE_COUNTER = "com.nonexistentware.quickmath.Difficult.EXTRA_INCREASE_COUNTER";
     public static final String EXTRA_GAME_MODE = "com.nonexistentware.quickmath.Difficult.EXTRA_GAME_TYPE";
+    public static final String EXTRA_QUESTIONS_LEFT = "com.nonexistentware.quickmath.Difficult.EXTRA_QUESTIONS_LEFT";
 
     Random random = new Random();
     int a;
@@ -167,6 +168,7 @@ public class ClassicGameMode extends AppCompatActivity {
                 transferIntent.putExtra(EXTRA_TIME_REMAIN, timerTxt.getText().toString());
                 transferIntent.putExtra(EXTRA_DIFFICULT_LEVEL, difficultyLevelTxt.getText().toString());
                 transferIntent.putExtra(EXTRA_GAME_MODE, classicGameMode.getText().toString());
+                transferIntent.putExtra(EXTRA_QUESTIONS_LEFT, totalQuestionTxt.getText().toString());
                 playedGamesCounter();
 //                uploadRemainingTime();
 //                uploadTypeOfGameMode();
@@ -179,6 +181,7 @@ public class ClassicGameMode extends AppCompatActivity {
 
     private void allQuestionDone() {
         if (totalQuestionToLow == 0) {
+            totalQuestionTxt.setText("All done!");
             countDownTimer.cancel();
             button0.setEnabled(false);
             button1.setEnabled(false);
@@ -194,6 +197,7 @@ public class ClassicGameMode extends AppCompatActivity {
             transferIntent.putExtra(EXTRA_GAME_MODE, classicGameMode.getText().toString());
             transferIntent.putExtra(EXTRA_TIME_REMAIN, timerTxt.getText().toString());
             transferIntent.putExtra(EXTRA_DIFFICULT_LEVEL, difficultyLevelTxt.getText().toString());
+            transferIntent.putExtra(EXTRA_QUESTIONS_LEFT, totalQuestionTxt.getText().toString());
             playedGamesCounter();
 //            uploadRemainingTime();                                                                                                //upload time to data base
             startActivity(transferIntent);

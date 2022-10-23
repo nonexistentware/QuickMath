@@ -48,6 +48,8 @@ public class HardClassicMode extends AppCompatActivity {
     public static final String EXTRA_DIFFICULT_LEVEL = "com.nonexistentware.quickmath.Difficult.EXTRA_DIFFICULT_LEVEL";
     public static final String EXTRA_TIME_REMAIN = "com.nonexistentware.quickmath.Difficult.EXTRA_TIME_REMAIN";
     public static final String EXTRA_LEVEL_INCREASE_COUNTER = "com.nonexistentware.quickmath.Difficult.EXTRA_INCREASE_COUNTER";
+    public static final String EXTRA_GAME_MODE = "com.nonexistentware.quickmath.Difficult.EXTRA_GAME_TYPE";
+    public static final String EXTRA_QUESTIONS_LEFT = "com.nonexistentware.quickmath.Difficult.EXTRA_QUESTIONS_LEFT";
 
     Random random = new Random();
     int a;
@@ -174,8 +176,10 @@ public class HardClassicMode extends AppCompatActivity {
                 transferIntent.putExtra(EXTRA_NUMBER_PSTV, numberPSTV);
                 transferIntent.putExtra(EXTRA_TIME_REMAIN, timerTxt.getText().toString());
                 transferIntent.putExtra(EXTRA_DIFFICULT_LEVEL, difficultyLevelTxt.getText().toString());
+                transferIntent.putExtra(EXTRA_GAME_MODE, classicGameMode.getText().toString());
+                transferIntent.putExtra(EXTRA_QUESTIONS_LEFT, totalQuestionTxt.getText().toString());
 //                uploadRemainingTime();
-                uploadTypeOfGameMode();
+//                uploadTypeOfGameMode();
                 playedGamesCounter();
                 startActivity(transferIntent);
                 cancel();
@@ -186,6 +190,7 @@ public class HardClassicMode extends AppCompatActivity {
 
     private void allQuestionDone() {
         if (totalQuestionToLow == 0) {
+            totalQuestionTxt.setText("All done!");
             countDownTimer.cancel();
             button0.setEnabled(false);
             button1.setEnabled(false);
@@ -194,7 +199,7 @@ public class HardClassicMode extends AppCompatActivity {
             playerLevelCounterOnline();
             playerScoreCounterOnline();
             playedGamesCounter();
-            uploadTypeOfGameMode();
+//            uploadTypeOfGameMode();
             Intent transferIntent = new Intent(getBaseContext(), EndGameActivity.class);
             int numberNGTV = Integer.parseInt(wrongTxt.getText().toString());
             transferIntent.putExtra(EXTRA_NUMBER_NGTV, numberNGTV);
@@ -202,6 +207,8 @@ public class HardClassicMode extends AppCompatActivity {
             transferIntent.putExtra(EXTRA_NUMBER_PSTV, numberPSTV);
             transferIntent.putExtra(EXTRA_TIME_REMAIN, timerTxt.getText().toString());
             transferIntent.putExtra(EXTRA_DIFFICULT_LEVEL, difficultyLevelTxt.getText().toString());
+            transferIntent.putExtra(EXTRA_GAME_MODE, classicGameMode.getText().toString());
+            transferIntent.putExtra(EXTRA_QUESTIONS_LEFT, totalQuestionTxt.getText().toString());
             timerToScore();
 //            uploadRemainingTime();                                                                                                //upload time to data base
             startActivity(transferIntent);
