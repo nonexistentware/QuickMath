@@ -49,7 +49,7 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     LeadershipDashboardAdapter adapter;
     ArrayList<PlayerModel> list;
-    String removeBtnCheck = "0";
+    int maxScoreToRemove = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +121,24 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
     }
 
     private void removeDataFromList() {
-        databaseReference.child(auth.getCurrentUser().getUid()).child("playerFlag").removeValue();
+        databaseReference.child(auth.getCurrentUser().getUid()).child("playerScore").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.getValue(Integer.class) >= 1000) {
+                    databaseReference.child(auth.getCurrentUser().getUid()).child("playerFlag").removeValue();
+                    databaseReference.child(auth.getCurrentUser().getUid()).child("playerScore").setValue(ServerValue.increment(-1000));
+                    Toast.makeText(LeadershipDashboardActivity.this, "Score", Toast.LENGTH_SHORT).show();
+                } else if (snapshot.getValue(Integer.class) <= 999){
+                    Toast.makeText(LeadershipDashboardActivity.this, "No score", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         Intent refresh = new Intent(this, LeadershipDashboardActivity.class);
         startActivity(refresh);
         finish();
@@ -154,6 +171,7 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
 
     private void loadCurrentPlayerData() {
         if (auth.getCurrentUser() != null) {
+
             databaseReference.child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -180,7 +198,7 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
 //                        String duelWinCheck = "0";
 //                        duelWinCounterTxt.setText(duelWinCheck);
                     }
-                    if (snapshot.child("playerFlag").exists()) {
+                     else if (snapshot.child("playerFlag").exists()) { // check if flag is exist to remove from list
                         removeFromList.setVisibility(View.VISIBLE);
                     } else {
                         removeFromList.setVisibility(View.GONE);
@@ -196,12 +214,26 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
         }
     }
 
+    private void scoreToCheck() {
+        databaseReference.child(auth.getCurrentUser().getUid()).child("playerScore").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+
     private void deletePlayerData() {
         fUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-
                     auth.signOut();
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
@@ -224,7 +256,6 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 removeDataFromList();
-                databaseReference.child(auth.getCurrentUser().getUid()).child("playerScore").setValue(ServerValue.increment(-1000));
                 dialog.dismiss();
             }
         });
@@ -261,9 +292,5 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
             }
         });
         dialog.show();
-    }
-
-    private void googleSignOut() {
-
     }
 }
