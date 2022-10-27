@@ -8,10 +8,13 @@
     tools:context=".Difficult.ClassicGameMode"
     android:background="@color/generalBackground">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -29,8 +32,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/pixelstyle"
-                    android:text="Classic game mode"
                     android:gravity="center"
+                    android:text="Classic game mode"
                     android:textColor="@color/generalText"
                     android:textSize="21sp" />
 
@@ -41,8 +44,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/pixelstyle"
-                    android:text="Easy"
                     android:gravity="center"
+                    android:text="Easy"
                     android:textColor="@color/generalText"
                     android:textSize="21sp" />
 
@@ -59,9 +62,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:weightSum="2"
-                    android:layout_weight="1">
+                    android:weightSum="2">
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -73,20 +76,20 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/pixelstyle"
                             android:text="Time"
-                            android:textSize="30sp"
                             android:textColor="@color/generalText"
-                            android:fontFamily="@font/pixelstyle"/>
+                            android:textSize="30sp" />
 
                         <TextView
                             android:id="@+id/TimeTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/pixelstyle"
                             android:paddingTop="10dp"
                             android:text="30s"
                             android:textColor="@color/generalText"
-                            android:textSize="20sp"
-                            android:fontFamily="@font/pixelstyle"/>
+                            android:textSize="20sp" />
 
                     </LinearLayout>
 
@@ -94,17 +97,17 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:fontFamily="@font/pixelstyle"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:fontFamily="@font/pixelstyle">
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/pixelstyle"
                             android:text="Questions"
-                            android:textSize="30sp"
                             android:textColor="@color/generalText"
-                            android:fontFamily="@font/pixelstyle"/>
+                            android:textSize="30sp" />
 
                         <TextView
                             android:id="@+id/total_question"
@@ -119,12 +122,12 @@
                     </LinearLayout>
 
 
-
                 </LinearLayout>
+
                 <LinearLayout
-                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1">
 
                     <LinearLayout
@@ -138,11 +141,11 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Correct/Wrong"
-                            android:textSize="30sp"
-                            android:textColor="@color/generalText"
                             android:layout_weight="1"
-                            android:fontFamily="@font/pixelstyle"/>
+                            android:fontFamily="@font/pixelstyle"
+                            android:text="Correct/Wrong"
+                            android:textColor="@color/generalText"
+                            android:textSize="30sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -154,30 +157,28 @@
                                 android:id="@+id/correct_answer"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="0"
-                                android:textColor="@color/generalText"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/pixelstyle"
-                                android:textFontWeight="1"
                                 android:gravity="center"
-                                android:textSize="20sp"/>
+                                android:text="0"
+                                android:textColor="@color/generalText"
+                                android:textFontWeight="1"
+                                android:textSize="20sp" />
 
                             <TextView
                                 android:id="@+id/wrong_answer"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/pixelstyle"
+                                android:gravity="center"
                                 android:text="0"
                                 android:textColor="@color/generalText"
-                                android:fontFamily="@font/pixelstyle"
-                                android:layout_weight="1"
                                 android:textFontWeight="1"
-                                android:gravity="center"
-                                android:textSize="20sp"/>
+                                android:textSize="20sp" />
 
 
                         </LinearLayout>
-
-
 
 
                     </LinearLayout>
@@ -188,9 +189,7 @@
         </RelativeLayout>
     </LinearLayout>
 
-
-
-        <Button
+    <Button
             android:id="@+id/button0"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="140dp"
