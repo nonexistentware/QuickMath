@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nonexistentware.quickmath.Activity.SelectGameActivity;
 import com.nonexistentware.quickmath.Difficult.FirstMistakeGameMode;
 import com.nonexistentware.quickmath.R;
 // игра до первой ошибки. количество правильных ответов превращается в очки. доступен в определенное время. например раз в неделю
@@ -44,10 +45,10 @@ public class FirstMistakeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 aboutMode.setVisibility(View.VISIBLE);
                 hideBtn.setVisibility(View.VISIBLE);
-                aboutMode.setText("Rules: \n Try to play with out any mistakes. If you do it - game stops. " +
-                        "\n Each question = 1 score for you. Game mode does nor available daily.");
-
-
+                aboutMode.setText("Rules: \n Try to play with out any mistakes. If you get one - game will stops without score saving." +
+                        "\n Each question = 1 score for you. Game mode does nor available daily." +
+                        "\n For save the scores toy need to go through 100 questions. If you complete this, all scores will go to your account" +
+                        "\n If you leave the game scores won't be added to your account.");
             }
         });
 
@@ -68,8 +69,6 @@ public class FirstMistakeActivity extends AppCompatActivity {
         });
 
     }
-
-
 
     private void startGamePopup() {
         final Dialog readyDialog = new Dialog(FirstMistakeActivity.this);

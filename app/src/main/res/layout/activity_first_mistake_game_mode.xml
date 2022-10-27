@@ -118,9 +118,37 @@
 
                     </LinearLayout>
 
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mandatory scores."
+                        android:gravity="center"
+                        android:textColor="@color/generalText"
+                        android:fontFamily="@font/pixelstyle"
+                        android:textSize="20sp"/>
+
+
+                    <TextView
+                        android:id="@+id/first_mistake_questions_to_pass_counter_down"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="20dp"
+                        android:text="100"
+                        android:gravity="center"
+                        android:textColor="@color/generalText"
+                        android:textSize="30sp"
+                        android:fontFamily="@font/pixelstyle"/>
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"

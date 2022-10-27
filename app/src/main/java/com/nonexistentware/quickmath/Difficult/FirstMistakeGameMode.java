@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +18,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
+import com.nonexistentware.quickmath.Activity.EndGameActivity;
 import com.nonexistentware.quickmath.Activity.SelectGameActivity;
 import com.nonexistentware.quickmath.R;
 
@@ -39,6 +42,8 @@ public class FirstMistakeGameMode extends AppCompatActivity {
     ArrayList<Integer> answers = new ArrayList<Integer>();
     int correctPoints = 0;
     int wrongPoints = 0;
+    int mastScores = 0; // обязательные очки для продоложенимя игры после их достижения сотальные добавятся на аккаунт игрока + обязательные очки
+    int staticScore = 100; // очки для добавления в аккаунт пользователя 
 
     private FirebaseAuth auth;
     private FirebaseUser user;
@@ -104,6 +109,9 @@ public class FirstMistakeGameMode extends AppCompatActivity {
         } else {
             wrongPoints++;
             Toast.makeText(this, "Fuck", Toast.LENGTH_SHORT).show();
+            playedGamesCounter();
+            startActivity(new Intent(getApplicationContext(), EndGameActivity.class));
+            finish();
         }
         NextQuestion();
     }
@@ -128,9 +136,38 @@ public class FirstMistakeGameMode extends AppCompatActivity {
         });
     }
 
+    private void attemptsToStartTheGame(){
+        databaseReference.child(auth.getCurrentUser().getUid()).child("attemptsToStartTheGame").setValue(ServerValue.increment(1));
+    }
+
+    private void playedGamesCounter() {
+        databaseReference.child("totalPlayedGamesCounter").setValue(ServerValue.increment(1));
+    }
+
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(getApplicationContext(), SelectGameActivity.class));
-        finish();
+        final Dialog dialog = new Dialog(FirstMistakeGameMode.this);
+        dialog.setContentView(R.layout.alert_dialog_exit);
+        dialog.setCancelable(true);
+
+        TextView yesBtn = dialog.findViewById(R.id.alert_dialog_exit_positive_btn);
+        TextView noBtn = dialog.findViewById(R.id.alert_dialog_exit_negative_btn);
+
+        yesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                attemptsToStartTheGame();
+                startActivity(new Intent(getApplicationContext(), SelectGameActivity.class));
+                finish();
+            }
+        });
+
+        noBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }
