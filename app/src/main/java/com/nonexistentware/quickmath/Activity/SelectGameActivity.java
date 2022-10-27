@@ -35,7 +35,7 @@ import com.squareup.picasso.Picasso;
 
 public class SelectGameActivity extends AppCompatActivity {
 
-    TextView aboutAppBtn, classicModeBtn, timeAttackModeBtn, topPlayersBtn, scoreCounterTxt, duelWinCounterTxt, levelCounterTxt, playerGoogleName, signOut;
+    TextView aboutAppBtn, classicModeBtn, firstMistake, timeAttackModeBtn, topPlayersBtn, scoreCounterTxt, duelWinCounterTxt, levelCounterTxt, playerGoogleName, signOut;
     ImageView playerIconImg;
 
     private FirebaseAuth auth;
@@ -65,6 +65,7 @@ public class SelectGameActivity extends AppCompatActivity {
         //to activity
         classicModeBtn = findViewById(R.id.dashboard_to_classic_game_mode);
         timeAttackModeBtn = findViewById(R.id.dashboard_to_time_attack_mode);
+        firstMistake = findViewById(R.id.dashboard_to_first_mistake_mode);
         topPlayersBtn = findViewById(R.id.dashboard_leadership_table);
         aboutAppBtn = findViewById(R.id.dashboard_about_app);
 
@@ -106,6 +107,14 @@ public class SelectGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+
+        firstMistake.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), FirstMistakeActivity.class));
+                finish();
             }
         });
 

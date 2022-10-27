@@ -31,7 +31,9 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="30px"
             android:weightSum="3">
 
             <TextView

@@ -120,7 +120,7 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
         });
     }
 
-    private void removeDataFromList() {
+    private void removeDataFromList() { //check if score is enough to remove player from leader ship table
         databaseReference.child(auth.getCurrentUser().getUid()).child("playerScore").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -292,5 +292,11 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(), SelectGameActivity.class));
+        finish();
     }
 }

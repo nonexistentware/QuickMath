@@ -170,6 +170,17 @@
                 android:textSize="20sp"/>
 
             <TextView
+                android:id="@+id/dashboard_to_first_mistake_mode"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="First mistake"
+                android:textColor="@color/generalText"
+                android:gravity="center"
+                android:fontFamily="@font/pixelstyle"
+                android:textSize="20sp"/>
+
+            <TextView
                 android:id="@+id/dashboard_leadership_table"
                 android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
