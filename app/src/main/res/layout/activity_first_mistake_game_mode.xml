@@ -127,6 +127,7 @@
                     android:layout_marginTop="10dp">
 
                     <TextView
+                        android:id="@+id/first_mistake_must_score_banner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Mandatory scores."
@@ -140,8 +141,7 @@
                         android:id="@+id/first_mistake_questions_to_pass_counter_down"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="20dp"
-                        android:text="100"
+                        android:text="000"
                         android:gravity="center"
                         android:textColor="@color/generalText"
                         android:textSize="30sp"

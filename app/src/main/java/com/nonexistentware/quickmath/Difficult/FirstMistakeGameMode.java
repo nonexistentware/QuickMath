@@ -29,7 +29,7 @@ import java.util.Random;
 
 public class FirstMistakeGameMode extends AppCompatActivity {
 
-    TextView scoreCounter, questionCounter, questionView;
+    TextView scoreCounter, questionCounter, questionView, mustScoreTxt, mustScoreBanner;
     Button button0;
     Button button1;
     Button button2;
@@ -43,7 +43,18 @@ public class FirstMistakeGameMode extends AppCompatActivity {
     int correctPoints = 0;
     int wrongPoints = 0;
     int mastScores = 0; // обязательные очки для продоложенимя игры после их достижения сотальные добавятся на аккаунт игрока + обязательные очки
-    int staticScore = 100; // очки для добавления в аккаунт пользователя 
+    int mustScore = 2; // очки для добавления в аккаунт пользователя
+
+    //data to transfer
+    public static final String EXTRA_NUMBER_NGTV = "com.nonexistentware.quickmath.Difficult.EXTRA_NUMBER_NGTV";
+    public static final String EXTRA_NUMBER_PSTV = "com.nonexistentware.quickmath.Difficult.EXTRA_NUMBER_PSTV";
+    public static final String EXTRA_TIME_LEFT = "com.nonexistentware.quickmath.Difficult.EXTRA_TIME_LEFT";
+    public static final String EXTRA_DIFFICULT_LEVEL = "com.nonexistentware.quickmath.Difficult.EXTRA_DIFFICULT_LEVEL";
+    public static final String EXTRA_TIME_REMAIN = "com.nonexistentware.quickmath.Difficult.EXTRA_TIME_REMAIN";
+    public static final String EXTRA_LEVEL_INCREASE_COUNTER = "com.nonexistentware.quickmath.Difficult.EXTRA_INCREASE_COUNTER";
+    public static final String EXTRA_GAME_MODE = "com.nonexistentware.quickmath.Difficult.EXTRA_GAME_TYPE";
+    public static final String EXTRA_QUESTIONS_LEFT = "com.nonexistentware.quickmath.Difficult.EXTRA_QUESTIONS_LEFT";
+
 
     private FirebaseAuth auth;
     private FirebaseUser user;
@@ -58,6 +69,8 @@ public class FirstMistakeGameMode extends AppCompatActivity {
         scoreCounter = findViewById(R.id.first_mistake_score_counter);
         questionView = findViewById(R.id.first_mistake_question_vew);
         questionCounter = findViewById(R.id.first_mistake_question_done_counter);
+        mustScoreTxt = findViewById(R.id.first_mistake_questions_to_pass_counter_down);
+        mustScoreBanner = findViewById(R.id.first_mistake_must_score_banner);
 
         button0 = findViewById(R.id.fm_button0);
         button1 = findViewById(R.id.fm_button1);
@@ -71,6 +84,7 @@ public class FirstMistakeGameMode extends AppCompatActivity {
 
         NextQuestion();
         loadPlayerData();
+        mustScoreTxt.setText(Integer.toString(mustScore));
     }
 
     @SuppressLint("SetTextI18n")
@@ -104,12 +118,18 @@ public class FirstMistakeGameMode extends AppCompatActivity {
     public void optionSelect(View view) {
         if (Integer.toString(indexOfCorrectAnswer).equals(view.getTag().toString())) {
             correctPoints++;
+            mustScore--;
+            mustScoreTxt.setText(Integer.toString(mustScore));
+            scoreToCheck();
             questionCounter.setText(Integer.toString(correctPoints));
+//            timeLocker();
              // if player answer all questions redirect to activity end
         } else {
             wrongPoints++;
             Toast.makeText(this, "Fuck", Toast.LENGTH_SHORT).show();
             playedGamesCounter();
+            scoreToSave();
+            timeLocker();
             startActivity(new Intent(getApplicationContext(), EndGameActivity.class));
             finish();
         }
@@ -136,12 +156,32 @@ public class FirstMistakeGameMode extends AppCompatActivity {
         });
     }
 
+    private void scoreToCheck() {
+        if (mustScore == 0) {
+            mustScoreTxt.setVisibility(View.INVISIBLE);
+            mustScoreBanner.setText("Task completed!");
+        }
+    }
+
+    private void scoreToSave() {
+        if (mustScore == 0) {
+            String txtTotalQuestionCounter = questionCounter.getText().toString();
+            long longQuestionDoneCounter = 0;
+            longQuestionDoneCounter = Long.parseLong(txtTotalQuestionCounter);
+            databaseReference.child(auth.getCurrentUser().getUid()).child("playerScore").setValue(ServerValue.increment(longQuestionDoneCounter));
+        }
+    }
+
+    private void timeLocker() {
+        databaseReference.child(auth.getCurrentUser().getUid()).child("firstMistakeLocker").setValue("1");
+    }
+
     private void attemptsToStartTheGame(){
         databaseReference.child(auth.getCurrentUser().getUid()).child("attemptsToStartTheGame").setValue(ServerValue.increment(1));
     }
 
     private void playedGamesCounter() {
-        databaseReference.child("totalPlayedGamesCounter").setValue(ServerValue.increment(1));
+        databaseReference.child(auth.getCurrentUser().getUid()).child("totalPlayedGamesCounter").setValue(ServerValue.increment(1));
     }
 
     @Override
