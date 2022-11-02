@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.nonexistentware.quickmath.Activity.EndGameActivity;
+import com.nonexistentware.quickmath.Activity.EndGameActivity2;
 import com.nonexistentware.quickmath.Activity.SelectGameActivity;
 import com.nonexistentware.quickmath.R;
 
@@ -29,7 +30,7 @@ import java.util.Random;
 
 public class FirstMistakeGameMode extends AppCompatActivity {
 
-    TextView scoreCounter, questionCounter, questionView, mustScoreTxt, mustScoreBanner;
+    TextView scoreCounter, questionCounter, questionView, mustScoreTxt, mustScoreBanner, wrongTxt, difficultLevel, firstMistakeMode;
     Button button0;
     Button button1;
     Button button2;
@@ -46,14 +47,12 @@ public class FirstMistakeGameMode extends AppCompatActivity {
     int mustScore = 2; // очки для добавления в аккаунт пользователя
 
     //data to transfer
-    public static final String EXTRA_NUMBER_NGTV = "com.nonexistentware.quickmath.Difficult.EXTRA_NUMBER_NGTV";
-    public static final String EXTRA_NUMBER_PSTV = "com.nonexistentware.quickmath.Difficult.EXTRA_NUMBER_PSTV";
-    public static final String EXTRA_TIME_LEFT = "com.nonexistentware.quickmath.Difficult.EXTRA_TIME_LEFT";
-    public static final String EXTRA_DIFFICULT_LEVEL = "com.nonexistentware.quickmath.Difficult.EXTRA_DIFFICULT_LEVEL";
-    public static final String EXTRA_TIME_REMAIN = "com.nonexistentware.quickmath.Difficult.EXTRA_TIME_REMAIN";
-    public static final String EXTRA_LEVEL_INCREASE_COUNTER = "com.nonexistentware.quickmath.Difficult.EXTRA_INCREASE_COUNTER";
-    public static final String EXTRA_GAME_MODE = "com.nonexistentware.quickmath.Difficult.EXTRA_GAME_TYPE";
-    public static final String EXTRA_QUESTIONS_LEFT = "com.nonexistentware.quickmath.Difficult.EXTRA_QUESTIONS_LEFT";
+    public static final String FIRST_MISTAKE_EXTRA_NUMBER_NGTV = "com.nonexistentware.quickmath.Difficult.EXTRA_NUMBER_NGTV";
+    public static final String FIRST_MISTAKE_EXTRA_NUMBER_PSTV = "com.nonexistentware.quickmath.Difficult.EXTRA_NUMBER_PSTV";
+    public static final String FIRST_MISTAKE_EXTRA_TIME_LEFT = "com.nonexistentware.quickmath.Difficult.EXTRA_TIME_LEFT";
+    public static final String FIRST_MISTAKE_EXTRA_DIFFICULT_LEVEL = "com.nonexistentware.quickmath.Difficult.EXTRA_DIFFICULT_LEVEL";
+    public static final String FIRST_MISTAKE_EXTRA_GAME_MODE = "com.nonexistentware.quickmath.Difficult.EXTRA_GAME_TYPE";
+    public static final String FIRST_MISTAKE_EXTRA_MUNDATORY_QUESTIONS_LEFT = "com.nonexistentware.quickmath.Difficult.EXTRA_QUESTIONS_LEFT";
 
 
     private FirebaseAuth auth;
@@ -71,6 +70,9 @@ public class FirstMistakeGameMode extends AppCompatActivity {
         questionCounter = findViewById(R.id.first_mistake_question_done_counter);
         mustScoreTxt = findViewById(R.id.first_mistake_questions_to_pass_counter_down);
         mustScoreBanner = findViewById(R.id.first_mistake_must_score_banner);
+        wrongTxt = findViewById(R.id.first_mistake_questions_wrong_txt);
+        difficultLevel = findViewById(R.id.difficulty_level_first_mistake);
+        firstMistakeMode = findViewById(R.id.first_mistake_game_mode);
 
         button0 = findViewById(R.id.fm_button0);
         button1 = findViewById(R.id.fm_button1);
@@ -126,14 +128,36 @@ public class FirstMistakeGameMode extends AppCompatActivity {
              // if player answer all questions redirect to activity end
         } else {
             wrongPoints++;
+            wrongTxt.setText(Integer.toString(wrongPoints));
+            mustScoreBanner.setText("Task failed!");
+            mustScoreTxt.setVisibility(View.INVISIBLE);
             Toast.makeText(this, "Fuck", Toast.LENGTH_SHORT).show();
             playedGamesCounter();
             scoreToSave();
             timeLocker();
-            startActivity(new Intent(getApplicationContext(), EndGameActivity.class));
-            finish();
+            firstMistakeDone();
+            firstMistakeDone();
+//            startActivity(new Intent(getApplicationContext(), EndGameActivity2.class));
+//            finish();
         }
         NextQuestion();
+    }
+
+    private void firstMistakeDone() {
+        button0.setEnabled(false);
+        button1.setEnabled(false);
+        button2.setEnabled(false);
+        button3.setEnabled(false);
+        Intent transferIntent = new Intent(getBaseContext(), EndGameActivity2.class);
+        int numberNGTV = Integer.parseInt((wrongTxt.getText().toString()));
+        transferIntent.putExtra(FIRST_MISTAKE_EXTRA_NUMBER_NGTV, numberNGTV);
+        int numberPSTV = Integer.parseInt(questionCounter.getText().toString());
+        transferIntent.putExtra(FIRST_MISTAKE_EXTRA_NUMBER_PSTV, numberPSTV);
+        transferIntent.putExtra(FIRST_MISTAKE_EXTRA_DIFFICULT_LEVEL, difficultLevel.getText().toString());
+        transferIntent.putExtra(FIRST_MISTAKE_EXTRA_GAME_MODE, firstMistakeMode.getText().toString());
+        startActivity(transferIntent);
+        finish();
+
     }
 
     private void loadPlayerData() {
@@ -187,7 +211,7 @@ public class FirstMistakeGameMode extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         final Dialog dialog = new Dialog(FirstMistakeGameMode.this);
-        dialog.setContentView(R.layout.alert_dialog_exit);
+        dialog.setContentView(R.layout.alert_dialog_first_mistake);
         dialog.setCancelable(true);
 
         TextView yesBtn = dialog.findViewById(R.id.alert_dialog_exit_positive_btn);

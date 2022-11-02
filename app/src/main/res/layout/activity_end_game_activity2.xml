@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/generalBackground"
+    tools:context=".Activity.EndGameActivity2">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="405dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/end2_user_profile_img"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="45dp"
+                android:src="@drawable/pixel_google" />
+
+            <TextView
+                android:id="@+id/end2_player_google_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="User Name"
+                android:textColor="@color/generalText"
+                android:textSize="21sp"
+                android:fontFamily="@font/pixelstyle"/>
+
+            <TextView
+                android:id="@+id/end2_game_difficult_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="Difficult"
+                android:textColor="@color/generalText"
+                android:textSize="21sp"
+                android:fontFamily="@font/pixelstyle"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/end2_game_game_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Game mode"
+                android:layout_gravity="center"
+                android:textColor="@color/generalText"
+                android:textSize="20sp"
+                android:fontFamily="@font/pixelstyle"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mandatory questions left: "
+                    android:textColor="@color/generalText"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/pixelstyle"
+                    android:gravity="right"/>
+
+                <TextView
+                    android:id="@+id/end2_game_questionsq_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="000"
+                    android:textColor="@color/generalText"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/pixelstyle"
+                    android:layout_weight="1"
+                    android:gravity="left"/>
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/end_win_defeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correct/Wrong"
+                android:layout_gravity="center"
+                android:textColor="@color/generalText"
+                android:textSize="21sp"
+                android:fontFamily="@font/pixelstyle"/>
+
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/end2_game_correct_counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pixelstyle"
+                    android:text="0"
+                    android:gravity="center"
+                    android:textColor="@color/generalText"
+                    android:textSize="21sp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/end2_game_wrong_counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pixelstyle"
+                    android:text="0"
+                    android:gravity="center"
+                    android:textColor="@color/generalText"
+                    android:textSize="21sp"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="400dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="300dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Score"
+                        android:textSize="20sp"
+                        android:textColor="@color/generalText"
+                        android:fontFamily="@font/pixelstyle"/>
+
+                    <TextView
+                        android:id="@+id/end2_game_score_counter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:text="125"
+                        android:textColor="@color/generalText"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/pixelstyle"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Level"
+                        android:textColor="@color/generalText"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/pixelstyle"/>
+
+                    <TextView
+                        android:id="@+id/end2_game_level_counter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:text="360"
+                        android:textColor="@color/generalText"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/pixelstyle"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="45dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+<!--            <TextView-->
+<!--                android:id="@+id/end2_game_play_again"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Play again?"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textColor="@color/generalText"-->
+<!--                android:fontFamily="@font/pixelstyle"/>-->
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/end2_time_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Time blocker is on"
+            android:textColor="@color/generalText"
+            android:textSize="20sp"
+            android:fontFamily="@font/pixelstyle"/>
+
+        <LinearLayout
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/end2_share_result"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Share your result"
+                android:textColor="@color/generalText"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:fontFamily="@font/pixelstyle"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add to group"
+                android:textColor="@color/generalBackground"
+                android:fontFamily="@font/pixelstyle"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Show all comments"
+                android:textColor="@color/generalBackground"
+                android:fontFamily="@font/pixelstyle"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/end2_back_to_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back to dashboard"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/generalText"
+        android:fontFamily="@font/pixelstyle"/>
+
+</LinearLayout>

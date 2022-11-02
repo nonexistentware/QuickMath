@@ -23,7 +23,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/classic_game_mode"
+                    android:id="@+id/first_mistake_game_mode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -35,7 +35,7 @@
                     android:textSize="21sp" />
 
                 <TextView
-                    android:id="@+id/difficulty_level_classic_game_mode"
+                    android:id="@+id/difficulty_level_first_mistake"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -145,6 +145,16 @@
                         android:gravity="center"
                         android:textColor="@color/generalText"
                         android:textSize="30sp"
+                        android:fontFamily="@font/pixelstyle"/>
+
+                    <TextView
+                        android:id="@+id/first_mistake_questions_wrong_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="30sp"
+                        android:text="0"
+                        android:textColor="@color/white"
                         android:fontFamily="@font/pixelstyle"/>
 
                 </LinearLayout>

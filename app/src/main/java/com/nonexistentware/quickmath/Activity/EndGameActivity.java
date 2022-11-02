@@ -177,4 +177,10 @@ public class EndGameActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(), SelectGameActivity.class));
+        finish();
+    }
 }
