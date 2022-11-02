@@ -57,11 +57,13 @@ public class EndGameActivity2 extends AppCompatActivity {
         Intent intent = getIntent();
         int numberNGTV = intent.getIntExtra(FirstMistakeGameMode.FIRST_MISTAKE_EXTRA_NUMBER_NGTV, 0);
         int numberPSTV = intent.getIntExtra(FirstMistakeGameMode.FIRST_MISTAKE_EXTRA_NUMBER_PSTV, 0);
+        int mandatoryLeft = intent.getIntExtra(FirstMistakeGameMode.FIRST_MISTAKE_EXTRA_MANDATORY_LEFT, 0);
         String difLevel = intent.getStringExtra(FirstMistakeGameMode.FIRST_MISTAKE_EXTRA_DIFFICULT_LEVEL);
         String gameTypeMode = intent.getStringExtra(FirstMistakeGameMode.FIRST_MISTAKE_EXTRA_GAME_MODE);
 
         wrongCounter.setText("" + numberNGTV);
         correctCounter.setText("" + numberPSTV);
+        questionsLeft.setText("" + mandatoryLeft);
         difficultyLevel.setText(difLevel);
         gameMode.setText(gameTypeMode);
 

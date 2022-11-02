@@ -49,10 +49,9 @@ public class FirstMistakeGameMode extends AppCompatActivity {
     //data to transfer
     public static final String FIRST_MISTAKE_EXTRA_NUMBER_NGTV = "com.nonexistentware.quickmath.Difficult.EXTRA_NUMBER_NGTV";
     public static final String FIRST_MISTAKE_EXTRA_NUMBER_PSTV = "com.nonexistentware.quickmath.Difficult.EXTRA_NUMBER_PSTV";
-    public static final String FIRST_MISTAKE_EXTRA_TIME_LEFT = "com.nonexistentware.quickmath.Difficult.EXTRA_TIME_LEFT";
     public static final String FIRST_MISTAKE_EXTRA_DIFFICULT_LEVEL = "com.nonexistentware.quickmath.Difficult.EXTRA_DIFFICULT_LEVEL";
     public static final String FIRST_MISTAKE_EXTRA_GAME_MODE = "com.nonexistentware.quickmath.Difficult.EXTRA_GAME_TYPE";
-    public static final String FIRST_MISTAKE_EXTRA_MUNDATORY_QUESTIONS_LEFT = "com.nonexistentware.quickmath.Difficult.EXTRA_QUESTIONS_LEFT";
+    public static final String FIRST_MISTAKE_EXTRA_MANDATORY_LEFT = "com.nonexistentware.quickmath.Difficult.EXTRA_MANDATORY_LEFT";
 
 
     private FirebaseAuth auth;
@@ -153,6 +152,8 @@ public class FirstMistakeGameMode extends AppCompatActivity {
         transferIntent.putExtra(FIRST_MISTAKE_EXTRA_NUMBER_NGTV, numberNGTV);
         int numberPSTV = Integer.parseInt(questionCounter.getText().toString());
         transferIntent.putExtra(FIRST_MISTAKE_EXTRA_NUMBER_PSTV, numberPSTV);
+        int mandatoryLeft = Integer.parseInt(mustScoreTxt.getText().toString());
+        transferIntent.putExtra(FIRST_MISTAKE_EXTRA_MANDATORY_LEFT, mandatoryLeft);
         transferIntent.putExtra(FIRST_MISTAKE_EXTRA_DIFFICULT_LEVEL, difficultLevel.getText().toString());
         transferIntent.putExtra(FIRST_MISTAKE_EXTRA_GAME_MODE, firstMistakeMode.getText().toString());
         startActivity(transferIntent);
@@ -197,7 +198,7 @@ public class FirstMistakeGameMode extends AppCompatActivity {
     }
 
     private void timeLocker() {
-        databaseReference.child(auth.getCurrentUser().getUid()).child("firstMistakeLocker").setValue("1");
+        databaseReference.child(auth.getCurrentUser().getUid()).child("firstMistakeTimeLocker").setValue("1");
     }
 
     private void attemptsToStartTheGame(){
