@@ -35,7 +35,7 @@
                 android:textColor="@color/generalText"
                 android:gravity="center"
                 android:fontFamily="@font/pixelstyle"
-                android:text="Play without login"
+                android:text="Play   offline"
                 android:textSize="30sp"/>
 
         <TextView

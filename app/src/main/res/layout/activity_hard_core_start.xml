@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.HardCoreStartActivity"
+    android:background="@color/generalBackground">
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/pixelstyle"
+            android:gravity="center"
+            android:text="Nightmare"
+            android:textColor="@color/generalText"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:id="@+id/satan_start_gif"
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:layout_gravity="center"
+            android:src="@drawable/pentagram_anim"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/pixelstyle"
+            android:gravity="center"
+            android:text="Game mode has no difficult level"
+            android:textColor="@color/generalText"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/dif_level_easy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/generalText"
+                android:textSize="20sp"
+                android:text="Easy"
+                android:gravity="right"
+                android:fontFamily="@font/pixelstyle"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/difficult_select_easy_mark_img"
+                android:layout_width="wrap_content"
+                android:layout_height="50px"
+                android:src="@drawable/question_mark"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/dif_level_medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/generalText"
+                android:textSize="20sp"
+                android:text="Medium"
+                android:gravity="right"
+                android:fontFamily="@font/pixelstyle"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/difficult_select_medium_mark_img"
+                android:layout_width="wrap_content"
+                android:layout_height="50px"
+                android:src="@drawable/question_mark"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/dif_level_hard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/generalText"
+                android:textSize="20sp"
+                android:text="Hard"
+                android:gravity="right"
+                android:fontFamily="@font/pixelstyle"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/difficult_select_hard_mark_img"
+                android:layout_width="wrap_content"
+                android:layout_height="50px"
+                android:src="@drawable/question_mark"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/dif_select_activity_about_changeable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="About game mode"
+                android:textSize="20dp"
+                android:textColor="@color/generalText"
+                android:fontFamily="@font/pixelstyle"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/dif_select_hide_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="hide"
+                android:gravity="center"
+                android:textColor="@color/generalText"
+                android:fontFamily="@font/pixelstyle"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/dif_select_back_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Back to dashboard"
+                android:gravity="center"
+                android:textColor="@color/generalText"
+                android:fontFamily="@font/pixelstyle"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

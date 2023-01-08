@@ -5,9 +5,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +43,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.nonexistentware.quickmath.Difficult.OfflineGameModeActivity;
 import com.nonexistentware.quickmath.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -70,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         auth = FirebaseAuth.getInstance();
+        checkConnection();
 
         mGoogleLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         noLoginPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), SelectGameActivity.class));
+                startActivity(new Intent(getApplicationContext(), OfflineGameModeActivity.class));
                 finish();
             }
         });
@@ -159,6 +165,44 @@ public class MainActivity extends AppCompatActivity {
     private void updateUI() {
         startActivity(new Intent(getApplicationContext(), SelectGameActivity.class));
         finish();
+    }
+
+    private void checkConnection() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+        if (networkInfo == null || !networkInfo.isConnected() || !networkInfo.isAvailable()) {
+            connectionAlertDialog();
+        }
+    }
+
+    private void connectionAlertDialog() {
+        final Dialog dialog = new Dialog(MainActivity.this);
+        dialog.setContentView(R.layout.alert_network_error);
+        dialog.setCancelable(true);
+
+        TextView reloadBtn = dialog.findViewById(R.id.alert_dialog_network_error_reload_btn);
+        TextView toSettingsBtn = dialog.findViewById(R.id.alert_dialog_network_error_to_settings_btn);
+
+        reloadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent reload = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(reload);
+                finish();
+            }
+        });
+
+        toSettingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+                finish();
+            }
+        });
+
+        dialog.show();
+
     }
 
     @Override

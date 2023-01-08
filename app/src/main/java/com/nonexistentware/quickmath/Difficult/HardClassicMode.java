@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.nonexistentware.quickmath.Activity.EndGameActivity;
+import com.nonexistentware.quickmath.Activity.HardCoreStartActivity;
 import com.nonexistentware.quickmath.Activity.SelectGameActivity;
 import com.nonexistentware.quickmath.R;
 
@@ -62,6 +64,7 @@ public class HardClassicMode extends AppCompatActivity {
     int totalQuestionToLow = 60; //total questions counter
     int attempts = 3; //attempts per day. Drop after specific hour
     long levelIncrease = 0; // in case correct points == totalQuestionsToLow level will be increased
+    int hardCoreCounter = 0;
 
 
     private FirebaseAuth auth;
@@ -102,6 +105,13 @@ public class HardClassicMode extends AppCompatActivity {
 
         countDownTimer();
         loadPlayerData();
+
+        difficultyLevelTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToHardCore();
+            }
+        });
 //        textViewBlink();
     }
 
@@ -287,6 +297,16 @@ public class HardClassicMode extends AppCompatActivity {
         long longTimeRemain = 0;
         longTimeRemain = Long.parseLong(txtTimeCounter);
         databaseReference.child("playerScore").setValue(ServerValue.increment(longTimeRemain));
+
+    }
+
+    public void goToHardCore() {
+        hardCoreCounter++;
+        if (hardCoreCounter == 3) {
+            startActivity(new Intent(getApplicationContext(), HardCoreStartActivity.class));
+            finish();
+//            Toast.makeText(this, "It works", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
