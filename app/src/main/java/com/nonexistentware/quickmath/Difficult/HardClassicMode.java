@@ -304,6 +304,7 @@ public class HardClassicMode extends AppCompatActivity {
         hardCoreCounter++;
         if (hardCoreCounter == 3) {
             startActivity(new Intent(getApplicationContext(), HardCoreStartActivity.class));
+            countDownTimer.cancel();
             finish();
 //            Toast.makeText(this, "It works", Toast.LENGTH_SHORT).show();
         }

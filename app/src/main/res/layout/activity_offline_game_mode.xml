@@ -34,17 +34,6 @@
                     android:textColor="@color/generalText"
                     android:textSize="21sp" />
 
-                <TextView
-                    android:id="@+id/difficulty_level_classic_game_mode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/pixelstyle"
-                    android:text="Hard"
-                    android:gravity="center"
-                    android:textColor="@color/generalText"
-                    android:textSize="21sp" />
 
             </LinearLayout>
 
@@ -79,7 +68,7 @@
                             android:fontFamily="@font/pixelstyle"/>
 
                         <TextView
-                            android:id="@+id/TimeTextView"
+                            android:id="@+id/TimeTextView_offline"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="10dp"
@@ -107,7 +96,7 @@
                             android:fontFamily="@font/pixelstyle"/>
 
                         <TextView
-                            android:id="@+id/total_question"
+                            android:id="@+id/total_question_offline"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="10dp"
@@ -151,7 +140,7 @@
                             android:weightSum="2">
 
                             <TextView
-                                android:id="@+id/correct_answer"
+                                android:id="@+id/correct_answer_offline"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
@@ -163,7 +152,7 @@
                                 android:textSize="20sp"/>
 
                             <TextView
-                                android:id="@+id/wrong_answer"
+                                android:id="@+id/wrong_answer_offline"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
@@ -193,7 +182,7 @@
 
 
     <Button
-        android:id="@+id/button0"
+        android:id="@+id/button0_offline"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="140dp"
         android:layout_height="105dp"
@@ -206,13 +195,13 @@
         android:text="Button"
         android:textColor="@color/generalText"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/button2_offline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/QuestionTextView"
+        app:layout_constraintTop_toBottomOf="@+id/QuestionTextView_offline"
         android:fontFamily="@font/pixelstyle"/>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/button1_offline"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="140dp"
         android:layout_height="105dp"
@@ -227,14 +216,14 @@
         android:text="Button"
         android:textColor="@color/generalText"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/button3_offline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/QuestionTextView"
+        app:layout_constraintTop_toBottomOf="@+id/QuestionTextView_offline"
         android:fontFamily="@font/pixelstyle"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button2_offline"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="140dp"
         android:layout_height="105dp"
@@ -250,14 +239,14 @@
         android:textColor="@color/generalText"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/button3_offline"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button0"
+        app:layout_constraintTop_toBottomOf="@+id/button0_offline"
         android:fontFamily="@font/pixelstyle"/>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button3_offline"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="140dp"
         android:layout_height="105dp"
@@ -276,13 +265,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button1"
+        app:layout_constraintTop_toBottomOf="@+id/button1_offline"
         android:fontFamily="@font/pixelstyle"/>
 
 
     <TextView
         android:layout_marginTop="70dp"
-        android:id="@+id/QuestionTextView"
+        android:id="@+id/QuestionTextView_offline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="29*12"
