@@ -183,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView reloadBtn = dialog.findViewById(R.id.alert_dialog_network_error_reload_btn);
         TextView toSettingsBtn = dialog.findViewById(R.id.alert_dialog_network_error_to_settings_btn);
+        TextView closeAlert = dialog.findViewById(R.id.alert_dialog_network_error_dismiss_btn);
 
         reloadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -198,6 +199,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
                 finish();
+            }
+        });
+
+        closeAlert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
             }
         });
 

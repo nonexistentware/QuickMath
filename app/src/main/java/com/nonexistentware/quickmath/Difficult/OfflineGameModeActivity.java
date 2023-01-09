@@ -8,6 +8,7 @@ import com.nonexistentware.quickmath.R;
 
 public class OfflineGameModeActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
