@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,7 +14,7 @@ import com.nonexistentware.quickmath.R;
 
 public class EndGameActivityOffline extends AppCompatActivity {
 
-    TextView backBtn, correctCounter, wrongCounter, timeRemain, levelCounter, playerName, scoreCounter, difficultyLevel, shareResultBtn, playAgain, gameMode, questionsLeft;
+    TextView backLoginBtn, correctCounter, wrongCounter, timeRemain, levelCounter, playerName, scoreCounter, difficultyLevel, shareResultBtn, playAgain, gameMode, questionsLeft;
     ImageView playerImg;
 
     @Override
@@ -32,6 +33,7 @@ public class EndGameActivityOffline extends AppCompatActivity {
         playerImg = findViewById(R.id.end_offline_user_profile_img);
         gameMode = findViewById(R.id.end_offline_game_game_mode);
         questionsLeft = findViewById(R.id.end_offline_game_questionsq_left);
+        backLoginBtn = findViewById(R.id.end_offline_back_to_login);
 
 //        backBtn = findViewById(R.id.end_offline_back_to_login_screen);
 
@@ -52,6 +54,22 @@ public class EndGameActivityOffline extends AppCompatActivity {
         questionsLeft.setText(questionsLeftDisplayed);
 
 
+
+        playAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), OfflineGameModeActivity.class));
+                finish();
+            }
+        });
+
+        backLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
+            }
+        });
 
     }
 

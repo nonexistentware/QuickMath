@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.nonexistentware.quickmath.Activity.EndGameActivity;
 import com.nonexistentware.quickmath.Activity.EndGameActivityOffline;
+import com.nonexistentware.quickmath.Activity.MainActivity;
 import com.nonexistentware.quickmath.R;
 
 import java.util.ArrayList;
@@ -177,5 +178,11 @@ public class OfflineGameModeActivity extends AppCompatActivity {
             startActivity(transferIntent);
             finish();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        finish();
     }
 }
