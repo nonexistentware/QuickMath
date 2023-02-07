@@ -33,7 +33,7 @@ public class EndGameActivityOffline extends AppCompatActivity {
         gameMode = findViewById(R.id.end_offline_game_game_mode);
         questionsLeft = findViewById(R.id.end_offline_game_questionsq_left);
 
-        backBtn = findViewById(R.id.end_offline_back_to_login_screen);
+//        backBtn = findViewById(R.id.end_offline_back_to_login_screen);
 
         Intent intent = getIntent();
         int numberNGTV = intent.getIntExtra(OfflineGameModeActivity.EXTRA_NUMBER_NGTV_OFFLINE, 0);

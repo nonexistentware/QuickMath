@@ -144,7 +144,7 @@ public class OfflineGameModeActivity extends AppCompatActivity {
                 int numberPSTV = Integer.parseInt(correctTxt.getText().toString());
                 transferIntent.putExtra(EXTRA_NUMBER_PSTV_OFFLINE, numberPSTV);
                 transferIntent.putExtra(EXTRA_TIME_REMAIN_OFFLINE, timerTxt.getText().toString());
-                transferIntent.putExtra(EXTRA_DIFFICULT_LEVEL_OFFLINE, difficultyLevelTxt.getText().toString());
+//                transferIntent.putExtra(EXTRA_DIFFICULT_LEVEL_OFFLINE, difficultyLevelTxt.getText().toString());
                 transferIntent.putExtra(EXTRA_GAME_MODE_OFFLINE, classicGameMode.getText().toString());
                 transferIntent.putExtra(EXTRA_QUESTIONS_LEFT_OFFLINE, totalQuestionTxt.getText().toString());
                 startActivity(transferIntent);
@@ -171,7 +171,7 @@ public class OfflineGameModeActivity extends AppCompatActivity {
             transferIntent.putExtra(EXTRA_NUMBER_PSTV_OFFLINE, numberPSTV);
             transferIntent.putExtra(EXTRA_GAME_MODE_OFFLINE, classicGameMode.getText().toString());
             transferIntent.putExtra(EXTRA_TIME_REMAIN_OFFLINE, timerTxt.getText().toString());
-            transferIntent.putExtra(EXTRA_DIFFICULT_LEVEL_OFFLINE, difficultyLevelTxt.getText().toString());
+//            transferIntent.putExtra(EXTRA_DIFFICULT_LEVEL_OFFLINE, difficultyLevelTxt.getText().toString());
             transferIntent.putExtra(EXTRA_QUESTIONS_LEFT_OFFLINE, totalQuestionTxt.getText().toString());
 //            uploadRemainingTime();                                                                                                //upload time to data base
             startActivity(transferIntent);
