@@ -49,6 +49,11 @@
             android:textSize="30sp"
             android:fontFamily="@font/kongtext"/>
 
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         </LinearLayout>
 
     <LinearLayout
