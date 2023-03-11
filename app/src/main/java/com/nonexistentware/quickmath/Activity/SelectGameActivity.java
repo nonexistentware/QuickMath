@@ -29,6 +29,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.nonexistentware.quickmath.Difficult.TimeAttackActivity;
 import com.nonexistentware.quickmath.Model.PlayerModel;
 import com.nonexistentware.quickmath.R;
 import com.squareup.picasso.Picasso;
@@ -78,6 +79,10 @@ public class SelectGameActivity extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference().child("Players").child(auth.getCurrentUser().getUid());
 
         appUpdateManager = AppUpdateManagerFactory.create(this);
+
+        //hided objects. added after game update
+        duelWinCounterTxt.setVisibility(View.INVISIBLE);
+
         appUpdateManager.getAppUpdateInfo().addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
             @Override
             public void onSuccess(AppUpdateInfo result) {
@@ -106,7 +111,8 @@ public class SelectGameActivity extends AppCompatActivity {
         timeAttackModeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(getApplicationContext(), TimeAttackActivity.class));
+                finish();
             }
         });
 

@@ -84,13 +84,13 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Duel win"
-                        android:textSize="20sp"
-                        android:textColor="@color/generalText"
-                        android:fontFamily="@font/pixelstyle"/>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Duel win"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:textColor="@color/generalText"-->
+<!--                        android:fontFamily="@font/pixelstyle"/>-->
 
                     <TextView
                         android:id="@+id/dashboard_duel_win_counter"
