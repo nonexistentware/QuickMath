@@ -191,9 +191,9 @@ public class FirstMistakeGameMode extends AppCompatActivity {
     }
 
     private void scoreToSave() {
-        if (mustScore == 0) {
+        if (mustScore < correctPoints) {
 //            String txtTotalQuestionCounter = questionCounter.getText().toString();
-            long longQuestionDoneCounter = 0;
+            long longQuestionDoneCounter;
             longQuestionDoneCounter = Long.parseLong(questionCounter.getText().toString());
             databaseReference.child(auth.getCurrentUser().getUid()).child("playerScore").setValue(ServerValue.increment(longQuestionDoneCounter));
         }
