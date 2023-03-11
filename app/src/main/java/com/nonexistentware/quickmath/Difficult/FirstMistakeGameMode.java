@@ -78,6 +78,8 @@ public class FirstMistakeGameMode extends AppCompatActivity {
         button2 = findViewById(R.id.fm_button2);
         button3 = findViewById(R.id.fm_button3);
 
+        wrongTxt.setVisibility(View.INVISIBLE);
+
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Players");
@@ -126,7 +128,7 @@ public class FirstMistakeGameMode extends AppCompatActivity {
 //            timeLocker();
              // if player answer all questions redirect to activity end
         } else {
-            wrongPoints++;
+            correctPoints++;
             wrongTxt.setText(Integer.toString(wrongPoints));
             mustScoreBanner.setText("Task failed!");
             mustScoreTxt.setVisibility(View.INVISIBLE);
@@ -190,9 +192,9 @@ public class FirstMistakeGameMode extends AppCompatActivity {
 
     private void scoreToSave() {
         if (mustScore == 0) {
-            String txtTotalQuestionCounter = questionCounter.getText().toString();
+//            String txtTotalQuestionCounter = questionCounter.getText().toString();
             long longQuestionDoneCounter = 0;
-            longQuestionDoneCounter = Long.parseLong(txtTotalQuestionCounter);
+            longQuestionDoneCounter = Long.parseLong(questionCounter.getText().toString());
             databaseReference.child(auth.getCurrentUser().getUid()).child("playerScore").setValue(ServerValue.increment(longQuestionDoneCounter));
         }
     }

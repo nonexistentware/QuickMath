@@ -130,7 +130,7 @@
                         android:id="@+id/first_mistake_must_score_banner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Mandatory scores."
+                        android:text="Scores  to  start  the  game."
                         android:gravity="center"
                         android:textColor="@color/generalText"
                         android:fontFamily="@font/pixelstyle"
