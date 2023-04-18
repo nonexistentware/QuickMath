@@ -35,6 +35,28 @@
             android:textColor="@color/generalText"
             android:textSize="25sp" />
 
+        <TextView
+            android:id="@+id/first_mistake_start_game_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="100"
+            android:gravity="center"
+            android:textColor="@color/generalText"
+            android:textSize="20sp"
+            android:fontFamily="@font/pixelstyle"/>
+
+        <TextView
+            android:id="@+id/first_mistake_start_game_score_text_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Yuo have anought score to play."
+            android:gravity="center"
+            android:textColor="@color/generalText"
+            android:textSize="20sp"
+            android:fontFamily="@font/pixelstyle"/>
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

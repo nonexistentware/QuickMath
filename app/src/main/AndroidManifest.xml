@@ -17,10 +17,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".TimeAtteckEndActivity"
+            android:name=".Activity.TimeAttackEndActivity"
             android:exported="false" />
         <activity
-            android:name=".TimeAttackActivity"
+            android:name=".Difficult.TimeAttackActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.EndGameActivityOffline"

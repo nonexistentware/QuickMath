@@ -129,7 +129,7 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
                     databaseReference.child(auth.getCurrentUser().getUid()).child("playerScore").setValue(ServerValue.increment(-1000));
                     Toast.makeText(LeadershipDashboardActivity.this, "Score", Toast.LENGTH_SHORT).show();
                 } else if (snapshot.getValue(Integer.class) <= 999){
-                    Toast.makeText(LeadershipDashboardActivity.this, "No score", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LeadershipDashboardActivity.this, "Not enough score to remove data from list", Toast.LENGTH_SHORT).show();
                 }
             }
 
