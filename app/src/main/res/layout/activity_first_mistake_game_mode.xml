@@ -28,8 +28,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/pixelstyle"
-                    android:text="First mistake"
+                    android:fontFamily="@font/ukrainefont"
+                    android:text="Перша помилка"
                     android:gravity="center"
                     android:textColor="@color/generalText"
                     android:textSize="21sp" />
@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/pixelstyle"
+                    android:fontFamily="@font/ukrainefont"
                     android:text="Default"
                     android:gravity="center"
                     android:textColor="@color/generalText"
@@ -73,10 +73,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Score"
+                            android:text="Бали"
                             android:textSize="30sp"
                             android:textColor="@color/generalText"
-                            android:fontFamily="@font/pixelstyle"/>
+                            android:fontFamily="@font/ukrainefont"/>
 
                         <TextView
                             android:id="@+id/first_mistake_score_counter"
@@ -86,7 +86,7 @@
                             android:text="000"
                             android:textColor="@color/generalText"
                             android:textSize="20sp"
-                            android:fontFamily="@font/pixelstyle"/>
+                            android:fontFamily="@font/ukrainefont"/>
 
                     </LinearLayout>
 
@@ -101,10 +101,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Questions"
+                            android:text="Питання"
                             android:textSize="30sp"
                             android:textColor="@color/generalText"
-                            android:fontFamily="@font/pixelstyle"/>
+                            android:fontFamily="@font/ukrainefont"/>
 
                         <TextView
                             android:id="@+id/first_mistake_question_done_counter"
@@ -114,7 +114,7 @@
                             android:text="000"
                             android:textColor="@color/generalText"
                             android:textSize="20sp"
-                            android:fontFamily="@font/pixelstyle"/>
+                            android:fontFamily="@font/ukrainefont"/>
 
                     </LinearLayout>
 
@@ -130,10 +130,10 @@
                         android:id="@+id/first_mistake_must_score_banner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Scores  to  start  the  game."
+                        android:text="Бали для початку гри."
                         android:gravity="center"
                         android:textColor="@color/generalText"
-                        android:fontFamily="@font/pixelstyle"
+                        android:fontFamily="@font/ukrainefont"
                         android:textSize="20sp"/>
 
 
@@ -145,7 +145,7 @@
                         android:gravity="center"
                         android:textColor="@color/generalText"
                         android:textSize="30sp"
-                        android:fontFamily="@font/pixelstyle"/>
+                        android:fontFamily="@font/ukrainefont"/>
 
                     <TextView
                         android:id="@+id/first_mistake_questions_wrong_txt"
@@ -186,11 +186,11 @@
         android:tag="0"
         android:text="Button"
         android:textColor="@color/generalText"
-        android:textSize="30sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/fm_button2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/first_mistake_question_vew"
-        android:fontFamily="@font/pixelstyle"/>
+        android:fontFamily="@font/ukrainefont"/>
 
     <Button
         android:id="@+id/fm_button1"
@@ -207,12 +207,12 @@
         android:tag="1"
         android:text="Button"
         android:textColor="@color/generalText"
-        android:textSize="30sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/fm_button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/first_mistake_question_vew"
-        android:fontFamily="@font/pixelstyle"/>
+        android:fontFamily="@font/ukrainefont"/>
 
     <Button
         android:id="@+id/fm_button2"
@@ -229,13 +229,13 @@
         android:tag="2"
         android:text="Button"
         android:textColor="@color/generalText"
-        android:textSize="30sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fm_button3"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fm_button0"
-        android:fontFamily="@font/pixelstyle"/>
+        android:fontFamily="@font/ukrainefont"/>
 
     <Button
         android:id="@+id/fm_button3"
@@ -252,13 +252,13 @@
         android:tag="3"
         android:text="Button"
         android:textColor="@color/generalText"
-        android:textSize="30sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fm_button1"
-        android:fontFamily="@font/pixelstyle"/>
+        android:fontFamily="@font/ukrainefont"/>
 
 
     <TextView
@@ -275,6 +275,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.207"
-        android:fontFamily="@font/pixelstyle"/>
+        android:fontFamily="@font/ukrainefont"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

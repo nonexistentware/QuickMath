@@ -12,9 +12,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your stats"
+        android:text="Статистика"
         android:gravity="center"
-        android:fontFamily="@font/pixelstyle"
+        android:fontFamily="@font/ukrainefont"
         android:textColor="@color/generalText"
         android:textSize="20sp"
         android:layout_marginBottom="20px"/>
@@ -81,16 +81,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="20sp"
-                android:text="Level: "/>
+                android:text="Рівень: "/>
 
             <TextView
                 android:id="@+id/top_player_item_level_counter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="20sp"
                 android:text="Level"/>
 
@@ -104,16 +104,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="20sp"
-                android:text="Score: "
+                android:text="Бали: "
                 android:textColor="@color/generalText"/>
 
             <TextView
                 android:id="@+id/top_player_item_score_counter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="20sp"
                 android:text="Score"
                 android:textColor="@color/generalText"/>
@@ -155,8 +155,8 @@
               android:id="@+id/activity_top_players_remove_data_from_recyclerview"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:fontFamily="@font/pixelstyle"
-              android:text="Remove from list"
+              android:fontFamily="@font/ukrainefont"
+              android:text="Видалити зі списку"
               android:textColor="@color/generalText"
               android:textSize="20dp"
               android:gravity="center"
@@ -166,8 +166,8 @@
               android:id="@+id/activity_top_players_delete_player_data"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:fontFamily="@font/pixelstyle"
-              android:text="Delete your account"
+              android:fontFamily="@font/ukrainefont"
+              android:text="Видалити акаунт"
               android:textColor="@color/red"
               android:textSize="20sp"
               android:gravity="center"

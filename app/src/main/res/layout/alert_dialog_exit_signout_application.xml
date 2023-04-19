@@ -22,8 +22,8 @@
                 android:textColor="@color/generalText"
                 android:textSize="30sp"
                 android:gravity="center"
-                android:fontFamily="@font/pixelstyle"
-                android:text="Select actions: "/>
+                android:fontFamily="@font/ukrainefont"
+                android:text="Вибери дію: "/>
 
         </LinearLayout>
 
@@ -40,9 +40,9 @@
                 android:id="@+id/alert_dialog_exit_application_positive_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Exit the app"
+                android:text="Закрити додаток"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
@@ -51,9 +51,9 @@
                 android:id="@+id/alert_dialog_exit__signout_application_negative_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign out"
+                android:text="Вийти з акаунта"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
@@ -62,9 +62,9 @@
                 android:id="@+id/alert_dialog_exit_cancel_btn_application_negative_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cancel        "
+                android:text="Не роби нічого"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:layout_weight="1"/>

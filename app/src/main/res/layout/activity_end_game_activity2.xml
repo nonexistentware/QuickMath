@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Difficult"
+                android:text="Складність"
                 android:textColor="@color/generalText"
                 android:textSize="21sp"
                 android:fontFamily="@font/ukrainefont"/>
@@ -53,7 +53,7 @@
                 android:id="@+id/end2_game_game_mode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Game mode"
+                android:text="Режим гри"
                 android:layout_gravity="center"
                 android:textColor="@color/generalText"
                 android:textSize="20sp"

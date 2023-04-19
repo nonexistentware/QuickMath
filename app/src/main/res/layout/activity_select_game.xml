@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:text="User Name"
                 android:textColor="@color/generalText"
                 android:textSize="21sp" />
@@ -60,10 +60,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Score"
+                        android:text="Бали"
                         android:textSize="20sp"
                         android:textColor="@color/generalText"
-                        android:fontFamily="@font/pixelstyle"/>
+                        android:fontFamily="@font/ukrainefont"/>
 
                     <TextView
                         android:id="@+id/dashboard_score_counter"
@@ -73,7 +73,7 @@
                         android:text="125"
                         android:textColor="@color/generalText"
                         android:textSize="20sp"
-                        android:fontFamily="@font/pixelstyle"/>
+                        android:fontFamily="@font/ukrainefont"/>
 
                 </LinearLayout>
 
@@ -100,7 +100,7 @@
                         android:text="1205"
                         android:textColor="@color/generalText"
                         android:textSize="20sp"
-                        android:fontFamily="@font/pixelstyle"/>
+                        android:fontFamily="@font/ukrainefont"/>
 
                 </LinearLayout>
 
@@ -114,10 +114,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Level"
+                        android:text="Рівень"
                         android:textColor="@color/generalText"
                         android:textSize="20sp"
-                        android:fontFamily="@font/pixelstyle"/>
+                        android:fontFamily="@font/ukrainefont"/>
 
                     <TextView
                         android:id="@+id/dashboard_level_counter"
@@ -127,7 +127,7 @@
                         android:text="360"
                         android:textColor="@color/generalText"
                         android:textSize="20sp"
-                        android:fontFamily="@font/pixelstyle"/>
+                        android:fontFamily="@font/ukrainefont"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -153,9 +153,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
-                android:text="Classic game mode"
+                android:text="Класична гра"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="20sp"/>
 
             <TextView
@@ -163,10 +163,10 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Time attack"
+                android:text="Атака часу"
                 android:textColor="@color/generalText"
                 android:gravity="center"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="20sp"/>
 
             <TextView
@@ -174,10 +174,10 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="First mistake"
+                android:text="Перша помилка"
                 android:textColor="@color/generalText"
                 android:gravity="center"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="20sp"/>
 
             <TextView
@@ -185,10 +185,10 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Top players"
+                android:text="Таблиця гравців"
                 android:textColor="@color/generalText"
                 android:gravity="center"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="20sp"/>
         </LinearLayout>
 
@@ -204,7 +204,7 @@
                 android:layout_height="wrap_content"
                 android:text="Add to group"
                 android:textColor="@color/generalBackground"
-                android:fontFamily="@font/pixelstyle"/>
+                android:fontFamily="@font/ukrainefont"/>
         </LinearLayout>
         <LinearLayout
             android:layout_marginTop="25dp"
@@ -218,7 +218,7 @@
                 android:layout_height="wrap_content"
                 android:text="Show all comments"
                 android:textColor="@color/generalBackground"
-                android:fontFamily="@font/pixelstyle"/>
+                android:fontFamily="@font/ukrainefont"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -226,10 +226,10 @@
         android:id="@+id/dashboard_about_app"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="About application"
+        android:text="Про додаток"
         android:gravity="center"
         android:textColor="@color/generalText"
-        android:fontFamily="@font/pixelstyle"
+        android:fontFamily="@font/ukrainefont"
         android:textSize="20sp"/>
 
     <TextView
@@ -237,10 +237,10 @@
         android:id="@+id/dashboard_sign_ot_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign out"
+        android:text="Вийти з аккаунта"
         android:gravity="center"
         android:textColor="@color/generalText"
-        android:fontFamily="@font/pixelstyle"
+        android:fontFamily="@font/ukrainefont"
         android:textSize="20sp"/>
 
 </LinearLayout>

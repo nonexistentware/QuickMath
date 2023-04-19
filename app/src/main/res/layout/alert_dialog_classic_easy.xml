@@ -21,8 +21,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/generalText"
                 android:textSize="30sp"
-                android:fontFamily="@font/pixelstyle"
-                android:text="Rules: \n Answer all question correct and rise your level. In this mode score does not count. You will get 60 seconds."/>
+                android:fontFamily="@font/ukrainefont"
+                android:text="Правила: \n Дайте правильні відповіді на всі запитання та підвищте свій рівень. У цьому режимі оцінка не зараховується. Ви отримаєте 60 секунд."/>
 
         </LinearLayout>
 
@@ -37,9 +37,9 @@
                 android:id="@+id/alert_dialog_positive_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Proceed"
+                android:text="Продовжити"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
@@ -48,9 +48,9 @@
                 android:id="@+id/alert_dialog_negative_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cancel"
+                android:text="Закрити"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:layout_weight="1"/>

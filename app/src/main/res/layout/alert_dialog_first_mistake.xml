@@ -23,8 +23,8 @@
                 android:textColor="@color/generalText"
                 android:textSize="30sp"
                 android:gravity="center"
-                android:fontFamily="@font/pixelstyle"
-                android:text="Are you sure you want to leave the game?"/>
+                android:fontFamily="@font/ukrainefont"
+                android:text="Ви впевнені, що бажаєте залишити гру?"/>
 
             <TextView
                 android:layout_marginTop="10px"
@@ -34,8 +34,8 @@
                 android:textColor="@color/generalText"
                 android:textSize="30sp"
                 android:gravity="center"
-                android:fontFamily="@font/pixelstyle"
-                android:text="If you leave the game time locker will turn on. Game mode will be available after few days."/>
+                android:fontFamily="@font/ukrainefont"
+                android:text="Ти втратиш 1000 балів якщо покинеш гру."/>
 
         </LinearLayout>
 
@@ -50,9 +50,9 @@
                 android:id="@+id/alert_dialog_exit_positive_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Yes"
+                android:text="Так"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
@@ -61,9 +61,9 @@
                 android:id="@+id/alert_dialog_exit_negative_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No"
+                android:text="Ні"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:layout_weight="1"/>

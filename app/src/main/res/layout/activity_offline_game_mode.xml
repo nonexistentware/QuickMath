@@ -28,8 +28,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/pixelstyle"
-                    android:text="Offline game mode"
+                    android:fontFamily="@font/ukrainefont"
+                    android:text="Офлайн гра"
                     android:gravity="center"
                     android:textColor="@color/generalText"
                     android:textSize="21sp" />
@@ -62,10 +62,10 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Time"
+                            android:text="Час"
                             android:textSize="30sp"
                             android:textColor="@color/generalText"
-                            android:fontFamily="@font/pixelstyle"/>
+                            android:fontFamily="@font/ukrainefont"/>
 
                         <TextView
                             android:id="@+id/TimeTextView_offline"
@@ -75,7 +75,7 @@
                             android:text="30s"
                             android:textColor="@color/generalText"
                             android:textSize="20sp"
-                            android:fontFamily="@font/pixelstyle"/>
+                            android:fontFamily="@font/ukrainefont"/>
 
                     </LinearLayout>
 
@@ -85,15 +85,15 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:fontFamily="@font/pixelstyle">
+                        android:fontFamily="@font/ukrainefont">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Questions"
+                            android:text="Питання"
                             android:textSize="30sp"
                             android:textColor="@color/generalText"
-                            android:fontFamily="@font/pixelstyle"/>
+                            android:fontFamily="@font/ukrainefont"/>
 
                         <TextView
                             android:id="@+id/total_question_offline"
@@ -103,7 +103,7 @@
                             android:text="000"
                             android:textColor="@color/generalText"
                             android:textSize="20sp"
-                            android:fontFamily="@font/pixelstyle"/>
+                            android:fontFamily="@font/ukrainefont"/>
 
                     </LinearLayout>
 
@@ -127,11 +127,11 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Correct/Wrong"
+                            android:text="Так/Ні"
                             android:textSize="30sp"
                             android:textColor="@color/generalText"
                             android:layout_weight="1"
-                            android:fontFamily="@font/pixelstyle"/>
+                            android:fontFamily="@font/ukrainefont"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -146,7 +146,7 @@
                                 android:text="0"
                                 android:textColor="@color/generalText"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/pixelstyle"
+                                android:fontFamily="@font/ukrainefont"
                                 android:textFontWeight="1"
                                 android:gravity="center"
                                 android:textSize="20sp"/>
@@ -157,7 +157,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="0"
                                 android:textColor="@color/generalText"
-                                android:fontFamily="@font/pixelstyle"
+                                android:fontFamily="@font/ukrainefont"
                                 android:layout_weight="1"
                                 android:textFontWeight="1"
                                 android:gravity="center"
@@ -194,11 +194,11 @@
         android:tag="0"
         android:text="Button"
         android:textColor="@color/generalText"
-        android:textSize="30sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/button2_offline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/QuestionTextView_offline"
-        android:fontFamily="@font/pixelstyle"/>
+        android:fontFamily="@font/ukrainefont"/>
 
     <Button
         android:id="@+id/button1_offline"
@@ -215,12 +215,12 @@
         android:tag="1"
         android:text="Button"
         android:textColor="@color/generalText"
-        android:textSize="30sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/button3_offline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/QuestionTextView_offline"
-        android:fontFamily="@font/pixelstyle"/>
+        android:fontFamily="@font/ukrainefont"/>
 
     <Button
         android:id="@+id/button2_offline"
@@ -237,13 +237,13 @@
         android:tag="2"
         android:text="Button"
         android:textColor="@color/generalText"
-        android:textSize="30sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button3_offline"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button0_offline"
-        android:fontFamily="@font/pixelstyle"/>
+        android:fontFamily="@font/ukrainefont"/>
 
     <Button
         android:id="@+id/button3_offline"
@@ -260,13 +260,13 @@
         android:tag="3"
         android:text="Button"
         android:textColor="@color/generalText"
-        android:textSize="30sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button1_offline"
-        android:fontFamily="@font/pixelstyle"/>
+        android:fontFamily="@font/ukrainefont"/>
 
 
     <TextView
@@ -283,7 +283,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.207"
-        android:fontFamily="@font/pixelstyle"/>
+        android:fontFamily="@font/ukrainefont"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

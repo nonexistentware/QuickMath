@@ -21,8 +21,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/generalText"
                 android:textSize="30sp"
-                android:fontFamily="@font/pixelstyle"
-                android:text="Are you sure you want to delete your account and data?"/>
+                android:fontFamily="@font/ukrainefont"
+                android:text="Ви впевнені, що хочете видалити свій обліковий запис та всі дані?"/>
 
         </LinearLayout>
 
@@ -37,9 +37,9 @@
                 android:id="@+id/alert_dialog_leadership_dashboard_player_delete_positive_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Yes"
+                android:text="Так"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
@@ -48,9 +48,9 @@
                 android:id="@+id/alert_dialog_leadership_dashboard_player_delete_negative_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No"
+                android:text="Ні"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
