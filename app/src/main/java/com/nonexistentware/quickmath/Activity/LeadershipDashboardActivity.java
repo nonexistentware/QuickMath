@@ -127,9 +127,9 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
                 if (snapshot.getValue(Integer.class) >= 1000) {
                     databaseReference.child(auth.getCurrentUser().getUid()).child("playerFlag").removeValue();
                     databaseReference.child(auth.getCurrentUser().getUid()).child("playerScore").setValue(ServerValue.increment(-1000));
-                    Toast.makeText(LeadershipDashboardActivity.this, "Score", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LeadershipDashboardActivity.this, "Score.", Toast.LENGTH_SHORT).show();
                 } else if (snapshot.getValue(Integer.class) <= 999){
-                    Toast.makeText(LeadershipDashboardActivity.this, "Not enough score to remove data from list", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LeadershipDashboardActivity.this, "Недостатньо балів, щоб видалити дані зі списку.", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -237,7 +237,7 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
                     auth.signOut();
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
-                    Toast.makeText(LeadershipDashboardActivity.this, "User has been deleted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LeadershipDashboardActivity.this, "Акакунт користувача видалено", Toast.LENGTH_SHORT).show();
                 }
             }
         });

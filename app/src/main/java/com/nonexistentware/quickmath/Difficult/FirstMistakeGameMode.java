@@ -130,9 +130,9 @@ public class FirstMistakeGameMode extends AppCompatActivity {
         } else {
             correctPoints++;
             wrongTxt.setText(Integer.toString(wrongPoints));
-            mustScoreBanner.setText("Task failed!");
+            mustScoreBanner.setText("Завдання провалено!");
             mustScoreTxt.setVisibility(View.INVISIBLE);
-            Toast.makeText(this, "Fuck", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Насутпного разу повезе...", Toast.LENGTH_SHORT).show();
             playedGamesCounter();
             scoreToSave();
             timeLocker();

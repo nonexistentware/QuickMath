@@ -81,7 +81,7 @@ public class DifficultySelectActivity extends AppCompatActivity {
             public void onClick(View v) {
                 aboutChangeable.setVisibility(View.VISIBLE);
                 hideBtn.setVisibility(View.VISIBLE);
-                aboutChangeable.setText("Easy. Rules: \n This mode was made to get the game. In this mode score and level does not count. You will get 60 seconds.");
+                aboutChangeable.setText("Легко. правила: \n Цей режим був створений для отримання гри. У цьому режимі оцінка та рівень не зараховуються. Ви отримаєте 60 секунд.");
             }
         });
 
@@ -90,7 +90,7 @@ public class DifficultySelectActivity extends AppCompatActivity {
             public void onClick(View v) {
                 aboutChangeable.setVisibility(View.VISIBLE);
                 hideBtn.setVisibility(View.VISIBLE);
-                aboutChangeable.setText("Medium. Rules: \n Answer all question correct and rise your level. In this mode score does not count. You will get 30 seconds.");
+                aboutChangeable.setText("Середній. правила:\n Відповідайте правильно на всі запитання та підвищуйте свій рівень. У цьому режимі оцінка не зараховується. Ви отримаєте 30 секунд.");
             }
         });
 
@@ -99,7 +99,7 @@ public class DifficultySelectActivity extends AppCompatActivity {
             public void onClick(View v) {
                 aboutChangeable.setVisibility(View.VISIBLE);
                 hideBtn.setVisibility(View.VISIBLE);
-                aboutChangeable.setText("Hard. Rules: \n Answer all question correct and rise your level. In case  all correct answers score will count. You will get 15 seconds.");
+                aboutChangeable.setText("Важко. правила:\n Відповідайте правильно на всі запитання та підвищуйте свій рівень. У випадку, якщо всі правильні відповіді будуть зараховані бали. Ви отримаєте 15 секунд.");
             }
         });
     }

@@ -167,7 +167,7 @@ public class EndGameActivity extends AppCompatActivity {
         reference.child("difficultLevel").setValue(difficultyLevel.getText().toString().trim());
         reference.child("remainCounterTime").setValue(timeRemain.getText().toString().trim());
         reference.child("gameMode").setValue(gameMode.getText().toString().trim());
-        shareResultBtn.setText("Uploaded! Check leadership dashboard.");
+        shareResultBtn.setText("Завантажено до таблиці гравців.");
         reference.child("playerFlag").setValue("1").toString().trim();
         shareResultBtn.setEnabled(false);
 

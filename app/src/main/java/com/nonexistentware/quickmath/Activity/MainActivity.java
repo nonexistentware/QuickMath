@@ -137,11 +137,11 @@ public class MainActivity extends AppCompatActivity {
 //                            reference.child(auth.getCurrentUser().getUid()).child("timeAttackTimePlay").setValue("0");
 //                            reference.child(auth.getCurrentUser().getUid()).child("hardLevelSelect").setValue("0");
 //                            reference.child(auth.getCurrentUser().getUid()).child("remainCounterTime").setValue("0");
-                            Toast.makeText(MainActivity.this, "Successfully sigin", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Вхід до акаунту успішно виконан", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(MainActivity.this, SelectGameActivity.class));
                             finish();
                         } else {
-                            Toast.makeText(MainActivity.this, "Authentication fail", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Виникла помилка при вході до акаунту", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {

@@ -155,7 +155,7 @@ public class ClassicGameMode extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                timerTxt.setText("Time up!");
+                timerTxt.setText("Час вийшов!");
                 button0.setEnabled(false);
                 button1.setEnabled(false);
                 button2.setEnabled(false);
@@ -181,7 +181,7 @@ public class ClassicGameMode extends AppCompatActivity {
 
     private void allQuestionDone() {
         if (totalQuestionToLow == 0) {
-            totalQuestionTxt.setText("All done!");
+            totalQuestionTxt.setText("Все!");
             countDownTimer.cancel();
             button0.setEnabled(false);
             button1.setEnabled(false);

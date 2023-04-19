@@ -75,6 +75,35 @@ public class EndGameActivity2 extends AppCompatActivity {
             }
         });
 
+        shareResultBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog uploadDialog = new Dialog(EndGameActivity2.this);
+                uploadDialog.setContentView(R.layout.alert_dialog_end_game_upload_data);
+                uploadDialog.setCancelable(false);
+
+                TextView pstvBtn = uploadDialog.findViewById(R.id.alert_dialog_end_game_positive_btn);
+                TextView ngtvBtn = uploadDialog.findViewById(R.id.alert_dialog_end_game_negative_btn);
+
+                pstvBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        shareDataToCloud();
+                        uploadDialog.dismiss();
+                    }
+                });
+
+                ngtvBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        uploadDialog.dismiss();
+                    }
+                });
+
+                uploadDialog.show();
+            }
+        });
+
         loadPlayerData();
 
     }
@@ -108,6 +137,16 @@ public class EndGameActivity2 extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void shareDataToCloud() {
+        reference.child("correctAnswersCounter").setValue(correctCounter.getText().toString().trim());
+        reference.child("wrongAnswersCounter").setValue(wrongCounter.getText().toString().trim());
+        reference.child("difficultLevel").setValue(difficultyLevel.getText().toString().trim());
+        reference.child("gameMode").setValue(gameMode.getText().toString().trim());
+        shareResultBtn.setText("Завантажено до таблиці гравців.");
+        reference.child("playerFlag").setValue("1").toString().trim();
+        shareResultBtn.setEnabled(false);
     }
 
     @Override

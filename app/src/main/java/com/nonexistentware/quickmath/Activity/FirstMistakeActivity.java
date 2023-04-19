@@ -72,10 +72,10 @@ public class FirstMistakeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 aboutMode.setVisibility(View.VISIBLE);
                 hideBtn.setVisibility(View.VISIBLE);
-                aboutMode.setText("Rules: \n Try to play with out any mistakes. If you get one - game will stops without score saving." +
-                        "\n Each question = 1 score for you. Game mode does nor available daily." +
-                        "\n For save the scores toy need to go through 100 questions. If you complete this, all scores will go to your account" +
-                        "\n If you leave the game scores won't be added to your account.");
+                aboutMode.setText("Правила: \n Намагайтеся грати без помилок. Якщо ви отримаєте один - гра зупиниться без збереження результатів." +
+                        "                         \n Кожне запитання = 1 бал для вас. Ігровий режим недоступний щодня." +
+                        "                         \n Щоб іграшка зберегла результати, потрібно відповісти на 100 запитань. Якщо ви виконаєте це, усі результати надійдуть до вашого облікового запису" +
+                        "                         \n Якщо ви залишите гру, результати не будуть додані до вашого облікового запису.");
             }
         });
 
@@ -123,9 +123,10 @@ public class FirstMistakeActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.getValue(Integer.class) <= 999) {
                     scoreCheckTxt.setText("Не вистачає балів для початку гри");
+                    startBtn.setVisibility(View.INVISIBLE);
                 } else if (snapshot.getValue(Integer.class) >= 1000) {
                     scoreCheckTxt.setText("Балів для поатку гри достатньо");
-                    startBtn.setVisibility(View.INVISIBLE);
+                    startBtn.setVisibility(View.VISIBLE);
                 }
             }
 
