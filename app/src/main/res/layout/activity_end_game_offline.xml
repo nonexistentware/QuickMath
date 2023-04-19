@@ -32,21 +32,21 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Offline player"
+                android:text="Офлайн ігрок"
                 android:textColor="@color/generalText"
                 android:textSize="21sp"
-                android:fontFamily="@font/pixelstyle"/>
+                android:fontFamily="@font/ukrainefont"/>
 
             <TextView
                 android:layout_marginTop="10dp"
                 android:id="@+id/end_offline_game_game_mode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Game mode"
+                android:text="Режим гри"
                 android:layout_gravity="center"
                 android:textColor="@color/generalText"
                 android:textSize="20sp"
-                android:fontFamily="@font/pixelstyle"/>
+                android:fontFamily="@font/ukrainefont"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -59,11 +59,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Questions left: "
+                    android:text="Питань лишилось: "
                     android:textColor="@color/generalText"
                     android:layout_weight="1"
                     android:textSize="20sp"
-                    android:fontFamily="@font/pixelstyle"
+                    android:fontFamily="@font/ukrainefont"
                     android:gravity="right"/>
 
                 <TextView
@@ -73,7 +73,7 @@
                     android:text="000"
                     android:textColor="@color/generalText"
                     android:textSize="20sp"
-                    android:fontFamily="@font/pixelstyle"
+                    android:fontFamily="@font/ukrainefont"
                     android:layout_weight="1"
                     android:gravity="left"/>
 
@@ -86,11 +86,11 @@
                 android:id="@+id/end_offline_win_defeat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Correct/Wrong"
+                android:text="Так/Ні"
                 android:layout_gravity="center"
                 android:textColor="@color/generalText"
                 android:textSize="21sp"
-                android:fontFamily="@font/pixelstyle"/>
+                android:fontFamily="@font/ukrainefont"/>
 
 
             <LinearLayout
@@ -104,7 +104,7 @@
                     android:id="@+id/end_offline_game_correct_counter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/pixelstyle"
+                    android:fontFamily="@font/ukrainefont"
                     android:text="0"
                     android:gravity="center"
                     android:textColor="@color/generalText"
@@ -115,7 +115,7 @@
                     android:id="@+id/end_offline_game_wrong_counter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/pixelstyle"
+                    android:fontFamily="@font/ukrainefont"
                     android:text="0"
                     android:gravity="center"
                     android:textColor="@color/generalText"
@@ -149,10 +149,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Score"
+                        android:text="Бали"
                         android:textSize="20sp"
                         android:textColor="@color/generalText"
-                        android:fontFamily="@font/pixelstyle"/>
+                        android:fontFamily="@font/ukrainefont"/>
 
                     <TextView
                         android:id="@+id/end_offline_game_score_counter"
@@ -162,7 +162,7 @@
                         android:text="Offline"
                         android:textColor="@color/generalText"
                         android:textSize="20sp"
-                        android:fontFamily="@font/pixelstyle"/>
+                        android:fontFamily="@font/ukrainefont"/>
 
                 </LinearLayout>
 
@@ -177,10 +177,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Level"
+                        android:text="Рівень"
                         android:textColor="@color/generalText"
                         android:textSize="20sp"
-                        android:fontFamily="@font/pixelstyle"/>
+                        android:fontFamily="@font/ukrainefont"/>
 
                     <TextView
                         android:id="@+id/dashboard_offline_level_counter"
@@ -190,7 +190,7 @@
                         android:text="Offline"
                         android:textColor="@color/generalText"
                         android:textSize="20sp"
-                        android:fontFamily="@font/pixelstyle"/>
+                        android:fontFamily="@font/ukrainefont"/>
 
                 </LinearLayout>
 
@@ -205,10 +205,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Time left"
-                        android:textSize="20sp"
+                        android:text="Часу лишилось"
+                        android:textSize="19sp"
                         android:textColor="@color/generalText"
-                        android:fontFamily="@font/pixelstyle"/>
+                        android:fontFamily="@font/ukrainefont"/>
 
                     <TextView
                         android:id="@+id/end_offline_remain_time_counter"
@@ -218,7 +218,7 @@
                         android:text="0:00"
                         android:textColor="@color/generalText"
                         android:textSize="20sp"
-                        android:fontFamily="@font/pixelstyle"/>
+                        android:fontFamily="@font/ukrainefont"/>
 
                 </LinearLayout>
 
@@ -246,10 +246,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
-                android:text="Play again?"
+                android:text="Зіграти ще?"
                 android:textSize="20sp"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"/>
+                android:fontFamily="@font/ukrainefont"/>
         </LinearLayout>
 
         <LinearLayout
@@ -267,7 +267,7 @@
                 android:textColor="@color/generalBackground"
                 android:gravity="center"
                 android:textSize="20sp"
-                android:fontFamily="@font/pixelstyle"/>
+                android:fontFamily="@font/ukrainefont"/>
         </LinearLayout>
         <LinearLayout
             android:layout_marginTop="25dp"
@@ -297,7 +297,7 @@
                 android:layout_height="wrap_content"
                 android:text="Show all comments"
                 android:textColor="@color/generalBackground"
-                android:fontFamily="@font/pixelstyle"/>
+                android:fontFamily="@font/ukrainefont"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -307,10 +307,10 @@
         android:id="@+id/end_offline_back_to_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Back to login"
+        android:text="Повернутись до логіну"
         android:gravity="center"
         android:textSize="20sp"
         android:textColor="@color/generalText"
-        android:fontFamily="@font/pixelstyle"/>
+        android:fontFamily="@font/ukrainefont"/>
 
 </LinearLayout>

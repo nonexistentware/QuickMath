@@ -22,10 +22,10 @@
                 android:textColor="@color/generalText"
                 android:textSize="30sp"
                 android:gravity="center"
-                android:fontFamily="@font/pixelstyle"
-                android:text="Are you sure you want to remove your results from Leadership table?
-                            \n It will cost you 1000 score.
-                             \n Proceed?"/>
+                android:fontFamily="@font/ukrainefont"
+                android:text="Ви впевнені, що хочете видалити свої результати з таблиці лідерства?
+Це буде коштувати вам 1000 балів.
+Продовжити?"/>
 
 
         </LinearLayout>
@@ -41,9 +41,9 @@
                 android:id="@+id/alert_dialog_leadership_dashboard_positive_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Yes"
+                android:text="Так"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
@@ -52,9 +52,9 @@
                 android:id="@+id/alert_dialog_leadership_dashboard_negative_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No"
+                android:text="Ні"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:layout_weight="1"/>

@@ -18,9 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:fontFamily="@font/pixelstyle"
+            android:fontFamily="@font/ukrainefont"
             android:gravity="center"
-            android:text="Classic game"
+            android:text="Класична гра"
             android:textColor="@color/generalText"
             android:textSize="25sp" />
 
@@ -28,9 +28,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:fontFamily="@font/pixelstyle"
+            android:fontFamily="@font/ukrainefont"
             android:gravity="center"
-            android:text="Select your difficult level"
+            android:text="Вибери складність"
             android:textColor="@color/generalText"
             android:textSize="25sp" />
 
@@ -47,9 +47,9 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/generalText"
                 android:textSize="20sp"
-                android:text="Easy"
+                android:text="Легко"
                 android:gravity="right"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:layout_weight="1"/>
 
             <ImageView
@@ -75,9 +75,9 @@
             android:layout_height="wrap_content"
             android:textColor="@color/generalText"
             android:textSize="20sp"
-            android:text="Medium"
+            android:text="Середнє"
             android:gravity="right"
-            android:fontFamily="@font/pixelstyle"
+            android:fontFamily="@font/ukrainefont"
             android:layout_weight="1" />
 
         <ImageView
@@ -102,9 +102,9 @@
             android:layout_height="wrap_content"
             android:textColor="@color/generalText"
             android:textSize="20sp"
-            android:text="Hard"
+            android:text="Складно"
             android:gravity="right"
-            android:fontFamily="@font/pixelstyle"
+            android:fontFamily="@font/ukrainefont"
             android:layout_weight="1"/>
 
         <ImageView
@@ -125,10 +125,10 @@
                 android:id="@+id/dif_select_activity_about_changeable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="About game mode"
+                android:text="О режимі гри"
                 android:textSize="20dp"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"/>
+                android:fontFamily="@font/ukrainefont"/>
 
         </LinearLayout>
 
@@ -141,10 +141,10 @@
                 android:id="@+id/dif_select_hide_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="hide"
+                android:text="Сховати"
                 android:gravity="center"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="20sp"/>
 
         </LinearLayout>
@@ -158,10 +158,10 @@
                 android:id="@+id/dif_select_back_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Back to dashboard"
+                android:text="Повернутись на головну"
                 android:gravity="center"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="20sp" />
 
 

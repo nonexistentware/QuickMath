@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="250dp"
     android:background="@color/generalBackground"
     android:layout_margin="10px">
 
@@ -21,8 +21,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/generalText"
                 android:textSize="30sp"
-                android:fontFamily="@font/pixelstyle"
-                android:text="Your result won't be uploaded to the best players table. Sign in into the Google account."/>
+                android:fontFamily="@font/ukrainefont"
+                android:text="Ваш результат не буде завантажено до таблиці найкращих гравців. Увійдіть в обліковий запис Google."/>
 
         </LinearLayout>
 
@@ -37,20 +37,20 @@
                 android:id="@+id/alert_dialog_positive_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Proceed"
-                android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
-                android:textSize="30sp"
+                android:layout_weight="1"
+                android:fontFamily="@font/ukrainefont"
                 android:gravity="center"
-                android:layout_weight="1"/>
+                android:text="Продовжити"
+                android:textColor="@color/generalText"
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/alert_dialog_negative_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cancel"
+                android:text="Закрити"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:layout_weight="1"/>

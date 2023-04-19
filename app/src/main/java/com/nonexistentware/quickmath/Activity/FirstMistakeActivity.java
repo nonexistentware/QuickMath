@@ -122,9 +122,10 @@ public class FirstMistakeActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.getValue(Integer.class) <= 999) {
-                    scoreCheckTxt.setText("No");
+                    scoreCheckTxt.setText("Не вистачає балів для початку гри");
                 } else if (snapshot.getValue(Integer.class) >= 1000) {
-                    scoreCheckTxt.setText("Yes");
+                    scoreCheckTxt.setText("Балів для поатку гри достатньо");
+                    startBtn.setVisibility(View.INVISIBLE);
                 }
             }
 

@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 pstvBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        startActivity(new Intent(getApplicationContext(), SelectGameActivity.class));
+                        startActivity(new Intent(getApplicationContext(), OfflineGameModeActivity.class));
                         finish();
                     }
                 });

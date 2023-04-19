@@ -34,8 +34,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/generalText"
                 android:gravity="center"
-                android:fontFamily="@font/pixelstyle"
-                android:text="Play   offline"
+                android:fontFamily="@font/ukrainefont"
+                android:text="Грати офлайн"
                 android:textSize="30sp"/>
 
         <TextView
@@ -47,7 +47,7 @@
             android:textColor="@color/generalText"
             android:gravity="center"
             android:textSize="30sp"
-            android:fontFamily="@font/kongtext"/>
+            android:fontFamily="@font/ukrainefont"/>
 
         <TextView
 

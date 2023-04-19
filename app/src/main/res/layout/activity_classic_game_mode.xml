@@ -31,9 +31,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/pixelstyle"
+                    android:fontFamily="@font/ukrainefont"
                     android:gravity="center"
-                    android:text="Classic game mode"
+                    android:text="Класичний режим"
                     android:textColor="@color/generalText"
                     android:textSize="21sp" />
 
@@ -43,9 +43,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/pixelstyle"
+                    android:fontFamily="@font/ukrainefont"
                     android:gravity="center"
-                    android:text="Easy"
+                    android:text="Легко"
                     android:textColor="@color/generalText"
                     android:textSize="21sp" />
 
@@ -55,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="60dp"
                 android:orientation="vertical"
                 android:weightSum="2">
 
@@ -76,8 +76,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/pixelstyle"
-                            android:text="Time"
+                            android:fontFamily="@font/ukrainefont"
+                            android:text="Час"
                             android:textColor="@color/generalText"
                             android:textSize="30sp" />
 
@@ -85,7 +85,7 @@
                             android:id="@+id/TimeTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/pixelstyle"
+                            android:fontFamily="@font/ukrainefont"
                             android:paddingTop="10dp"
                             android:text="30s"
                             android:textColor="@color/generalText"
@@ -97,15 +97,15 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:fontFamily="@font/pixelstyle"
+                        android:fontFamily="@font/ukrainefont"
                         android:gravity="center"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/pixelstyle"
-                            android:text="Questions"
+                            android:fontFamily="@font/ukrainefont"
+                            android:text="Питання"
                             android:textColor="@color/generalText"
                             android:textSize="30sp" />
 
@@ -113,7 +113,7 @@
                             android:id="@+id/total_question"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/pixelstyle"
+                            android:fontFamily="@font/ukrainefont"
                             android:paddingTop="10dp"
                             android:text="000"
                             android:textColor="@color/generalText"
@@ -142,8 +142,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/pixelstyle"
-                            android:text="Correct/Wrong"
+                            android:fontFamily="@font/ukrainefont"
+                            android:text="Так/Ні"
                             android:textColor="@color/generalText"
                             android:textSize="30sp" />
 
@@ -158,7 +158,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/pixelstyle"
+                                android:fontFamily="@font/ukrainefont"
                                 android:gravity="center"
                                 android:text="0"
                                 android:textColor="@color/generalText"
@@ -170,7 +170,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/pixelstyle"
+                                android:fontFamily="@font/ukrainefont"
                                 android:gravity="center"
                                 android:text="0"
                                 android:textColor="@color/generalText"
@@ -202,11 +202,11 @@
             android:tag="0"
             android:text="Button"
             android:textColor="@color/generalText"
-            android:textSize="30sp"
+            android:textSize="28sp"
             app:layout_constraintBottom_toTopOf="@+id/button2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/QuestionTextView"
-            android:fontFamily="@font/pixelstyle"/>
+            android:fontFamily="@font/ukrainefont"/>
 
         <Button
             android:id="@+id/button1"
@@ -223,12 +223,12 @@
             android:tag="1"
             android:text="Button"
             android:textColor="@color/generalText"
-            android:textSize="30sp"
+            android:textSize="28sp"
             app:layout_constraintBottom_toTopOf="@+id/button3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/QuestionTextView"
-            android:fontFamily="@font/pixelstyle"/>
+            android:fontFamily="@font/ukrainefont"/>
 
         <Button
             android:id="@+id/button2"
@@ -245,13 +245,13 @@
             android:tag="2"
             android:text="Button"
             android:textColor="@color/generalText"
-            android:textSize="30sp"
+            android:textSize="28sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button3"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button0"
-            android:fontFamily="@font/pixelstyle"/>
+            android:fontFamily="@font/ukrainefont"/>
 
         <Button
             android:id="@+id/button3"
@@ -268,13 +268,13 @@
             android:tag="3"
             android:text="Button"
             android:textColor="@color/generalText"
-            android:textSize="30sp"
+            android:textSize="28sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button1"
-            android:fontFamily="@font/pixelstyle"/>
+            android:fontFamily="@font/ukrainefont"/>
 
 
         <TextView
@@ -291,7 +291,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.207"
-            android:fontFamily="@font/pixelstyle"/>
+            android:fontFamily="@font/ukrainefont"/>
 
 
 

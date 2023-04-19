@@ -23,8 +23,8 @@
                 android:textColor="@color/generalText"
                 android:textSize="30sp"
                 android:gravity="center"
-                android:fontFamily="@font/pixelstyle"
-                android:text="Something went wrong with connection. Please, make sure you are connected to the internet."/>
+                android:fontFamily="@font/ukrainefont"
+                android:text="Щось пішло не так із підключенням. Будь ласка, переконайтеся, що ви підключені до Інтернету."/>
 
 
         </LinearLayout>
@@ -40,9 +40,9 @@
                 android:id="@+id/alert_dialog_network_error_reload_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reload"
+                android:text="Перезавантажити"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
@@ -51,9 +51,9 @@
                 android:id="@+id/alert_dialog_network_error_to_settings_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="To settings"
+                android:text="Налаштування"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
@@ -62,9 +62,9 @@
                 android:id="@+id/alert_dialog_network_error_dismiss_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Play offline"
+                android:text="Грати офалйн"
                 android:textColor="@color/generalText"
-                android:fontFamily="@font/pixelstyle"
+                android:fontFamily="@font/ukrainefont"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
