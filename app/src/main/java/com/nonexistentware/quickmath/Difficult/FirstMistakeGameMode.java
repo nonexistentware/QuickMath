@@ -186,7 +186,7 @@ public class FirstMistakeGameMode extends AppCompatActivity {
     private void scoreToCheck() {
         if (mustScore == 0) {
             mustScoreTxt.setVisibility(View.INVISIBLE);
-            mustScoreBanner.setText("Task completed!");
+            mustScoreBanner.setText("Завдання виконано!");
         }
     }
 
@@ -211,6 +211,11 @@ public class FirstMistakeGameMode extends AppCompatActivity {
         databaseReference.child(auth.getCurrentUser().getUid()).child("totalPlayedGamesCounter").setValue(ServerValue.increment(1));
     }
 
+    private void scoreToMinus() {
+        databaseReference.child(auth.getCurrentUser().getUid()).child("playerScore")
+                .setValue(ServerValue.increment(-1000));
+    }
+
     @Override
     public void onBackPressed() {
         final Dialog dialog = new Dialog(FirstMistakeGameMode.this);
@@ -224,6 +229,7 @@ public class FirstMistakeGameMode extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 attemptsToStartTheGame();
+                scoreToMinus();
                 startActivity(new Intent(getApplicationContext(), SelectGameActivity.class));
                 finish();
             }

@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(new Intent(MainActivity.this, SelectGameActivity.class));
                             finish();
                         } else {
-                            Toast.makeText(MainActivity.this, "Виникла помилка при вході до акаунту", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Виникла помилка при вході до акаунту", Toast.LENGTH_LONG).show();
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
