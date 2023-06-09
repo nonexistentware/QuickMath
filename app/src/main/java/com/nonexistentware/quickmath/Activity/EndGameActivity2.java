@@ -145,7 +145,7 @@ public class EndGameActivity2 extends AppCompatActivity {
         reference.child("difficultLevel").setValue(difficultyLevel.getText().toString().trim());
         reference.child("gameMode").setValue(gameMode.getText().toString().trim());
         shareResultBtn.setText("Завантажено до таблиці гравців.");
-        reference.child("playerFlag").setValue("1").toString().trim();
+        reference.child("playerFlag").setValue(1);
         shareResultBtn.setEnabled(false);
     }
 

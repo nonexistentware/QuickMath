@@ -2,7 +2,7 @@ package com.nonexistentware.quickmath.Model;
 
 public class PlayerModel {
     long duelWin;
-    long playerLevel;
+   public long playerLevel;
     long playerScore;
     String playerName;
     String defeated;

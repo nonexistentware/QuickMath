@@ -168,7 +168,7 @@ public class EndGameActivity extends AppCompatActivity {
         reference.child("remainCounterTime").setValue(timeRemain.getText().toString().trim());
         reference.child("gameMode").setValue(gameMode.getText().toString().trim());
         shareResultBtn.setText("Завантажено до таблиці гравців.");
-        reference.child("playerFlag").setValue("1").toString().trim();
+        reference.child("playerFlag").setValue(1);
         shareResultBtn.setEnabled(false);
 
     }

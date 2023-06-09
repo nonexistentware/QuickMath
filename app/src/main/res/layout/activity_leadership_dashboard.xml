@@ -187,6 +187,9 @@
         android:id="@+id/recyclerview_top_players_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:reverseLayout="true"
+        app:stackFromEnd="true"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_weight="9.8"/>
 
     <TextView
