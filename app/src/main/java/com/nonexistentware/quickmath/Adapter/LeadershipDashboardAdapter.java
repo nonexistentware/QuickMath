@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,11 +28,13 @@ public class LeadershipDashboardAdapter extends RecyclerView.Adapter<LeadershipD
     List<PlayerModel> playerModelList;
     Context context;
 
+    private RecyclerView listView;
+    private LinearLayoutManager mLayoutManager;
+
     public LeadershipDashboardAdapter(List<PlayerModel> playerModelList, Context context) {
         this.playerModelList = playerModelList;
         this.context = context;
     }
-
     @NonNull
     @Override
     public LeadershipDashboardAdapter.LeadershipViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -44,9 +47,6 @@ public class LeadershipDashboardAdapter extends RecyclerView.Adapter<LeadershipD
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         return new LeadershipViewHolder(itemView);
-
-
-
     }
 
     @Override
@@ -59,7 +59,6 @@ public class LeadershipDashboardAdapter extends RecyclerView.Adapter<LeadershipD
         holder.playerBestTime.setText(playerModelList.get(position).getRemainCounterTime());
         Picasso.get()
                 .load(playerModelList.get(position).getPlayerImg())
-
                 .into(holder.playersImg);
 
     }
@@ -85,9 +84,9 @@ public class LeadershipDashboardAdapter extends RecyclerView.Adapter<LeadershipD
             playerBestTime = itemView.findViewById(R.id.top_player_item_last_best_time);
             playerGameMode = itemView.findViewById(R.id.top_player_item_game_mode);
 
-            if (playerModelList.equals("playerFlag")) {
-
-            }
+//            if (playerModelList.equals("playerFlag")) {
+//
+//            }
 
         }
     }

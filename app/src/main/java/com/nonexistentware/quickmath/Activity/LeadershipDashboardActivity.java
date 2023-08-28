@@ -3,6 +3,7 @@ package com.nonexistentware.quickmath.Activity;
 import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +36,8 @@ import com.nonexistentware.quickmath.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class LeadershipDashboardActivity extends AppCompatActivity {
@@ -61,7 +65,7 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerview_top_players_activity);
         auth = FirebaseAuth.getInstance();
         fUser = auth.getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Players").child(fUser.getUid());
+        databaseReference = FirebaseDatabase.getInstance().getReference("Players");
         pathToPlayerFlag = FirebaseDatabase.getInstance().getReference("Players").child("playerFlag");
         database = FirebaseDatabase.getInstance();
         recyclerView.hasFixedSize();
@@ -149,6 +153,7 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
                 if (snapshot.getValue(Integer.class) >= 1000) {
                     databaseReference.child(auth.getCurrentUser().getUid()).child("playerFlag").removeValue();
                     databaseReference.child(auth.getCurrentUser().getUid()).child("playerScore").setValue(ServerValue.increment(-1000));
+
                     Toast.makeText(LeadershipDashboardActivity.this, "Score.", Toast.LENGTH_SHORT).show();
                 } else if (snapshot.getValue(Integer.class) <= 999){
                     Toast.makeText(LeadershipDashboardActivity.this, "Недостатньо балів, щоб видалити дані зі списку.", Toast.LENGTH_SHORT).show();
@@ -175,6 +180,8 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
                 PlayerModel playerModel = ds.getValue(PlayerModel.class);
                 list.add(playerModel);
 
+
+
             }
             adapter.notifyDataSetChanged();
         }
@@ -187,9 +194,7 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
 
     private void dataQuery() {
         Query query = FirebaseDatabase.getInstance().getReference("Players")
-                .orderByChild("playerFlag")
-                .equalTo(1);
-
+                .orderByChild("playerLevel").endAt(1000000000);
 
         query.addListenerForSingleValueEvent(valueEventListener);
     }
@@ -223,7 +228,7 @@ public class LeadershipDashboardActivity extends AppCompatActivity {
 //                        String duelWinCheck = "0";
 //                        duelWinCounterTxt.setText(duelWinCheck);
                     }
-                    else if (snapshot.child("playerFlag").exists()) { // check if flag is exist to remove from list
+                    else if (snapshot.child("playerFlag").exists()) {// check if flag is exist to remove from list
                         removeFromList.setVisibility(View.VISIBLE);
                     } else {
                         removeFromList.setVisibility(View.GONE);
